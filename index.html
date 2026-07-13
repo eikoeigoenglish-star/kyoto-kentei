@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=3.0.0">
+  <link rel="stylesheet" href="style.css?v=3.1.0">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKL5WQJBSB"></script>
   <script>
@@ -124,18 +124,30 @@
     <section class="panel" aria-labelledby="count-heading">
       <div class="panel-head">
         <h2 id="count-heading" class="panel-title">出題問数</h2>
-        <p class="panel-note">1つ選択</p>
+        <p id="count-availability" class="panel-note" aria-live="polite">1つ選択</p>
       </div>
 
       <div class="chip-group" role="radiogroup" aria-labelledby="count-heading">
-        <input type="radio" id="count-20" name="count" value="20" checked>
+        <input type="radio" id="count-100" name="count" value="100">
+        <label class="chip" for="count-100">100問</label>
+
+        <input type="radio" id="count-50" name="count" value="50">
+        <label class="chip" for="count-50">50問</label>
+
+        <input type="radio" id="count-25" name="count" value="25">
+        <label class="chip" for="count-25">25問</label>
+
+        <input type="radio" id="count-20" name="count" value="20">
         <label class="chip" for="count-20">20問</label>
 
         <input type="radio" id="count-10" name="count" value="10">
         <label class="chip" for="count-10">10問</label>
 
-        <input type="radio" id="count-5" name="count" value="5">
+        <input type="radio" id="count-5" name="count" value="5" checked>
         <label class="chip" for="count-5">5問</label>
+
+        <input type="radio" id="count-4" name="count" value="4">
+        <label class="chip" for="count-4">4問</label>
 
         <input type="radio" id="count-3" name="count" value="3">
         <label class="chip" for="count-3">3問</label>
@@ -207,6 +219,6 @@
   </footer>
 </div>
 
-<script src="app.js?v=3.0.0"></script>
+<script src="app.js?v=3.1.0"></script>
 </body>
 </html>

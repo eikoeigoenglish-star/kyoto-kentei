@@ -32,6 +32,7 @@ async function init() {
     }
 
     state.allQuestions = questions;
+    updateAvailableCounts();
 
     document.getElementById("start-btn").addEventListener("click", startExam);
     document.getElementById("next-btn").addEventListener("click", nextQuestion);
@@ -60,6 +61,7 @@ function toggleAllRanges() {
   });
 
   updateRangeToggleLabel();
+  updateAvailableCounts();
 }
 
 function updateRangeToggleLabel() {
@@ -73,6 +75,10 @@ function updateRangeToggleLabel() {
 document.addEventListener("change", event => {
   if (event.target.name === "range") {
     updateRangeToggleLabel();
+  }
+
+  if (event.target.name === "range" || event.target.name === "exam") {
+    updateAvailableCounts();
   }
 });
 
@@ -152,6 +158,59 @@ function filterQuestions(allQuestions, exam, ranges) {
 function parseRange(value) {
   const [start, end] = value.split("-").map(Number);
   return { start, end };
+}
+
+// =======================
+// 選択条件に応じた出題問数の制御
+// =======================
+function updateAvailableCounts() {
+  if (state.allQuestions.length === 0) {
+    return;
+  }
+
+  const examValue =
+    document.querySelector('input[name="exam"]:checked')?.value;
+
+  const checkedRanges = [
+    ...document.querySelectorAll('input[name="range"]:checked')
+  ].map(input => parseRange(input.value));
+
+  const exam = examValue === "all" ? "all" : Number(examValue);
+
+  const availableCount =
+    examValue && checkedRanges.length > 0
+      ? filterQuestions(state.allQuestions, exam, checkedRanges).length
+      : 0;
+
+  const countInputs = [
+    ...document.querySelectorAll('input[name="count"]')
+  ];
+
+  countInputs.forEach(input => {
+    input.disabled = Number(input.value) > availableCount;
+  });
+
+  const selectedInput =
+    document.querySelector('input[name="count"]:checked');
+
+  if (!selectedInput || selectedInput.disabled) {
+    const largestAvailable = countInputs.find(input => !input.disabled);
+
+    if (largestAvailable) {
+      largestAvailable.checked = true;
+    }
+  }
+
+  const availability = document.getElementById("count-availability");
+
+  if (availableCount === 0) {
+    availability.textContent = "出題範囲を選択してください";
+  } else {
+    availability.textContent = `1つ選択・現在の対象は${availableCount}問`;
+  }
+
+  document.getElementById("start-btn").disabled = availableCount === 0;
+  clearStartError();
 }
 
 // Fisher-Yates shuffle

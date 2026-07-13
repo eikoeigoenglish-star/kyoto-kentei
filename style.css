@@ -274,6 +274,21 @@ body {
   outline-offset: 2px;
 }
 
+.chip-group input:disabled + .chip {
+  opacity: 0.38;
+  cursor: not-allowed;
+  background-color: var(--surface);
+  border-color: var(--line);
+  color: var(--text-faint);
+  box-shadow: none;
+}
+
+.chip-group input:disabled + .chip:hover {
+  background-color: var(--surface);
+  border-color: var(--line);
+  color: var(--text-faint);
+}
+
 /* =========================
    ボタン
 ========================= */
