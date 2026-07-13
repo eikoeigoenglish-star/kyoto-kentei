@@ -1,0 +1,268 @@
+/* =========================
+   ベース
+========================= */
+body {
+  min-height: 100vh;
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+.card {
+  border: none;
+  border-radius: 14px;
+}
+
+.card-body {
+  padding: 1.4rem;
+}
+
+button {
+  border-radius: 10px !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 650;
+}
+
+/* =========================
+   設定画面
+========================= */
+.setting-section {
+  padding-bottom: 0.25rem;
+}
+
+.option-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 1100px;
+}
+
+.option-group input[type="radio"],
+.option-group input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.option-group label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 16px;
+  margin: 0;
+  border: 1px solid #4a4f57;
+  border-radius: 10px;
+  background-color: #2a2f36;
+  color: #e0e0e0;
+  cursor: pointer;
+  font-weight: 600;
+  user-select: none;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.05s ease;
+}
+
+.option-group label:hover {
+  background-color: #353b44;
+  border-color: #6b7280;
+}
+
+.option-group label:active {
+  transform: translateY(1px);
+}
+
+.option-group input:focus-visible + label {
+  outline: 3px solid rgba(13, 110, 253, 0.55);
+  outline-offset: 2px;
+}
+
+.option-group input:checked + label {
+  background-color: #61923a;
+  border-color: #7fbf4d;
+  color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(97, 146, 58, 0.25);
+}
+
+.option-group input:checked + label:hover {
+  background-color: #6fa844;
+  border-color: #8dcb59;
+}
+
+.option-group-exams label {
+  min-width: 100px;
+}
+
+.option-group-exams label:first-of-type {
+  min-width: 165px;
+}
+
+.option-group-ranges label,
+.option-group-counts label {
+  min-width: 92px;
+}
+
+/* =========================
+   出題画面
+========================= */
+.question-meta,
+.question-counter {
+  color: #e7e7e7;
+  font-weight: 700;
+}
+
+.question-counter {
+  font-variant-numeric: tabular-nums;
+}
+
+.question-text {
+  padding: 1.15rem;
+  margin-bottom: 1.4rem;
+  border-radius: 10px;
+  background-color: #20242a;
+  color: #ffffff;
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  line-height: 1.75;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.choice-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-width: 2px;
+  text-align: left;
+  white-space: normal;
+  line-height: 1.5;
+}
+
+.choice-marker {
+  flex: 0 0 auto;
+  font-size: 1.3rem;
+  line-height: 1.45;
+}
+
+.choice-text {
+  flex: 1 1 auto;
+  overflow-wrap: anywhere;
+}
+
+.btn-light.choice-btn {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  font-weight: 700;
+}
+
+#next-btn {
+  padding: 12px;
+  font-size: 1.1rem;
+}
+
+/* =========================
+   結果画面
+========================= */
+#score {
+  text-align: center;
+  font-size: 1.55rem;
+  font-weight: 700;
+}
+
+#back-to-start-btn {
+  min-width: 220px;
+}
+
+.table {
+  font-size: 1rem;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+}
+
+#result-table td:first-child {
+  width: 54px;
+  font-weight: 700;
+  text-align: center;
+}
+
+#result-table td:last-child {
+  width: 66px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.result-question-meta {
+  margin-bottom: 0.45rem;
+  color: #bfc5cc;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.result-question-text {
+  min-width: 320px;
+  line-height: 1.55;
+}
+
+#result-cards .card {
+  border: 1px solid #3b4148;
+}
+
+.correct {
+  color: #66d26f !important;
+  font-weight: 700;
+}
+
+.incorrect {
+  color: #ff6b6b !important;
+  font-weight: 700;
+}
+
+/* =========================
+   スマホ
+========================= */
+@media (max-width: 768px) {
+  .container {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .option-group-exams label,
+  .option-group-ranges label,
+  .option-group-counts label {
+    flex: 1 1 calc(50% - 6px);
+    min-width: 0;
+  }
+
+  .option-group-exams label:first-of-type {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+
+  .question-text {
+    padding: 1rem;
+    line-height: 1.65;
+  }
+
+  .choice-btn {
+    padding: 0.85rem 0.9rem;
+    font-size: 1rem;
+  }
+}

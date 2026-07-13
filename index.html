@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>京都検定2級 四択トレーニング</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=2.0.0">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKL5WQJBSB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TKL5WQJBSB');
+  </script>
+</head>
+
+<body class="bg-dark text-light">
+<div class="container py-4">
+
+  <!-- ========================= -->
+  <!-- ① 設定画面 -->
+  <!-- ========================= -->
+  <div id="screen-start">
+    <header class="mb-4">
+      <h1 class="h2 mb-2">京都検定2級 四択トレーニング</h1>
+      <p class="text-secondary mb-0">回次・大問の範囲・出題問数を選んで開始します。</p>
+    </header>
+
+    <!-- 回次 -->
+    <section class="setting-section mb-5" aria-labelledby="exam-heading">
+      <h2 id="exam-heading" class="h5 mb-3">回次</h2>
+
+      <div class="option-group option-group-exams">
+        <input type="radio" id="exam-all" name="exam" value="all" checked>
+        <label for="exam-all">全部（12〜25回）</label>
+
+        <input type="radio" id="exam-12" name="exam" value="12">
+        <label for="exam-12">第12回</label>
+
+        <input type="radio" id="exam-13" name="exam" value="13">
+        <label for="exam-13">第13回</label>
+
+        <input type="radio" id="exam-14" name="exam" value="14">
+        <label for="exam-14">第14回</label>
+
+        <input type="radio" id="exam-15" name="exam" value="15">
+        <label for="exam-15">第15回</label>
+
+        <input type="radio" id="exam-16" name="exam" value="16">
+        <label for="exam-16">第16回</label>
+
+        <input type="radio" id="exam-17" name="exam" value="17">
+        <label for="exam-17">第17回</label>
+
+        <input type="radio" id="exam-19" name="exam" value="19">
+        <label for="exam-19">第19回</label>
+
+        <input type="radio" id="exam-21" name="exam" value="21">
+        <label for="exam-21">第21回</label>
+
+        <input type="radio" id="exam-23" name="exam" value="23">
+        <label for="exam-23">第23回</label>
+
+        <input type="radio" id="exam-25" name="exam" value="25">
+        <label for="exam-25">第25回</label>
+      </div>
+    </section>
+
+    <!-- 出題範囲 -->
+    <section class="setting-section mb-5" aria-labelledby="range-heading">
+      <h2 id="range-heading" class="h5 mb-2">出題範囲</h2>
+      <p class="text-secondary small mb-3">複数選択できます。初期状態では全範囲が選択されています。</p>
+
+      <div class="option-group option-group-ranges">
+        <input type="checkbox" id="range-01-10" name="range" value="1-10" checked>
+        <label for="range-01-10">1〜10</label>
+
+        <input type="checkbox" id="range-11-20" name="range" value="11-20" checked>
+        <label for="range-11-20">11〜20</label>
+
+        <input type="checkbox" id="range-21-30" name="range" value="21-30" checked>
+        <label for="range-21-30">21〜30</label>
+
+        <input type="checkbox" id="range-31-40" name="range" value="31-40" checked>
+        <label for="range-31-40">31〜40</label>
+
+        <input type="checkbox" id="range-41-50" name="range" value="41-50" checked>
+        <label for="range-41-50">41〜50</label>
+
+        <input type="checkbox" id="range-51-60" name="range" value="51-60" checked>
+        <label for="range-51-60">51〜60</label>
+
+        <input type="checkbox" id="range-61-70" name="range" value="61-70" checked>
+        <label for="range-61-70">61〜70</label>
+
+        <input type="checkbox" id="range-71-80" name="range" value="71-80" checked>
+        <label for="range-71-80">71〜80</label>
+
+        <input type="checkbox" id="range-81-90" name="range" value="81-90" checked>
+        <label for="range-81-90">81〜90</label>
+
+        <input type="checkbox" id="range-91-100" name="range" value="91-100" checked>
+        <label for="range-91-100">91〜100</label>
+      </div>
+    </section>
+
+    <!-- 出題問数 -->
+    <section class="setting-section mb-4" aria-labelledby="count-heading">
+      <h2 id="count-heading" class="h5 mb-3">出題問数</h2>
+
+      <div class="option-group option-group-counts">
+        <input type="radio" id="count-20" name="count" value="20" checked>
+        <label for="count-20">20問</label>
+
+        <input type="radio" id="count-10" name="count" value="10">
+        <label for="count-10">10問</label>
+
+        <input type="radio" id="count-5" name="count" value="5">
+        <label for="count-5">5問</label>
+
+        <input type="radio" id="count-3" name="count" value="3">
+        <label for="count-3">3問</label>
+
+        <input type="radio" id="count-2" name="count" value="2">
+        <label for="count-2">2問</label>
+
+        <input type="radio" id="count-1" name="count" value="1">
+        <label for="count-1">1問</label>
+      </div>
+    </section>
+
+    <div id="start-error" class="alert alert-danger d-none" role="alert"></div>
+
+    <button id="start-btn" class="btn btn-primary btn-lg w-100">
+      開始
+    </button>
+  </div>
+
+  <!-- ========================= -->
+  <!-- ② 出題画面 -->
+  <!-- ========================= -->
+  <div id="screen-quiz" class="d-none">
+    <div class="card bg-secondary">
+      <div class="card-body">
+        <div class="d-flex flex-wrap justify-content-between gap-2 mb-3">
+          <div id="question-meta" class="question-meta"></div>
+          <div id="question-counter" class="question-counter"></div>
+        </div>
+
+        <div id="question-text" class="question-text"></div>
+
+        <div id="answer-area"></div>
+
+        <button id="next-btn" class="btn btn-primary btn-lg w-100 mt-4">
+          次へ
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================= -->
+  <!-- ③ 結果画面 -->
+  <!-- ========================= -->
+  <div id="screen-result" class="d-none">
+    <h2 id="score" class="h4 mb-4"></h2>
+
+    <div class="d-flex justify-content-center mb-4">
+      <button id="back-to-start-btn" class="btn btn-outline-light btn-lg">
+        スタート画面に戻る
+      </button>
+    </div>
+
+    <div class="d-none d-md-block table-responsive">
+      <table class="table table-dark table-striped align-middle">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>問題</th>
+            <th>正解</th>
+            <th>あなたの答え</th>
+            <th>判定</th>
+          </tr>
+        </thead>
+        <tbody id="result-table"></tbody>
+      </table>
+    </div>
+
+    <div class="d-block d-md-none" id="result-cards"></div>
+  </div>
+
+</div>
+
+<script src="app.js?v=2.0.0"></script>
+</body>
+</html>
