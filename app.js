@@ -2,6 +2,7 @@
 // 設定
 // =======================
 const VALID_EXAMS = [12, 13, 14, 15, 16, 17, 19, 21, 23, 25];
+const CHOICE_MARKERS = ["1", "2", "3", "4"];
 
 // =======================
 // 状態
@@ -35,6 +36,8 @@ async function init() {
     document.getElementById("start-btn").addEventListener("click", startExam);
     document.getElementById("next-btn").addEventListener("click", nextQuestion);
     document.getElementById("back-to-start-btn").addEventListener("click", backToStart);
+    document.getElementById("range-toggle-btn").addEventListener("click", toggleAllRanges);
+    document.addEventListener("keydown", handleQuizKeydown);
   } catch (error) {
     showStartError(error.message || "問題データを読み込めませんでした。");
     document.getElementById("start-btn").disabled = true;
@@ -43,6 +46,35 @@ async function init() {
 }
 
 window.addEventListener("DOMContentLoaded", init);
+
+// =======================
+// 出題範囲 一括選択／解除
+// =======================
+function toggleAllRanges() {
+  const inputs = [...document.querySelectorAll('input[name="range"]')];
+  const allChecked = inputs.every(input => input.checked);
+  const next = !allChecked;
+
+  inputs.forEach(input => {
+    input.checked = next;
+  });
+
+  updateRangeToggleLabel();
+}
+
+function updateRangeToggleLabel() {
+  const inputs = [...document.querySelectorAll('input[name="range"]')];
+  const allChecked = inputs.every(input => input.checked);
+
+  document.getElementById("range-toggle-btn").textContent =
+    allChecked ? "すべて解除" : "すべて選択";
+}
+
+document.addEventListener("change", event => {
+  if (event.target.name === "range") {
+    updateRangeToggleLabel();
+  }
+});
 
 // =======================
 // 試験開始
@@ -139,14 +171,19 @@ function shuffle(items) {
 // =======================
 function renderQuestion() {
   const question = state.questions[state.currentIndex];
+  const total = state.questions.length;
+  const current = state.currentIndex + 1;
 
   document.getElementById("question-meta").textContent =
     `第${question.exam}回　第${question.questionNumber}問`;
 
   document.getElementById("question-counter").textContent =
-    `${state.currentIndex + 1} / ${state.questions.length}`;
+    `${current} / ${total}`;
 
-  document.getElementById("question-text").textContent = question.question;
+  updateProgress(current, total);
+
+  const questionText = document.getElementById("question-text");
+  questionText.textContent = question.question;
 
   const answerArea = document.getElementById("answer-area");
   answerArea.innerHTML = "";
@@ -156,28 +193,34 @@ function renderQuestion() {
 
   const nextButton = document.getElementById("next-btn");
   nextButton.textContent =
-    state.currentIndex === state.questions.length - 1
-      ? "結果を見る"
-      : "次へ";
+    state.currentIndex === total - 1 ? "結果を見る" : "次へ";
+
+  // スクリーンリーダーに新しい問題を読み上げさせる
+  questionText.focus({ preventScroll: true });
+}
+
+function updateProgress(current, total) {
+  const percent = Math.round(((current - 1) / total) * 100);
+
+  document.getElementById("progress-fill").style.width = `${percent}%`;
+  document.getElementById("progress-bar").setAttribute("aria-valuenow", String(percent));
 }
 
 // =======================
 // 四択UI
 // =======================
 function renderChoice(area, question) {
-  const container = document.createElement("div");
-  container.className = "d-grid gap-3";
-
   question.displayChoices.forEach((choice, index) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = "btn btn-outline-light btn-lg choice-btn";
+    button.className = "choice-btn";
     button.dataset.choice = choice;
     button.setAttribute("aria-pressed", "false");
 
     const marker = document.createElement("span");
     marker.className = "choice-marker";
-    marker.textContent = ["①", "②", "③", "④"][index];
+    marker.setAttribute("aria-hidden", "true");
+    marker.textContent = CHOICE_MARKERS[index];
 
     const text = document.createElement("span");
     text.className = "choice-text";
@@ -187,21 +230,18 @@ function renderChoice(area, question) {
 
     button.addEventListener("click", () => {
       state.answers[question.id] = choice;
-      highlightChoice(container, choice);
+      highlightChoice(area, choice);
     });
 
-    container.appendChild(button);
+    area.appendChild(button);
   });
-
-  area.appendChild(container);
 }
 
 function highlightChoice(container, selectedChoice) {
-  [...container.children].forEach(button => {
+  [...container.querySelectorAll(".choice-btn")].forEach(button => {
     const selected = button.dataset.choice === selectedChoice;
 
-    button.classList.toggle("btn-light", selected);
-    button.classList.toggle("btn-outline-light", !selected);
+    button.classList.toggle("is-selected", selected);
     button.setAttribute("aria-pressed", String(selected));
   });
 }
@@ -216,8 +256,40 @@ function restoreAnswer(question) {
     return;
   }
 
-  const container = document.querySelector("#answer-area > div");
-  highlightChoice(container, answer);
+  highlightChoice(document.getElementById("answer-area"), answer);
+}
+
+// =======================
+// キーボード操作（1〜4で選択、Enterで次へ）
+// =======================
+function handleQuizKeydown(event) {
+  const quizScreen = document.getElementById("screen-quiz");
+
+  if (quizScreen.hidden) {
+    return;
+  }
+
+  // 修飾キー付きは無視
+  if (event.ctrlKey || event.metaKey || event.altKey) {
+    return;
+  }
+
+  const keyIndex = ["1", "2", "3", "4"].indexOf(event.key);
+
+  if (keyIndex !== -1) {
+    const buttons = document.querySelectorAll("#answer-area .choice-btn");
+
+    if (buttons[keyIndex]) {
+      buttons[keyIndex].click();
+      event.preventDefault();
+    }
+    return;
+  }
+
+  if (event.key === "Enter" && document.activeElement.tagName !== "BUTTON") {
+    nextQuestion();
+    event.preventDefault();
+  }
 }
 
 // =======================
@@ -252,11 +324,8 @@ function showResult() {
   showScreen("screen-result");
 
   let correctCount = 0;
-  const table = document.getElementById("result-table");
-  const cards = document.getElementById("result-cards");
-
-  table.innerHTML = "";
-  cards.innerHTML = "";
+  const list = document.getElementById("result-list");
+  list.innerHTML = "";
 
   state.questions.forEach((question, index) => {
     const answer = state.answers[question.id];
@@ -266,95 +335,85 @@ function showResult() {
       correctCount += 1;
     }
 
-    const userText = answer === undefined ? "未回答" : answer;
-    const questionLabel = `第${question.exam}回　第${question.questionNumber}問`;
-
-    // PC用
-    const row = document.createElement("tr");
-
-    appendCell(row, String(index + 1));
-
-    const questionCell = document.createElement("td");
-    const meta = document.createElement("div");
-    meta.className = "result-question-meta";
-    meta.textContent = questionLabel;
-
-    const text = document.createElement("div");
-    text.className = "result-question-text";
-    text.textContent = question.question;
-
-    questionCell.append(meta, text);
-    row.appendChild(questionCell);
-
-    appendCell(row, question.correct);
-    appendCell(row, userText);
-
-    const judgmentCell = document.createElement("td");
-    judgmentCell.className = isCorrect ? "correct" : "incorrect";
-    judgmentCell.textContent = isCorrect ? "○" : "×";
-    row.appendChild(judgmentCell);
-
-    table.appendChild(row);
-
-    // スマホ用
-    const card = document.createElement("div");
-    card.className = "card bg-secondary mb-3";
-
-    const cardBody = document.createElement("div");
-    cardBody.className = "card-body";
-
-    const heading = document.createElement("h3");
-    heading.className = "h6 mb-2";
-    heading.textContent = questionLabel;
-
-    const questionText = document.createElement("p");
-    questionText.className = "mb-3";
-    questionText.textContent = question.question;
-
-    const correctLine = createResultLine("正解", question.correct);
-    const userLine = createResultLine("あなたの答え", userText);
-
-    const judgmentLine = document.createElement("div");
-    const judgmentLabel = document.createElement("strong");
-    judgmentLabel.textContent = "判定：";
-
-    const judgment = document.createElement("span");
-    judgment.className = isCorrect ? "correct" : "incorrect";
-    judgment.textContent = isCorrect ? "○" : "×";
-
-    judgmentLine.append(judgmentLabel, judgment);
-    cardBody.append(
-      heading,
-      questionText,
-      correctLine,
-      userLine,
-      judgmentLine
-    );
-    card.appendChild(cardBody);
-    cards.appendChild(card);
+    list.appendChild(createResultItem(question, answer, isCorrect, index));
   });
 
-  document.getElementById("score").textContent =
-    `得点：${correctCount} / ${state.questions.length}`;
+  const total = state.questions.length;
+  const percent = Math.round((correctCount / total) * 100);
+
+  const score = document.getElementById("score");
+  score.innerHTML = "";
+
+  const scoreNum = document.createElement("span");
+  scoreNum.className = "score-num";
+  scoreNum.textContent = String(correctCount);
+
+  score.append("得点 ", scoreNum, ` / ${total}`);
+
+  document.getElementById("score-percent").textContent = `正答率 ${percent}%`;
+  document.getElementById("score-sub").textContent =
+    percent === 100 ? "全問正解です。見事。" :
+    percent >= 70 ? "合格ライン（70%）に到達しています。" :
+    "合格ラインは70%です。復習して再挑戦しましょう。";
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function appendCell(row, value) {
-  const cell = document.createElement("td");
-  cell.textContent = value;
-  row.appendChild(cell);
+function createResultItem(question, answer, isCorrect, index) {
+  const item = document.createElement("li");
+  item.className = `result-item ${isCorrect ? "is-correct" : "is-incorrect"}`;
+
+  const badge = document.createElement("span");
+  badge.className = "result-badge";
+  badge.textContent = isCorrect ? "○" : "×";
+  badge.setAttribute("role", "img");
+  badge.setAttribute("aria-label", isCorrect ? "正解" : "不正解");
+
+  const body = document.createElement("div");
+  body.className = "result-body";
+
+  const meta = document.createElement("p");
+  meta.className = "result-meta";
+  meta.textContent =
+    `Q${index + 1}　第${question.exam}回　第${question.questionNumber}問`;
+
+  const text = document.createElement("p");
+  text.className = "result-question";
+  text.textContent = question.question;
+
+  const answers = document.createElement("dl");
+  answers.className = "result-answers";
+
+  answers.appendChild(
+    createAnswerLine("正解", question.correct, "answer-correct")
+  );
+
+  const userText = answer === undefined ? "未回答" : answer;
+  answers.appendChild(
+    createAnswerLine(
+      "あなたの答え",
+      userText,
+      isCorrect ? "answer-correct" : "answer-wrong"
+    )
+  );
+
+  body.append(meta, text, answers);
+  item.append(badge, body);
+
+  return item;
 }
 
-function createResultLine(labelText, value) {
+function createAnswerLine(labelText, value, valueClass) {
   const line = document.createElement("div");
-  line.className = "mb-1";
 
-  const label = document.createElement("strong");
-  label.textContent = `${labelText}：`;
+  const label = document.createElement("dt");
+  label.textContent = labelText;
 
-  const text = document.createTextNode(value);
-  line.append(label, text);
+  const detail = document.createElement("dd");
+  detail.textContent = value;
+  detail.className = valueClass;
+
+  line.append(label, detail);
 
   return line;
 }
@@ -365,13 +424,13 @@ function createResultLine(labelText, value) {
 function showStartError(message) {
   const area = document.getElementById("start-error");
   area.textContent = message;
-  area.classList.remove("d-none");
+  area.hidden = false;
 }
 
 function clearStartError() {
   const area = document.getElementById("start-error");
   area.textContent = "";
-  area.classList.add("d-none");
+  area.hidden = true;
 }
 
 // =======================
@@ -379,10 +438,10 @@ function clearStartError() {
 // =======================
 function showScreen(id) {
   ["screen-start", "screen-quiz", "screen-result"].forEach(screenId => {
-    document.getElementById(screenId).classList.add("d-none");
+    document.getElementById(screenId).hidden = true;
   });
 
-  document.getElementById(id).classList.remove("d-none");
+  document.getElementById(id).hidden = false;
 }
 
 // =======================
