@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=3.2.0">
+  <link rel="stylesheet" href="style.css?v=4.0.0">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKL5WQJBSB"></script>
   <script>
@@ -32,8 +32,38 @@
     <header class="app-header">
       <p class="app-eyebrow">KYOTO KENTEI — GRADE 2</p>
       <h1 class="app-title">京都検定2級<span class="app-title-sub">四択トレーニング</span></h1>
-      <p class="app-lead">回次・出題範囲・出題問数を選んで開始します。</p>
+      <p class="app-lead">1100問すべてをトリプルにするのが目標です。</p>
     </header>
+
+    <!-- 進捗 -->
+    <section class="panel mastery-panel" aria-labelledby="mastery-heading">
+      <div class="panel-head">
+        <h2 id="mastery-heading" class="panel-title">進捗</h2>
+        <p id="mastery-headline" class="mastery-headline"></p>
+        <button type="button" id="reset-progress-btn" class="btn-ghost btn-small">進捗を消す</button>
+      </div>
+
+      <div class="mastery-bar" id="mastery-bar" role="progressbar"
+           aria-label="トリプル到達率" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <span class="mastery-seg seg-triple" id="seg-triple"></span>
+        <span class="mastery-seg seg-double" id="seg-double"></span>
+        <span class="mastery-seg seg-hit" id="seg-hit"></span>
+        <span class="mastery-seg seg-miss" id="seg-miss"></span>
+        <span class="mastery-seg seg-new" id="seg-new"></span>
+      </div>
+
+      <ul class="mastery-legend">
+        <li><span class="dot dot-triple"></span>トリプル<b id="count-triple">0</b></li>
+        <li><span class="dot dot-double"></span>ダブル<b id="count-double">0</b></li>
+        <li><span class="dot dot-hit"></span>ヒット<b id="count-hit">0</b></li>
+        <li><span class="dot dot-miss"></span>ミス<b id="count-miss">0</b></li>
+        <li><span class="dot dot-new"></span>未出題<b id="count-new">0</b></li>
+      </ul>
+
+      <p id="mastery-note" class="panel-desc mastery-note">
+        正解すると1段上がり、3回連続で正解するとトリプル。間違えるとミスに戻ります。
+      </p>
+    </section>
 
     <!-- 回次 -->
     <section class="panel" aria-labelledby="exam-heading">
@@ -44,7 +74,7 @@
 
       <div class="chip-group" role="radiogroup" aria-labelledby="exam-heading">
         <input type="radio" id="exam-all" name="exam" value="all" checked>
-        <label class="chip chip-wide" for="exam-all">全部（12〜27回）</label>
+        <label class="chip chip-wide" for="exam-all">全部（11回分）</label>
 
         <input type="radio" id="exam-12" name="exam" value="12">
         <label class="chip" for="exam-12">第12回</label>
@@ -88,7 +118,7 @@
         <p class="panel-note">複数選択可</p>
         <button type="button" id="range-toggle-btn" class="btn-ghost btn-small">すべて解除</button>
       </div>
-      <p class="panel-desc">問題番号の範囲を選びます。初期状態では全範囲が選択されています。</p>
+      <p class="panel-desc">問題番号の範囲を選びます。番号帯はそのまま出題ジャンルに対応しています。</p>
 
       <div class="chip-group" role="group" aria-labelledby="range-heading">
         <input type="checkbox" id="range-01-10" name="range" value="1-10" checked>
@@ -120,6 +150,52 @@
 
         <input type="checkbox" id="range-91-100" name="range" value="91-100" checked>
         <label class="chip" for="range-91-100">91〜100</label>
+      </div>
+    </section>
+
+    <!-- 出題状態 -->
+    <section class="panel" aria-labelledby="stage-heading">
+      <div class="panel-head">
+        <h2 id="stage-heading" class="panel-title">出題状態</h2>
+        <p class="panel-note">複数選択可</p>
+      </div>
+      <p class="panel-desc">どの状態の問題を出すか選びます。ミスと未出題だけに絞ると弱点だけを回せます。</p>
+
+      <div class="chip-group" role="group" aria-labelledby="stage-heading">
+        <input type="checkbox" id="stage-new" name="stage" value="new" checked>
+        <label class="chip" for="stage-new">未出題<span class="chip-count" id="chip-count-new">0</span></label>
+
+        <input type="checkbox" id="stage-miss" name="stage" value="miss" checked>
+        <label class="chip" for="stage-miss">ミス<span class="chip-count" id="chip-count-miss">0</span></label>
+
+        <input type="checkbox" id="stage-hit" name="stage" value="hit" checked>
+        <label class="chip" for="stage-hit">ヒット<span class="chip-count" id="chip-count-hit">0</span></label>
+
+        <input type="checkbox" id="stage-double" name="stage" value="double" checked>
+        <label class="chip" for="stage-double">ダブル<span class="chip-count" id="chip-count-double">0</span></label>
+
+        <input type="checkbox" id="stage-triple" name="stage" value="triple" checked>
+        <label class="chip" for="stage-triple">トリプル<span class="chip-count" id="chip-count-triple">0</span></label>
+      </div>
+    </section>
+
+    <!-- 頻出度 -->
+    <section class="panel" aria-labelledby="freq-heading">
+      <div class="panel-head">
+        <h2 id="freq-heading" class="panel-title">頻出度</h2>
+        <p class="panel-note">複数選択可</p>
+      </div>
+      <p class="panel-desc">その問題の答えが、11回分の過去問でいくつの回の正解になったか。多いほど繰り返し問われている論点です。</p>
+
+      <div class="chip-group" role="group" aria-labelledby="freq-heading">
+        <input type="checkbox" id="freq-high" name="freq" value="high" checked>
+        <label class="chip chip-wide" for="freq-high">3回以上<span class="chip-count">98</span></label>
+
+        <input type="checkbox" id="freq-mid" name="freq" value="mid" checked>
+        <label class="chip chip-wide" for="freq-mid">2回<span class="chip-count">266</span></label>
+
+        <input type="checkbox" id="freq-low" name="freq" value="low" checked>
+        <label class="chip chip-wide" for="freq-low">1回のみ<span class="chip-count">736</span></label>
       </div>
     </section>
 
@@ -173,7 +249,10 @@
   <!-- ========================= -->
   <main id="screen-quiz" class="screen" hidden>
     <div class="quiz-top">
-      <p id="question-meta" class="quiz-meta"></p>
+      <p class="quiz-meta">
+        <span id="question-meta"></span>
+        <span id="question-stage" class="stage-tag"></span>
+      </p>
       <p id="question-counter" class="quiz-counter" aria-live="polite"></p>
     </div>
 
@@ -207,6 +286,7 @@
       <div class="score-detail">
         <p id="score-percent" class="score-percent"></p>
         <p id="score-sub" class="score-sub"></p>
+        <p id="score-changes" class="score-changes"></p>
       </div>
     </section>
 
@@ -222,6 +302,6 @@
   </footer>
 </div>
 
-<script src="app.js?v=3.2.0"></script>
+<script src="app.js?v=4.0.0"></script>
 </body>
 </html>

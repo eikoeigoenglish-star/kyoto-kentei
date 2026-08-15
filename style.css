@@ -765,3 +765,182 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* =====================================================
+   追加分 — 習得度（未出題／ミス／ヒット／ダブル／トリプル）
+   段が上がるほど色が金に近づく。全部トリプル＝金一色。
+   ===================================================== */
+
+:root {
+  --stage-miss: #e08b8b;      /* 退紅 */
+  --stage-hit: #7fa7c4;       /* 縹 */
+  --stage-double: #93c384;    /* 若苗 */
+  --stage-triple: var(--gold);
+  --stage-new: #6e7280;       /* 鈍色 */
+}
+
+/* ---- 進捗パネル ---- */
+.mastery-headline {
+  margin: 0;
+  color: var(--gold-bright);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+.mastery-bar {
+  display: flex;
+  height: 14px;
+  margin: 4px 0 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background-color: var(--surface-3);
+  overflow: hidden;
+}
+
+.mastery-seg {
+  height: 100%;
+  width: 0%;
+  transition: width 0.45s ease;
+}
+
+.seg-triple { background: linear-gradient(180deg, var(--gold-bright), var(--gold)); }
+.seg-double { background-color: var(--stage-double); }
+.seg-hit { background-color: var(--stage-hit); }
+.seg-miss { background-color: var(--stage-miss); }
+.seg-new { background-color: var(--stage-new); }
+
+.mastery-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+}
+
+.mastery-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mastery-legend b {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.dot-triple { background-color: var(--stage-triple); }
+.dot-double { background-color: var(--stage-double); }
+.dot-hit { background-color: var(--stage-hit); }
+.dot-miss { background-color: var(--stage-miss); }
+.dot-new { background-color: var(--stage-new); }
+
+.mastery-note {
+  margin: 14px 0 0;
+}
+
+.mastery-panel .panel-head {
+  align-items: center;
+}
+
+/* ---- チップ内の件数 ---- */
+.chip-count {
+  margin-left: 8px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.07);
+  color: inherit;
+  font-size: 0.78em;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- 状態タグ ---- */
+.stage-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.stage-triple { color: var(--stage-triple); }
+.stage-double { color: var(--stage-double); }
+.stage-hit { color: var(--stage-hit); }
+.stage-miss { color: var(--stage-miss); }
+.stage-new { color: var(--text-faint); }
+
+.quiz-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ---- 頻出タグ ---- */
+.freq-tag {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background-color: var(--gold-dim);
+  border: 1px solid var(--gold-line);
+  color: var(--gold-bright);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* ---- 結果の段位変化 ---- */
+.result-transition {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 0;
+  color: var(--text-faint);
+  font-size: 0.85rem;
+}
+
+.score-changes {
+  margin: 6px 0 0;
+  color: var(--gold);
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- 小さいゴーストボタン ---- */
+.btn-small {
+  padding: 5px 12px;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .mastery-legend {
+    gap: 6px 14px;
+    font-size: 0.78rem;
+  }
+
+  .mastery-headline {
+    width: 100%;
+    order: 3;
+  }
+
+  .mastery-panel .panel-head {
+    align-items: baseline;
+  }
+}

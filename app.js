@@ -3,6 +3,19 @@
 // =======================
 const VALID_EXAMS = [12, 13, 14, 15, 16, 17, 19, 21, 23, 25, 27];
 const CHOICE_MARKERS = ["1", "2", "3", "4"];
+const STORAGE_KEY = "kk2-progress-v1";
+
+// 習得段階。streak（連続正解数）から決まる。
+// 未出題 = 記録なし / ミス = 0 / ヒット = 1 / ダブル = 2 / トリプル = 3
+const STAGES = [
+  { key: "triple", label: "トリプル", streak: 3 },
+  { key: "double", label: "ダブル", streak: 2 },
+  { key: "hit", label: "ヒット", streak: 1 },
+  { key: "miss", label: "ミス", streak: 0 },
+  { key: "new", label: "未出題", streak: null }
+];
+
+const MAX_STREAK = 3;
 
 // =======================
 // 状態
@@ -11,8 +24,55 @@ const state = {
   allQuestions: [],
   questions: [],
   answers: {},
-  currentIndex: 0
+  currentIndex: 0,
+  progress: {}
 };
+
+// =======================
+// 進捗の保存と読み込み
+// =======================
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return {};
+
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === "object" ? parsed : {};
+  } catch (error) {
+    console.warn("進捗を読み込めませんでした", error);
+    return {};
+  }
+}
+
+function saveProgress() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.progress));
+  } catch (error) {
+    console.warn("進捗を保存できませんでした", error);
+    showStorageWarning();
+  }
+}
+
+function showStorageWarning() {
+  const note = document.getElementById("mastery-note");
+  if (note) {
+    note.textContent = "この環境では進捗を保存できません。閉じるとリセットされます。";
+  }
+}
+
+function stageOf(questionId) {
+  const streak = state.progress[questionId];
+
+  if (streak === undefined) return "new";
+  if (streak >= MAX_STREAK) return "triple";
+  if (streak === 2) return "double";
+  if (streak === 1) return "hit";
+  return "miss";
+}
+
+function stageLabel(key) {
+  return STAGES.find(stage => stage.key === key)?.label ?? "";
+}
 
 // =======================
 // 初期化
@@ -32,12 +92,16 @@ async function init() {
     }
 
     state.allQuestions = questions;
+    state.progress = loadProgress();
+
+    renderMastery();
     updateAvailableCounts();
 
     document.getElementById("start-btn").addEventListener("click", startExam);
     document.getElementById("next-btn").addEventListener("click", nextQuestion);
     document.getElementById("back-to-start-btn").addEventListener("click", backToStart);
     document.getElementById("range-toggle-btn").addEventListener("click", toggleAllRanges);
+    document.getElementById("reset-progress-btn").addEventListener("click", resetProgress);
     document.addEventListener("keydown", handleQuizKeydown);
   } catch (error) {
     showStartError(error.message || "問題データを読み込めませんでした。");
@@ -47,6 +111,71 @@ async function init() {
 }
 
 window.addEventListener("DOMContentLoaded", init);
+
+// =======================
+// 進捗バーと内訳
+// =======================
+function countStages() {
+  const counts = { new: 0, miss: 0, hit: 0, double: 0, triple: 0 };
+
+  state.allQuestions.forEach(question => {
+    counts[stageOf(question.id)] += 1;
+  });
+
+  return counts;
+}
+
+function renderMastery() {
+  const counts = countStages();
+  const total = state.allQuestions.length;
+
+  if (total === 0) return;
+
+  // バーは習得が進んだ順に左から積む。全部トリプル＝金一色が目標。
+  ["triple", "double", "hit", "miss", "new"].forEach(key => {
+    const percent = (counts[key] / total) * 100;
+    document.getElementById(`seg-${key}`).style.width = `${percent}%`;
+  });
+
+  STAGES.forEach(stage => {
+    const countEl = document.getElementById(`count-${stage.key}`);
+    if (countEl) countEl.textContent = String(counts[stage.key]);
+
+    const chipCount = document.getElementById(`chip-count-${stage.key}`);
+    if (chipCount) chipCount.textContent = String(counts[stage.key]);
+  });
+
+  const triplePercent = Math.round((counts.triple / total) * 100);
+  document.getElementById("mastery-headline").textContent =
+    `トリプル ${counts.triple} / ${total}　（${triplePercent}%）`;
+
+  const bar = document.getElementById("mastery-bar");
+  bar.setAttribute("aria-valuenow", String(triplePercent));
+  bar.setAttribute(
+    "aria-valuetext",
+    `全${total}問中、トリプル${counts.triple}問、ダブル${counts.double}問、` +
+    `ヒット${counts.hit}問、ミス${counts.miss}問、未出題${counts.new}問`
+  );
+}
+
+function resetProgress() {
+  const answered = state.allQuestions.length - countStages().new;
+
+  if (answered === 0) {
+    return;
+  }
+
+  const ok = window.confirm(
+    `${answered}問分の進捗をすべて消して、全問を未出題に戻します。よろしいですか。`
+  );
+
+  if (!ok) return;
+
+  state.progress = {};
+  saveProgress();
+  renderMastery();
+  updateAvailableCounts();
+}
 
 // =======================
 // 出題範囲 一括選択／解除
@@ -73,11 +202,13 @@ function updateRangeToggleLabel() {
 }
 
 document.addEventListener("change", event => {
-  if (event.target.name === "range") {
+  const name = event.target.name;
+
+  if (name === "range") {
     updateRangeToggleLabel();
   }
 
-  if (event.target.name === "range" || event.target.name === "exam") {
+  if (name === "range" || name === "exam" || name === "stage" || name === "freq") {
     updateAvailableCounts();
   }
 });
@@ -90,23 +221,30 @@ function startExam() {
 
   const examValue = document.querySelector('input[name="exam"]:checked')?.value;
   const countValue = document.querySelector('input[name="count"]:checked')?.value;
-  const checkedRanges = [
-    ...document.querySelectorAll('input[name="range"]:checked')
-  ].map(input => parseRange(input.value));
+  const filters = readFilters();
 
   if (!examValue || !countValue) {
     showStartError("回次と出題問数を選択してください。");
     return;
   }
 
-  if (checkedRanges.length === 0) {
+  if (filters.ranges.length === 0) {
     showStartError("出題範囲を1つ以上選択してください。");
     return;
   }
 
-  const exam = examValue === "all" ? "all" : Number(examValue);
+  if (filters.stages.length === 0) {
+    showStartError("出題状態を1つ以上選択してください。");
+    return;
+  }
+
+  if (filters.freqs.length === 0) {
+    showStartError("頻出度を1つ以上選択してください。");
+    return;
+  }
+
   const questionCount = Number(countValue);
-  const pool = filterQuestions(state.allQuestions, exam, checkedRanges);
+  const pool = filterQuestions(state.allQuestions, filters);
 
   if (pool.length === 0) {
     showStartError("選択した条件に該当する問題がありません。");
@@ -115,7 +253,7 @@ function startExam() {
 
   if (pool.length < questionCount) {
     showStartError(
-      `選択した範囲には${pool.length}問しかありません。` +
+      `選択した条件には${pool.length}問しかありません。` +
       `出題問数を${pool.length}問以下にしてください。`
     );
     return;
@@ -139,19 +277,39 @@ function startExam() {
 // =======================
 // 出題対象の抽出
 // =======================
-function filterQuestions(allQuestions, exam, ranges) {
+function readFilters() {
+  const examValue = document.querySelector('input[name="exam"]:checked')?.value;
+
+  return {
+    exam: examValue === "all" ? "all" : Number(examValue),
+    ranges: [...document.querySelectorAll('input[name="range"]:checked')]
+      .map(input => parseRange(input.value)),
+    stages: [...document.querySelectorAll('input[name="stage"]:checked')]
+      .map(input => input.value),
+    freqs: [...document.querySelectorAll('input[name="freq"]:checked')]
+      .map(input => input.value)
+  };
+}
+
+function filterQuestions(allQuestions, filters) {
   return allQuestions.filter(question => {
     const examMatches =
-      exam === "all"
+      filters.exam === "all"
         ? VALID_EXAMS.includes(Number(question.exam))
-        : Number(question.exam) === exam;
+        : Number(question.exam) === filters.exam;
+
+    if (!examMatches) return false;
 
     const number = Number(question.questionNumber);
-    const rangeMatches = ranges.some(
+    const rangeMatches = filters.ranges.some(
       range => number >= range.start && number <= range.end
     );
 
-    return examMatches && rangeMatches;
+    if (!rangeMatches) return false;
+
+    if (!filters.stages.includes(stageOf(question.id))) return false;
+
+    return filters.freqs.includes(question.freq);
   });
 }
 
@@ -168,30 +326,25 @@ function updateAvailableCounts() {
     return;
   }
 
-  const examValue =
-    document.querySelector('input[name="exam"]:checked')?.value;
+  const filters = readFilters();
 
-  const checkedRanges = [
-    ...document.querySelectorAll('input[name="range"]:checked')
-  ].map(input => parseRange(input.value));
+  const ready =
+    filters.exam !== undefined &&
+    filters.ranges.length > 0 &&
+    filters.stages.length > 0 &&
+    filters.freqs.length > 0;
 
-  const exam = examValue === "all" ? "all" : Number(examValue);
+  const availableCount = ready
+    ? filterQuestions(state.allQuestions, filters).length
+    : 0;
 
-  const availableCount =
-    examValue && checkedRanges.length > 0
-      ? filterQuestions(state.allQuestions, exam, checkedRanges).length
-      : 0;
-
-  const countInputs = [
-    ...document.querySelectorAll('input[name="count"]')
-  ];
+  const countInputs = [...document.querySelectorAll('input[name="count"]')];
 
   countInputs.forEach(input => {
     input.disabled = Number(input.value) > availableCount;
   });
 
-  const selectedInput =
-    document.querySelector('input[name="count"]:checked');
+  const selectedInput = document.querySelector('input[name="count"]:checked');
 
   if (!selectedInput || selectedInput.disabled) {
     const largestAvailable = countInputs.find(input => !input.disabled);
@@ -204,7 +357,7 @@ function updateAvailableCounts() {
   const availability = document.getElementById("count-availability");
 
   if (availableCount === 0) {
-    availability.textContent = "出題範囲を選択してください";
+    availability.textContent = "条件に合う問題がありません";
   } else {
     availability.textContent = `1つ選択・現在の対象は${availableCount}問`;
   }
@@ -236,6 +389,10 @@ function renderQuestion() {
   document.getElementById("question-meta").textContent =
     `第${question.exam}回　第${question.questionNumber}問`;
 
+  const stageTag = document.getElementById("question-stage");
+  stageTag.textContent = stageLabel(stageOf(question.id));
+  stageTag.className = `stage-tag stage-${stageOf(question.id)}`;
+
   document.getElementById("question-counter").textContent =
     `${current} / ${total}`;
 
@@ -259,7 +416,7 @@ function renderQuestion() {
 }
 
 function updateProgress(current, total) {
-  const percent = Math.round(((current - 1) / total) * 100);
+  const percent = Math.round((current / total) * 100);
 
   document.getElementById("progress-fill").style.width = `${percent}%`;
   document.getElementById("progress-bar").setAttribute("aria-valuenow", String(percent));
@@ -333,7 +490,7 @@ function handleQuizKeydown(event) {
     return;
   }
 
-  const keyIndex = ["1", "2", "3", "4"].indexOf(event.key);
+  const keyIndex = CHOICE_MARKERS.indexOf(event.key);
 
   if (keyIndex !== -1) {
     const buttons = document.querySelectorAll("#answer-area .choice-btn");
@@ -345,7 +502,9 @@ function handleQuizKeydown(event) {
     return;
   }
 
-  if (event.key === "Enter" && document.activeElement.tagName !== "BUTTON") {
+  // 「次へ」にフォーカスがあるときだけ既定の動作に任せ、
+  // それ以外（選択肢をクリックした直後など）は Enter で先に進む
+  if (event.key === "Enter" && document.activeElement.id !== "next-btn") {
     nextQuestion();
     event.preventDefault();
   }
@@ -376,6 +535,18 @@ function judge(question, answer) {
   return normalize(answer) === normalize(question.correct);
 }
 
+// 正解なら1段上げる（トリプルで打ち止め）。誤答と未回答はミスに戻す。
+function applyResult(questionId, isCorrect) {
+  const before = stageOf(questionId);
+  const current = state.progress[questionId] ?? 0;
+
+  state.progress[questionId] = isCorrect
+    ? Math.min(current + 1, MAX_STREAK)
+    : 0;
+
+  return { before, after: stageOf(questionId) };
+}
+
 // =======================
 // 結果表示
 // =======================
@@ -386,7 +557,7 @@ function showResult() {
   const list = document.getElementById("result-list");
   list.innerHTML = "";
 
-  state.questions.forEach((question, index) => {
+  const transitions = state.questions.map(question => {
     const answer = state.answers[question.id];
     const isCorrect = judge(question, answer);
 
@@ -394,7 +565,15 @@ function showResult() {
       correctCount += 1;
     }
 
-    list.appendChild(createResultItem(question, answer, isCorrect, index));
+    return { question, answer, isCorrect, ...applyResult(question.id, isCorrect) };
+  });
+
+  saveProgress();
+  renderMastery();
+  updateAvailableCounts();
+
+  transitions.forEach((entry, index) => {
+    list.appendChild(createResultItem(entry, index));
   });
 
   const total = state.questions.length;
@@ -415,10 +594,21 @@ function showResult() {
     percent >= 70 ? "合格ライン（70%）に到達しています。" :
     "合格ラインは70%です。復習して再挑戦しましょう。";
 
+  const promoted = transitions.filter(entry => entry.after === "triple" && entry.before !== "triple").length;
+  const dropped = transitions.filter(entry => !entry.isCorrect && entry.before !== "new" && entry.before !== "miss").length;
+
+  const changes = [];
+  if (promoted > 0) changes.push(`トリプル到達 ${promoted}問`);
+  if (dropped > 0) changes.push(`ミスに後退 ${dropped}問`);
+
+  document.getElementById("score-changes").textContent = changes.join("　／　");
+
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function createResultItem(question, answer, isCorrect, index) {
+function createResultItem(entry, index) {
+  const { question, answer, isCorrect, before, after } = entry;
+
   const item = document.createElement("li");
   item.className = `result-item ${isCorrect ? "is-correct" : "is-incorrect"}`;
 
@@ -435,6 +625,13 @@ function createResultItem(question, answer, isCorrect, index) {
   meta.className = "result-meta";
   meta.textContent =
     `Q${index + 1}　第${question.exam}回　第${question.questionNumber}問`;
+
+  if (question.freq === "high") {
+    const freqTag = document.createElement("span");
+    freqTag.className = "freq-tag";
+    freqTag.textContent = `頻出 ${question.answerRounds}回`;
+    meta.append("　", freqTag);
+  }
 
   const text = document.createElement("p");
   text.className = "result-question";
@@ -456,7 +653,20 @@ function createResultItem(question, answer, isCorrect, index) {
     )
   );
 
-  body.append(meta, text, answers);
+  const transition = document.createElement("p");
+  transition.className = "result-transition";
+
+  const fromTag = document.createElement("span");
+  fromTag.className = `stage-tag stage-${before}`;
+  fromTag.textContent = stageLabel(before);
+
+  const toTag = document.createElement("span");
+  toTag.className = `stage-tag stage-${after}`;
+  toTag.textContent = stageLabel(after);
+
+  transition.append(fromTag, " → ", toTag);
+
+  body.append(meta, text, answers, transition);
   item.append(badge, body);
 
   return item;
@@ -511,6 +721,8 @@ function backToStart() {
   state.answers = {};
   state.currentIndex = 0;
 
+  renderMastery();
+  updateAvailableCounts();
   showScreen("screen-start");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
