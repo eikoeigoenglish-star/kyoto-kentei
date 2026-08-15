@@ -243,7 +243,6 @@ function startExam() {
     return;
   }
 
-  const questionCount = Number(countValue);
   const pool = filterQuestions(state.allQuestions, filters);
 
   if (pool.length === 0) {
@@ -251,7 +250,9 @@ function startExam() {
     return;
   }
 
-  if (pool.length < questionCount) {
+  const questionCount = countValue === "all" ? pool.length : Number(countValue);
+
+  if (countValue !== "all" && pool.length < questionCount) {
     showStartError(
       `選択した条件には${pool.length}問しかありません。` +
       `出題問数を${pool.length}問以下にしてください。`
@@ -341,13 +342,20 @@ function updateAvailableCounts() {
   const countInputs = [...document.querySelectorAll('input[name="count"]')];
 
   countInputs.forEach(input => {
-    input.disabled = Number(input.value) > availableCount;
+    input.disabled = input.value === "all"
+      ? availableCount === 0
+      : Number(input.value) > availableCount;
   });
+
+  document.getElementById("count-all-num").textContent = String(availableCount);
 
   const selectedInput = document.querySelector('input[name="count"]:checked');
 
   if (!selectedInput || selectedInput.disabled) {
-    const largestAvailable = countInputs.find(input => !input.disabled);
+    // 「対象すべて」への自動切り替えは避け、選べる最大の固定値に下げる
+    const largestAvailable =
+      countInputs.find(input => input.value !== "all" && !input.disabled) ??
+      countInputs.find(input => !input.disabled);
 
     if (largestAvailable) {
       largestAvailable.checked = true;
