@@ -9,13 +9,22 @@ const MAX_STREAK = 3;
 
 const KYOTO_CENTER = [35.011, 135.768];
 
+// ラベルを出す地点数。狭い画面では絞る。
+const LABELS_WIDE = 22;
+const LABELS_NARROW = 10;
+
 const state = {
   map: null,
   places: [],
   questionById: new Map(),
   progress: {},
-  layer: null
+  layer: null,
+  narrow: null
 };
+
+function isNarrow() {
+  return window.matchMedia("(max-width: 640px)").matches;
+}
 
 // =======================
 // 習得度（四択トレーニングと同じ規則）
@@ -56,7 +65,6 @@ async function loadPlaces() {
   try {
     return { places: await fetchJson(PLACES_URL), seeded: false };
   } catch (error) {
-    // Wikidata をまだ流していない段階では仮データで動かす
     return { places: await fetchJson(PLACES_FALLBACK), seeded: true };
   }
 }
@@ -66,6 +74,7 @@ async function init() {
 
   try {
     state.progress = loadProgress();
+    state.narrow = isNarrow();
 
     const [{ places, seeded }, questions] = await Promise.all([
       loadPlaces(),
@@ -80,11 +89,25 @@ async function init() {
 
     const totalMentions = places.reduce((sum, place) => sum + place.count, 0);
     status.textContent = seeded
-      ? `仮データ表示中：${places.length}地点／延べ${totalMentions}問。fetch と build を流すと全地点に増えます。`
+      ? `仮データ表示中：${places.length}地点／延べ${totalMentions}問`
       : `${places.length}地点／延べ${totalMentions}問`;
 
     document.getElementById("show-rare").addEventListener("change", render);
     document.getElementById("show-weak").addEventListener("change", render);
+    document.getElementById("sheet-close").addEventListener("click", closeSheet);
+
+    // 画面幅が変わったら、吹き出し方式とラベル数を切り替え直す
+    let timer = null;
+    window.addEventListener("resize", () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        if (isNarrow() !== state.narrow) {
+          state.narrow = isNarrow();
+          closeSheet();
+          render();
+        }
+      }, 200);
+    });
   } catch (error) {
     status.textContent = error.message || "地図データを読み込めませんでした。";
     console.error(error);
@@ -106,30 +129,36 @@ function buildMap() {
   L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> ' +
-      '&copy; <a href="https://carto.com/attributions">CARTO</a>｜地点: Wikidata (CC0)',
+      '&copy; <a href="https://carto.com/attributions">CARTO</a>｜地点: Wikipedia',
     subdomains: "abcd",
     maxZoom: 19
   }).addTo(state.map);
 
   state.layer = L.layerGroup().addTo(state.map);
+  state.map.on("click", closeSheet);
 }
 
-// 登場回数から球の見え方を決める。1回と12回で差が出すぎないよう平方根で圧縮。
+// 登場回数から球の見え方を決める。平方根で圧縮して差をつけすぎない。
 function glowStyle(count) {
   const scale = Math.sqrt(count);
 
   return {
-    size: Math.round(14 + scale * 9),      // 直径 px
+    size: Math.round(14 + scale * 9),
     opacity: Math.min(0.35 + scale * 0.2, 1),
-    duration: Math.max(4.2 - scale * 0.55, 1.4)  // 秒。多いほど速く脈打つ
+    duration: Math.max(4.2 - scale * 0.55, 1.4)
   };
 }
 
 function hasUnlearned(place) {
-  return place.questions.some(id => {
-    const key = stageOf(id).key;
-    return key !== "triple";
-  });
+  return place.questions.some(id => stageOf(id).key !== "triple");
+}
+
+// 上位N地点にだけラベルを出すための下限値を求める
+function labelThreshold(places) {
+  const limit = state.narrow ? LABELS_NARROW : LABELS_WIDE;
+  const counts = places.map(place => place.count).sort((a, b) => b - a);
+
+  return counts.length <= limit ? 0 : counts[limit - 1];
 }
 
 function render() {
@@ -144,12 +173,15 @@ function render() {
     return true;
   });
 
+  const threshold = labelThreshold(visible);
+
   visible.forEach(place => {
     const { size, opacity, duration } = glowStyle(place.count);
+    const labelled = place.count >= threshold && threshold > 0;
 
     const html =
       `<span class="orb" style="--orb-size:${size}px;--orb-opacity:${opacity};--orb-duration:${duration}s"></span>` +
-      (place.count >= 5 ? `<span class="orb-label">${escapeHtml(place.name)}</span>` : "");
+      (labelled ? `<span class="orb-label">${escapeHtml(place.name)}</span>` : "");
 
     const marker = L.marker([place.lat, place.lng], {
       icon: L.divIcon({
@@ -163,21 +195,50 @@ function render() {
       alt: `${place.name}、${place.count}問`
     });
 
-    marker.bindPopup(() => popupHtml(place), {
-      maxWidth: 340,
-      className: "orb-popup"
-    });
+    if (state.narrow) {
+      // スマホは地図を覆わないよう、画面下の引き出しに出す
+      marker.on("click", () => openSheet(place));
+    } else {
+      marker.bindPopup(() => detailHtml(place), {
+        maxWidth: 300,
+        className: "orb-popup",
+        autoPanPadding: [24, 24]
+      });
+    }
 
     marker.addTo(state.layer);
   });
-
-  document.getElementById("map-status").dataset.visible = String(visible.length);
 }
 
 // =======================
-// 吹き出し
+// 引き出し（スマホ）
 // =======================
-function popupHtml(place) {
+function openSheet(place) {
+  const sheet = document.getElementById("sheet");
+
+  document.getElementById("sheet-body").innerHTML = detailHtml(place);
+  sheet.hidden = false;
+  requestAnimationFrame(() => sheet.classList.add("is-open"));
+
+  // 押した球が引き出しに隠れないよう、地図を少し上にずらす
+  const offset = sheet.getBoundingClientRect().height / 2;
+  state.map.panTo([place.lat, place.lng], { animate: true });
+  state.map.panBy([0, offset * -0.5], { animate: true });
+}
+
+function closeSheet() {
+  const sheet = document.getElementById("sheet");
+
+  if (!sheet || sheet.hidden) return;
+
+  sheet.classList.remove("is-open");
+  setTimeout(() => { sheet.hidden = true; }, 220);
+}
+
+// =======================
+// 中身（吹き出しと引き出しで共通）
+// =======================
+function detailHtml(place) {
   const rows = place.questions
     .map(id => state.questionById.get(id))
     .filter(Boolean)
@@ -187,7 +248,7 @@ function popupHtml(place) {
       return `
         <li class="pop-item">
           <p class="pop-meta">
-            第${question.exam}回 第${question.questionNumber}問
+            <span>第${question.exam}回 第${question.questionNumber}問</span>
             <span class="stage-tag stage-${stage.key}">${stage.label}</span>
           </p>
           <p class="pop-q">${escapeHtml(question.question)}</p>
