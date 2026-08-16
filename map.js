@@ -75,6 +75,9 @@ async function loadPlaces() {
 async function init() {
   const status = document.getElementById("map-status");
 
+  // 引き出しの操作は地図データの成否と無関係なので、先に有効化しておく
+  setupSheet();
+
   try {
     state.progress = loadProgress();
     state.narrow = isNarrow();
@@ -89,7 +92,6 @@ async function init() {
 
     buildMap();
     render();
-    setupSheet();
 
     const totalMentions = places.reduce((sum, place) => sum + place.count, 0);
     status.textContent = seeded
@@ -110,10 +112,6 @@ async function init() {
           render();
         }
       }, 200);
-    });
-
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape") closeSheet();
     });
   } catch (error) {
     status.textContent = error.message || "地図データを読み込めませんでした。";
@@ -224,28 +222,52 @@ let dragStartY = null;
 
 function setupSheet() {
   const sheet = document.getElementById("sheet");
-  const handle = document.getElementById("sheet-handle");
-  const close = document.getElementById("sheet-close");
 
-  if (!sheet || !handle || !close) {
-    console.warn("引き出しの要素が見つかりません");
+  if (!sheet) {
+    console.warn("#sheet がありません。map.html を確認してください。");
     return;
   }
 
-  close.addEventListener("click", event => {
-    event.stopPropagation();
-    closeSheet();
+  // 閉じる操作は委譲で拾う。ボタンが後から差し替わっても効く。
+  sheet.addEventListener("click", event => {
+    if (event.target.closest("#sheet-close")) {
+      event.stopPropagation();
+      closeSheet();
+    }
+  });
+
+  // Escでも閉じる
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeSheet();
   });
 
   // 引き出しの上での操作を地図に伝えない
-  L.DomEvent.disableClickPropagation(sheet);
-  L.DomEvent.disableScrollPropagation(sheet);
+  if (window.L && L.DomEvent) {
+    L.DomEvent.disableClickPropagation(sheet);
+    L.DomEvent.disableScrollPropagation(sheet);
+  }
 
-  // 取っ手を下にドラッグ／フリックで閉じる
+  setupDrag(sheet);
+}
+
+// 取っ手を下にドラッグ／フリックで閉じる。取っ手が無ければ何もしない。
+function setupDrag(sheet) {
+  const handle = document.getElementById("sheet-handle");
+
+  if (!handle) {
+    console.warn("#sheet-handle がありません。閉じるボタンのみ有効です。");
+    return;
+  }
+
   handle.addEventListener("pointerdown", event => {
     dragStartY = event.clientY;
     sheet.style.transition = "none";
-    handle.setPointerCapture(event.pointerId);
+
+    try {
+      handle.setPointerCapture(event.pointerId);
+    } catch (error) {
+      // 対応していない環境では捕捉なしで続行
+    }
   });
 
   handle.addEventListener("pointermove", event => {
@@ -277,6 +299,8 @@ function openSheet(place) {
   const sheet = document.getElementById("sheet");
   const body = document.getElementById("sheet-body");
 
+  if (!sheet || !body) return;
+
   body.innerHTML = detailHtml(place);
   body.scrollTop = 0;
   sheet.hidden = false;
@@ -289,6 +313,8 @@ function openSheet(place) {
 
 // タップした球を、引き出しの上端より少し上・横は中央に持ってくる
 function focusOrb(place, sheetHeight) {
+  if (!state.map) return;
+
   const rect = document.getElementById("map").getBoundingClientRect();
 
   const sheetTop = window.innerHeight - sheetHeight;
