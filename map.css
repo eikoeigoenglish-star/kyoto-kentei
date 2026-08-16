@@ -208,27 +208,42 @@
   box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.6);
   transform: translateY(100%);
   transition: transform 0.22s ease;
+  overscroll-behavior: contain;
 }
 
 .sheet.is-open {
   transform: translateY(0);
 }
 
-.sheet-grip {
+/* 取っ手。指で掴める高さを確保し、ここだけ縦フリックを奪う */
+.sheet-handle {
   flex: 0 0 auto;
-  width: 40px;
-  height: 4px;
-  margin: 8px auto 2px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  cursor: grab;
+}
+
+.sheet-handle:active {
+  cursor: grabbing;
+}
+
+.sheet-grip {
+  display: block;
+  width: 44px;
+  height: 5px;
   border-radius: 999px;
   background-color: var(--line-strong);
 }
 
 .sheet-close {
   position: absolute;
-  top: 8px;
-  right: 10px;
-  width: 34px;
-  height: 34px;
+  top: 4px;
+  right: 6px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -237,20 +252,24 @@
   border-radius: 50%;
   background: transparent;
   color: var(--text-dim);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
+  z-index: 2;
 }
 
-.sheet-close:hover {
+.sheet-close:hover,
+.sheet-close:active {
   color: var(--gold-bright);
 }
 
 .sheet-body {
   flex: 1 1 auto;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
   -webkit-overflow-scrolling: touch;
-  padding: 6px 18px calc(18px + env(safe-area-inset-bottom));
+  padding: 2px 18px calc(18px + env(safe-area-inset-bottom));
 }
 
 /* =========================
