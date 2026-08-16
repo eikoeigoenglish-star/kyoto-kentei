@@ -13,6 +13,9 @@ const KYOTO_CENTER = [35.011, 135.768];
 const LABELS_WIDE = 22;
 const LABELS_NARROW = 10;
 
+// 取っ手をこれ以上下げたら閉じる（px）
+const DISMISS_DISTANCE = 60;
+
 const state = {
   map: null,
   places: [],
@@ -86,6 +89,7 @@ async function init() {
 
     buildMap();
     render();
+    setupSheet();
 
     const totalMentions = places.reduce((sum, place) => sum + place.count, 0);
     status.textContent = seeded
@@ -94,7 +98,6 @@ async function init() {
 
     document.getElementById("show-rare").addEventListener("change", render);
     document.getElementById("show-weak").addEventListener("change", render);
-    document.getElementById("sheet-close").addEventListener("click", closeSheet);
 
     // 画面幅が変わったら、吹き出し方式とラベル数を切り替え直す
     let timer = null;
@@ -107,6 +110,10 @@ async function init() {
           render();
         }
       }, 200);
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeSheet();
     });
   } catch (error) {
     status.textContent = error.message || "地図データを読み込めませんでした。";
@@ -177,7 +184,7 @@ function render() {
 
   visible.forEach(place => {
     const { size, opacity, duration } = glowStyle(place.count);
-    const labelled = place.count >= threshold && threshold > 0;
+    const labelled = threshold > 0 && place.count >= threshold;
 
     const html =
       `<span class="orb" style="--orb-size:${size}px;--orb-opacity:${opacity};--orb-duration:${duration}s"></span>` +
@@ -213,17 +220,86 @@ function render() {
 // =======================
 // 引き出し（スマホ）
 // =======================
+let dragStartY = null;
+
+function setupSheet() {
+  const sheet = document.getElementById("sheet");
+  const handle = document.getElementById("sheet-handle");
+  const close = document.getElementById("sheet-close");
+
+  if (!sheet || !handle || !close) {
+    console.warn("引き出しの要素が見つかりません");
+    return;
+  }
+
+  close.addEventListener("click", event => {
+    event.stopPropagation();
+    closeSheet();
+  });
+
+  // 引き出しの上での操作を地図に伝えない
+  L.DomEvent.disableClickPropagation(sheet);
+  L.DomEvent.disableScrollPropagation(sheet);
+
+  // 取っ手を下にドラッグ／フリックで閉じる
+  handle.addEventListener("pointerdown", event => {
+    dragStartY = event.clientY;
+    sheet.style.transition = "none";
+    handle.setPointerCapture(event.pointerId);
+  });
+
+  handle.addEventListener("pointermove", event => {
+    if (dragStartY === null) return;
+
+    const moved = Math.max(0, event.clientY - dragStartY);
+    sheet.style.transform = `translateY(${moved}px)`;
+  });
+
+  const finish = event => {
+    if (dragStartY === null) return;
+
+    const moved = Math.max(0, event.clientY - dragStartY);
+    dragStartY = null;
+
+    sheet.style.transition = "";
+    sheet.style.transform = "";
+
+    if (moved > DISMISS_DISTANCE) {
+      closeSheet();
+    }
+  };
+
+  handle.addEventListener("pointerup", finish);
+  handle.addEventListener("pointercancel", finish);
+}
+
 function openSheet(place) {
   const sheet = document.getElementById("sheet");
+  const body = document.getElementById("sheet-body");
 
-  document.getElementById("sheet-body").innerHTML = detailHtml(place);
+  body.innerHTML = detailHtml(place);
+  body.scrollTop = 0;
   sheet.hidden = false;
-  requestAnimationFrame(() => sheet.classList.add("is-open"));
 
-  // 押した球が引き出しに隠れないよう、地図を少し上にずらす
-  const offset = sheet.getBoundingClientRect().height / 2;
-  state.map.panTo([place.lat, place.lng], { animate: true });
-  state.map.panBy([0, offset * -0.5], { animate: true });
+  requestAnimationFrame(() => {
+    sheet.classList.add("is-open");
+    focusOrb(place, sheet.offsetHeight);
+  });
+}
+
+// タップした球を、引き出しの上端より少し上・横は中央に持ってくる
+function focusOrb(place, sheetHeight) {
+  const rect = document.getElementById("map").getBoundingClientRect();
+
+  const sheetTop = window.innerHeight - sheetHeight;
+  const visibleBottom = Math.min(rect.bottom, sheetTop);
+
+  const targetX = rect.width / 2;
+  let targetY = visibleBottom - rect.top - 44;
+  targetY = Math.max(50, Math.min(targetY, rect.height - 20));
+
+  const current = state.map.latLngToContainerPoint([place.lat, place.lng]);
+  state.map.panBy([current.x - targetX, current.y - targetY], { animate: true });
 }
 
 function closeSheet() {
@@ -231,7 +307,11 @@ function closeSheet() {
 
   if (!sheet || sheet.hidden) return;
 
+  dragStartY = null;
+  sheet.style.transition = "";
+  sheet.style.transform = "";
   sheet.classList.remove("is-open");
+
   setTimeout(() => { sheet.hidden = true; }, 220);
 }
 
