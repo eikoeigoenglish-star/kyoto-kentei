@@ -42,6 +42,11 @@
   text-align: center;
 }
 
+/* 地図の明るさ調整。川が沈まない程度に持ち上げる */
+.leaflet-tile-pane {
+  filter: brightness(1.5) saturate(2.4) hue-rotate(-8deg);
+}
+
 /* =========================
    光る球
 ========================= */
@@ -68,14 +73,8 @@
 }
 
 @keyframes orb-pulse {
-  0%, 100% {
-    transform: scale(0.82);
-    opacity: 0.72;
-  }
-  50% {
-    transform: scale(1.18);
-    opacity: 1;
-  }
+  0%, 100% { transform: scale(0.82); opacity: 0.72; }
+  50% { transform: scale(1.18); opacity: 1; }
 }
 
 .orb-icon:hover .orb,
@@ -89,57 +88,35 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 2px;
-  color: var(--gold-bright);
+  margin-top: 1px;
+  color: #fff6e2;
   font-family: var(--font-display);
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   white-space: nowrap;
-  text-shadow: 0 0 6px #000, 0 0 3px #000;
+  text-shadow:
+    0 0 4px #000, 0 0 8px #000,
+    1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
   pointer-events: none;
 }
 
 /* =========================
-   吹き出し
+   詳細（吹き出しと引き出しの共通部分）
 ========================= */
-.orb-popup .leaflet-popup-content-wrapper {
-  background: linear-gradient(180deg, var(--surface-2), var(--surface));
-  border: 1px solid var(--gold-line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  color: var(--text);
-}
-
-.orb-popup .leaflet-popup-tip {
-  background: var(--surface);
-  border: 1px solid var(--gold-line);
-}
-
-.orb-popup .leaflet-popup-content {
-  margin: 16px 18px;
-  font-family: var(--font-body);
-  line-height: 1.7;
-}
-
-.orb-popup .leaflet-popup-close-button {
-  color: var(--text-dim);
-  padding: 8px 8px 0 0;
-}
-
 .pop-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   color: var(--gold-bright);
 }
 
 .pop-count {
-  margin: 2px 0 12px;
+  margin: 2px 0 10px;
   color: var(--text-faint);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-variant-numeric: tabular-nums;
 }
 
@@ -147,10 +124,8 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  max-height: 320px;
-  overflow-y: auto;
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 
 .pop-item {
@@ -166,24 +141,121 @@
   gap: 8px;
   margin: 0 0 4px;
   color: var(--text-faint);
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 600;
 }
 
 .pop-q {
-  margin: 0 0 6px;
-  font-size: 0.88rem;
-  line-height: 1.65;
+  margin: 0 0 5px;
+  font-size: 0.86rem;
+  line-height: 1.6;
 }
 
 .pop-a {
   margin: 0;
   color: var(--ok);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
 }
 
-/* Leaflet 側の明るい既定色を打ち消す */
+/* =========================
+   吹き出し（パソコン）
+========================= */
+.orb-popup .leaflet-popup-content-wrapper {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface));
+  border: 1px solid var(--gold-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+.orb-popup .leaflet-popup-tip {
+  background: var(--surface);
+  border: 1px solid var(--gold-line);
+}
+
+.orb-popup .leaflet-popup-content {
+  margin: 14px 16px;
+  font-family: var(--font-body);
+  line-height: 1.7;
+}
+
+.orb-popup .leaflet-popup-close-button {
+  color: var(--text-dim);
+  padding: 8px 8px 0 0;
+}
+
+.orb-popup .pop-list {
+  max-height: 230px;
+  overflow-y: auto;
+}
+
+/* =========================
+   引き出し（スマホ）
+========================= */
+.sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1200;
+  max-height: 46vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--surface-2), var(--surface));
+  border-top: 1px solid var(--gold-line);
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.6);
+  transform: translateY(100%);
+  transition: transform 0.22s ease;
+}
+
+.sheet.is-open {
+  transform: translateY(0);
+}
+
+.sheet-grip {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 4px;
+  margin: 8px auto 2px;
+  border-radius: 999px;
+  background-color: var(--line-strong);
+}
+
+.sheet-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sheet-close:hover {
+  color: var(--gold-bright);
+}
+
+.sheet-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 18px calc(18px + env(safe-area-inset-bottom));
+}
+
+/* =========================
+   Leaflet の既定色を打ち消す
+========================= */
 .leaflet-container {
   background-color: #0b0b0f;
   font-family: var(--font-body);
@@ -216,7 +288,7 @@
   }
 
   .orb-label {
-    display: none;
+    font-size: 0.68rem;
   }
 }
 
@@ -224,9 +296,8 @@
   .orb {
     animation: none;
   }
-}
 
-/* 地図の明るさ調整 */
-.leaflet-tile-pane {
-  filter: brightness(1.45) saturate(1.8) contrast(0.95);
+  .sheet {
+    transition: none;
+  }
 }
