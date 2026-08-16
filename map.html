@@ -13,7 +13,7 @@
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="style.css?v=4.1.0">
-  <link rel="stylesheet" href="map.css?v=1.0.0">
+  <link rel="stylesheet" href="map.css?v=1.2.0">
 </head>
 
 <body class="map-body">
@@ -40,20 +40,24 @@
   <div id="map" class="map-canvas" role="application" aria-label="京都の出題地点地図"></div>
 
   <p class="map-note">
-    球の大きさと光の強さは登場回数に比例します。位置はWikidataの座標にもとづく目安です。
+    球の大きさと光の強さは登場回数に比例します。位置はWikipediaの座標にもとづく目安です。
   </p>
 
   <footer class="app-footer">
     <p>京都検定2級 四択トレーニング</p>
   </footer>
+
   <aside id="sheet" class="sheet" role="dialog" aria-label="地点の詳細" hidden>
-    <div class="sheet-grip" aria-hidden="true"></div>
+    <div id="sheet-handle" class="sheet-handle">
+      <span class="sheet-grip" aria-hidden="true"></span>
+    </div>
     <button type="button" id="sheet-close" class="sheet-close" aria-label="閉じる">×</button>
     <div id="sheet-body" class="sheet-body"></div>
   </aside>
+
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="map.js?v=1.0.0"></script>
+<script src="map.js?v=1.2.0"></script>
 </body>
 </html>
