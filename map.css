@@ -225,3 +225,8 @@
     animation: none;
   }
 }
+
+/* 地図の明るさ調整 */
+.leaflet-tile-pane {
+  filter: brightness(1.45) saturate(1.8) contrast(0.95);
+}
