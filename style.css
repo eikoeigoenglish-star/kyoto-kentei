@@ -944,3 +944,20 @@ body {
     align-items: baseline;
   }
 }
+
+/* ページ間の行き来 */
+.map-nav {
+  margin: 14px 0 0;
+  font-size: 0.9rem;
+}
+
+.map-nav a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.map-nav a:hover {
+  color: var(--gold-bright);
+  border-bottom-color: var(--gold-line);
+}
