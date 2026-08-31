@@ -71,44 +71,42 @@
     <section class="panel" aria-labelledby="exam-heading">
       <div class="panel-head">
         <h2 id="exam-heading" class="panel-title">回次</h2>
-        <p class="panel-note">1つ選択</p>
+        <p class="panel-note">複数選択可</p>
+        <button type="button" id="exam-toggle-btn" class="btn-ghost btn-small">すべて解除</button>
       </div>
 
-      <div class="chip-group" role="radiogroup" aria-labelledby="exam-heading">
-        <input type="radio" id="exam-all" name="exam" value="all" checked>
-        <label class="chip chip-wide" for="exam-all">全部（11回分）</label>
-
-        <input type="radio" id="exam-12" name="exam" value="12">
+      <div class="chip-group" role="group" aria-labelledby="exam-heading">
+        <input type="checkbox" id="exam-12" name="exam" value="12" checked>
         <label class="chip" for="exam-12">第12回</label>
 
-        <input type="radio" id="exam-13" name="exam" value="13">
+        <input type="checkbox" id="exam-13" name="exam" value="13" checked>
         <label class="chip" for="exam-13">第13回</label>
 
-        <input type="radio" id="exam-14" name="exam" value="14">
+        <input type="checkbox" id="exam-14" name="exam" value="14" checked>
         <label class="chip" for="exam-14">第14回</label>
 
-        <input type="radio" id="exam-15" name="exam" value="15">
+        <input type="checkbox" id="exam-15" name="exam" value="15" checked>
         <label class="chip" for="exam-15">第15回</label>
 
-        <input type="radio" id="exam-16" name="exam" value="16">
+        <input type="checkbox" id="exam-16" name="exam" value="16" checked>
         <label class="chip" for="exam-16">第16回</label>
 
-        <input type="radio" id="exam-17" name="exam" value="17">
+        <input type="checkbox" id="exam-17" name="exam" value="17" checked>
         <label class="chip" for="exam-17">第17回</label>
 
-        <input type="radio" id="exam-19" name="exam" value="19">
+        <input type="checkbox" id="exam-19" name="exam" value="19" checked>
         <label class="chip" for="exam-19">第19回</label>
 
-        <input type="radio" id="exam-21" name="exam" value="21">
+        <input type="checkbox" id="exam-21" name="exam" value="21" checked>
         <label class="chip" for="exam-21">第21回</label>
 
-        <input type="radio" id="exam-23" name="exam" value="23">
+        <input type="checkbox" id="exam-23" name="exam" value="23" checked>
         <label class="chip" for="exam-23">第23回</label>
 
-        <input type="radio" id="exam-25" name="exam" value="25">
+        <input type="checkbox" id="exam-25" name="exam" value="25" checked>
         <label class="chip" for="exam-25">第25回</label>
 
-        <input type="radio" id="exam-27" name="exam" value="27">
+        <input type="checkbox" id="exam-27" name="exam" value="27" checked>
         <label class="chip" for="exam-27">第27回</label>
       </div>
     </section>
@@ -301,6 +299,6 @@
   </footer>
 </div>
 
-<script src="app.js?v=4.0.0"></script>
+<script src="app.js?v=4.1.0"></script>
 </body>
 </html>

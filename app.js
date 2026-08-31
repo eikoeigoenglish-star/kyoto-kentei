@@ -100,6 +100,7 @@ async function init() {
     document.getElementById("start-btn").addEventListener("click", startExam);
     document.getElementById("next-btn").addEventListener("click", nextQuestion);
     document.getElementById("back-to-start-btn").addEventListener("click", backToStart);
+    document.getElementById("exam-toggle-btn").addEventListener("click", toggleAllExams);
     document.getElementById("range-toggle-btn").addEventListener("click", toggleAllRanges);
     document.getElementById("reset-progress-btn").addEventListener("click", resetProgress);
     document.addEventListener("keydown", handleQuizKeydown);
@@ -178,6 +179,30 @@ function resetProgress() {
 }
 
 // =======================
+// 回次 一括選択／解除
+// =======================
+function toggleAllExams() {
+  const inputs = [...document.querySelectorAll('input[name="exam"]')];
+  const allChecked = inputs.length > 0 && inputs.every(input => input.checked);
+  const next = !allChecked;
+
+  inputs.forEach(input => {
+    input.checked = next;
+  });
+
+  updateExamToggleLabel();
+  updateAvailableCounts();
+}
+
+function updateExamToggleLabel() {
+  const inputs = [...document.querySelectorAll('input[name="exam"]')];
+  const allChecked = inputs.length > 0 && inputs.every(input => input.checked);
+
+  document.getElementById("exam-toggle-btn").textContent =
+    allChecked ? "すべて解除" : "すべて選択";
+}
+
+// =======================
 // 出題範囲 一括選択／解除
 // =======================
 function toggleAllRanges() {
@@ -204,6 +229,10 @@ function updateRangeToggleLabel() {
 document.addEventListener("change", event => {
   const name = event.target.name;
 
+  if (name === "exam") {
+    updateExamToggleLabel();
+  }
+
   if (name === "range") {
     updateRangeToggleLabel();
   }
@@ -219,12 +248,16 @@ document.addEventListener("change", event => {
 function startExam() {
   clearStartError();
 
-  const examValue = document.querySelector('input[name="exam"]:checked')?.value;
   const countValue = document.querySelector('input[name="count"]:checked')?.value;
   const filters = readFilters();
 
-  if (!examValue || !countValue) {
-    showStartError("回次と出題問数を選択してください。");
+  if (!countValue) {
+    showStartError("出題問数を選択してください。");
+    return;
+  }
+
+  if (filters.exams.length === 0) {
+    showStartError("回次を1つ以上選択してください。");
     return;
   }
 
@@ -279,10 +312,10 @@ function startExam() {
 // 出題対象の抽出
 // =======================
 function readFilters() {
-  const examValue = document.querySelector('input[name="exam"]:checked')?.value;
-
   return {
-    exam: examValue === "all" ? "all" : Number(examValue),
+    exams: [...document.querySelectorAll('input[name="exam"]:checked')]
+      .map(input => Number(input.value))
+      .filter(exam => VALID_EXAMS.includes(exam)),
     ranges: [...document.querySelectorAll('input[name="range"]:checked')]
       .map(input => parseRange(input.value)),
     stages: [...document.querySelectorAll('input[name="stage"]:checked')]
@@ -294,10 +327,7 @@ function readFilters() {
 
 function filterQuestions(allQuestions, filters) {
   return allQuestions.filter(question => {
-    const examMatches =
-      filters.exam === "all"
-        ? VALID_EXAMS.includes(Number(question.exam))
-        : Number(question.exam) === filters.exam;
+    const examMatches = filters.exams.includes(Number(question.exam));
 
     if (!examMatches) return false;
 
@@ -330,7 +360,7 @@ function updateAvailableCounts() {
   const filters = readFilters();
 
   const ready =
-    filters.exam !== undefined &&
+    filters.exams.length > 0 &&
     filters.ranges.length > 0 &&
     filters.stages.length > 0 &&
     filters.freqs.length > 0;
