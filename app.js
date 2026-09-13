@@ -704,10 +704,139 @@ function createResultItem(entry, index) {
 
   transition.append(fromTag, " → ", toTag);
 
-  body.append(meta, text, answers, transition);
+  const aiPromptButton = createAiPromptCopyButton(question, answer);
+
+  body.append(meta, text, answers, transition, aiPromptButton);
   item.append(badge, body);
 
   return item;
+}
+
+function createAiPromptCopyButton(question, answer) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "ai-prompt-copy";
+
+  const icon = document.createElement("span");
+  icon.className = "copy-icon";
+  icon.setAttribute("aria-hidden", "true");
+
+  const label = document.createElement("span");
+  label.className = "ai-prompt-copy-label";
+  label.textContent = "生成AI相談プロンプト";
+
+  button.append(icon, label);
+
+  let restoreTimer = null;
+
+  button.addEventListener("click", async () => {
+    const prompt = buildAiConsultPrompt(question, answer);
+
+    try {
+      await copyTextToClipboard(prompt);
+      button.classList.remove("is-error");
+      button.classList.add("is-copied");
+      label.textContent = "コピーしました";
+    } catch (error) {
+      console.warn("生成AI相談プロンプトをコピーできませんでした", error);
+      button.classList.remove("is-copied");
+      button.classList.add("is-error");
+      label.textContent = "コピーできませんでした";
+    }
+
+    if (restoreTimer !== null) {
+      window.clearTimeout(restoreTimer);
+    }
+
+    restoreTimer = window.setTimeout(() => {
+      button.classList.remove("is-copied", "is-error");
+      label.textContent = "生成AI相談プロンプト";
+      restoreTimer = null;
+    }, 1800);
+  });
+
+  return button;
+}
+
+function buildAiConsultPrompt(question, answer) {
+  const circledMarkers = ["①", "②", "③", "④"];
+  const lines = [
+    "京都・観光文化検定試験（京都検定）2級の次の問題を解説してください。",
+    "",
+    "【回次・問題番号】",
+    `第${question.exam}回 第${question.questionNumber}問`,
+    "",
+    "【問題】",
+    String(question.question ?? "").trim() || "（問題文なし）",
+    "",
+    "【選択肢】"
+  ];
+
+  const choices = Array.isArray(question.choices) ? question.choices : [];
+
+  choices.forEach((choice, index) => {
+    const marker = circledMarkers[index] ?? `${index + 1}.`;
+    const choiceText = String(choice ?? "").trim() || "（選択肢データなし）";
+    lines.push(`${marker} ${choiceText}`);
+  });
+
+  lines.push(
+    "",
+    "【正解】",
+    String(question.correct ?? "").trim() || "（正解データなし）",
+    "",
+    "【私の回答】",
+    answer === undefined ? "未回答" : String(answer).trim() || "未回答",
+    "",
+    "この問題について、正解の理由と各選択肢の正誤を解説してください。",
+    "また、私の回答についても、正解・不正解に応じて判断のポイントを説明してください。",
+    "京都の歴史・寺社・文化・地理など、理解に必要な背景知識も補ってください。",
+    "単なる暗記ではなく、正解にたどり着くための考え方、関連知識、他の選択肢との見分け方、覚え方があれば説明してください。"
+  );
+
+  return lines.join("\n");
+}
+
+async function copyTextToClipboard(text) {
+  let clipboardError = null;
+
+  if (navigator.clipboard?.writeText && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch (error) {
+      clipboardError = error;
+    }
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("aria-hidden", "true");
+  textarea.style.position = "fixed";
+  textarea.style.left = "-9999px";
+  textarea.style.top = "0";
+  textarea.style.opacity = "0";
+  textarea.style.fontSize = "16px";
+
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  textarea.setSelectionRange(0, textarea.value.length);
+
+  let copied = false;
+
+  try {
+    copied = document.execCommand("copy");
+  } finally {
+    textarea.remove();
+  }
+
+  if (!copied) {
+    if (clipboardError) {
+      throw clipboardError;
+    }
+    throw new Error("Clipboard API と copy コマンドの両方が利用できませんでした。");
+  }
 }
 
 function createAnswerLine(labelText, value, valueClass) {
