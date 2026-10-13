@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=4.2.0">
+  <link rel="stylesheet" href="style.css?v=4.3.0">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKL5WQJBSB"></script>
   <script>
@@ -34,6 +34,7 @@
       <h1 class="app-title">京都検定2級<span class="app-title-sub">四択トレーニング</span></h1>
       <p class="app-lead">1100問すべてをトリプルにするのが目標です。</p>
       <p class="map-nav"><a href="map.html">出題地図を見る →</a></p>
+      <p class="map-nav theme-nav" id="theme-nav" hidden><a href="#theme-area">公開テーマの対策問題はこちら ↓</a></p>
     </header>
     </header>
 
@@ -239,6 +240,9 @@
     <div id="start-error" class="alert" role="alert" hidden></div>
 
     <button id="start-btn" type="button" class="btn-primary btn-block">開始する</button>
+
+    <!-- 公開テーマ（期間限定・過去問とは別枠）。theme.js が data/themes.json の active なテーマを描画する -->
+    <div id="theme-area" class="theme-area" hidden></div>
   </main>
 
   <!-- ========================= -->
@@ -299,6 +303,7 @@
   </footer>
 </div>
 
-<script src="app.js?v=4.2.1"></script>
+<script src="app.js?v=4.3.0"></script>
+<script src="theme.js?v=4.3.0"></script>
 </body>
 </html>

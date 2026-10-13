@@ -25,7 +25,10 @@ const state = {
   questions: [],
   answers: {},
   currentIndex: 0,
-  progress: {}
+  progress: {},
+  // 出題中のセッション種別。過去問は { kind: "past" }、
+  // 公開テーマは { kind: "theme", themeId }（theme.js が設定する）
+  session: { kind: "past" }
 };
 
 // =======================
@@ -68,6 +71,22 @@ function stageOf(questionId) {
   if (streak === 2) return "double";
   if (streak === 1) return "hit";
   return "miss";
+}
+
+// 公開テーマ問題（__themeId を持つ）は theme.js 側の別進捗を参照する。
+// 過去問は従来どおり stageOf(question.id)。
+function stageOfQuestion(question) {
+  if (question.__themeId && typeof stageOfThemeQuestion === "function") {
+    return stageOfThemeQuestion(question);
+  }
+  return stageOf(question.id);
+}
+
+function questionMetaLabel(question) {
+  if (question.__themeId && typeof themeQuestionLabel === "function") {
+    return themeQuestionLabel(question);
+  }
+  return `第${question.exam}回　第${question.questionNumber}問`;
 }
 
 function stageLabel(key) {
@@ -293,6 +312,7 @@ function startExam() {
     return;
   }
 
+  state.session = { kind: "past" };
   state.questions = shuffle(pool)
     .slice(0, questionCount)
     .map(question => ({
@@ -424,12 +444,12 @@ function renderQuestion() {
   const total = state.questions.length;
   const current = state.currentIndex + 1;
 
-  document.getElementById("question-meta").textContent =
-    `第${question.exam}回　第${question.questionNumber}問`;
+  document.getElementById("question-meta").textContent = questionMetaLabel(question);
 
   const stageTag = document.getElementById("question-stage");
-  stageTag.textContent = stageLabel(stageOf(question.id));
-  stageTag.className = `stage-tag stage-${stageOf(question.id)}`;
+  const currentStage = stageOfQuestion(question);
+  stageTag.textContent = stageLabel(currentStage);
+  stageTag.className = `stage-tag stage-${currentStage}`;
 
   document.getElementById("question-counter").textContent =
     `${current} / ${total}`;
@@ -608,12 +628,23 @@ function showResult() {
       correctCount += 1;
     }
 
-    return { question, answer, isCorrect, ...applyResult(question.id, isCorrect) };
+    // 公開テーマ問題はテーマ専用の進捗にだけ反映し、過去問の進捗には一切加算しない
+    const change = question.__themeId && typeof applyThemeResult === "function"
+      ? applyThemeResult(question.__themeId, question.id, isCorrect)
+      : applyResult(question.id, isCorrect);
+
+    return { question, answer, isCorrect, ...change };
   });
 
-  saveProgress();
-  renderMastery();
-  updateAvailableCounts();
+  if (state.session.kind === "theme") {
+    if (typeof finishThemeSession === "function") {
+      finishThemeSession(state.session.themeId);
+    }
+  } else {
+    saveProgress();
+    renderMastery();
+    updateAvailableCounts();
+  }
 
   transitions.forEach((entry, index) => {
     list.appendChild(createResultItem(entry, index));
@@ -666,8 +697,7 @@ function createResultItem(entry, index) {
 
   const meta = document.createElement("p");
   meta.className = "result-meta";
-  meta.textContent =
-    `Q${index + 1}　第${question.exam}回　第${question.questionNumber}問`;
+  meta.textContent = `Q${index + 1}　${questionMetaLabel(question)}`;
 
   if (question.freq === "high") {
     const freqTag = document.createElement("span");
@@ -711,7 +741,22 @@ function createResultItem(entry, index) {
 
   const aiPromptButton = createAiPromptCopyButton(question, answer);
 
-  body.append(meta, text, answers, transition, aiPromptButton);
+  body.append(meta, text, answers, transition);
+
+  // 解説を持つ問題（公開テーマ問題）だけ解説を表示する
+  if (question.explanation) {
+    const explanation = document.createElement("p");
+    explanation.className = "result-explanation";
+
+    const explanationLabel = document.createElement("span");
+    explanationLabel.className = "result-explanation-label";
+    explanationLabel.textContent = "解説";
+
+    explanation.append(explanationLabel, String(question.explanation));
+    body.appendChild(explanation);
+  }
+
+  body.appendChild(aiPromptButton);
   item.append(badge, body);
 
   return item;
@@ -768,8 +813,10 @@ function buildAiConsultPrompt(question, answer) {
   const lines = [
     "京都・観光文化検定試験（京都検定）2級の次の問題を解説してください。",
     "",
-    "【回次・問題番号】",
-    `第${question.exam}回 第${question.questionNumber}問`,
+    question.__themeId ? "【出典】" : "【回次・問題番号】",
+    question.__themeId
+      ? `${questionMetaLabel(question)}（過去問ではない公開テーマ対策の独自問題）`
+      : `第${question.exam}回 第${question.questionNumber}問`,
     "",
     "【問題】",
     String(question.question ?? "").trim() || "（問題文なし）",
@@ -902,9 +949,13 @@ function backToStart() {
   state.questions = [];
   state.answers = {};
   state.currentIndex = 0;
+  state.session = { kind: "past" };
 
   renderMastery();
   updateAvailableCounts();
+  if (typeof renderThemeSection === "function") {
+    renderThemeSection();
+  }
   showScreen("screen-start");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }

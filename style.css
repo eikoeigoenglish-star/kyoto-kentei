@@ -1049,3 +1049,174 @@ body {
   color: var(--gold-bright);
   border-bottom-color: var(--gold-line);
 }
+
+/* =====================================================
+   追加分 — 公開テーマ（期間限定・過去問とは別枠）
+   過去問の金茶に対し、朱をアクセントにして区別する。
+   ===================================================== */
+
+:root {
+  --theme-accent: #e0855c;            /* 朱 */
+  --theme-accent-bright: #f0a37f;
+  --theme-accent-dim: rgba(224, 133, 92, 0.12);
+  --theme-accent-line: rgba(224, 133, 92, 0.5);
+}
+
+.theme-area {
+  margin-top: 40px;
+  scroll-margin-top: 16px;
+}
+
+.theme-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  color: var(--theme-accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.theme-divider::before,
+.theme-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--theme-accent-line);
+}
+
+.theme-panel {
+  border-color: var(--theme-accent-line);
+  box-shadow: inset 4px 0 0 var(--theme-accent), var(--shadow);
+}
+
+.theme-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 6px;
+  color: var(--theme-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.theme-badge {
+  padding: 2px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--theme-accent-line);
+  background-color: var(--theme-accent-dim);
+  color: var(--theme-accent-bright);
+  font-size: 0.72rem;
+}
+
+.theme-title {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.06em;
+  color: var(--text);
+}
+
+.theme-desc {
+  margin: 0 0 8px;
+}
+
+.theme-subtitle {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.theme-progress {
+  margin: 18px 0 6px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-color: var(--surface);
+}
+
+.theme-progress .panel-head {
+  align-items: center;
+}
+
+.theme-headline {
+  color: var(--theme-accent-bright);
+}
+
+.theme-block {
+  margin-top: 18px;
+}
+
+.theme-block .theme-subtitle {
+  margin-bottom: 10px;
+}
+
+.theme-panel .chip-group input:checked + .chip {
+  background-color: var(--theme-accent-dim);
+  border-color: var(--theme-accent-line);
+  color: var(--theme-accent-bright);
+  box-shadow: inset 0 0 0 1px var(--theme-accent-line);
+}
+
+.theme-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.theme-btn {
+  background: linear-gradient(180deg, var(--theme-accent-bright), var(--theme-accent));
+  border-color: var(--theme-accent);
+}
+
+.theme-btn:hover {
+  background: linear-gradient(180deg, #f6bb9d, var(--theme-accent-bright));
+}
+
+.theme-nav a {
+  color: var(--theme-accent);
+}
+
+.theme-nav a:hover {
+  color: var(--theme-accent-bright);
+  border-bottom-color: var(--theme-accent-line);
+}
+
+/* 結果画面の解説（解説を持つ問題のみ表示） */
+.result-explanation {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--theme-accent-line);
+  border-radius: 6px;
+  background-color: var(--surface);
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  line-height: 1.75;
+}
+
+.result-explanation-label {
+  display: inline-block;
+  margin-right: 8px;
+  color: var(--theme-accent-bright);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 640px) {
+  .theme-title {
+    font-size: 1.3rem;
+  }
+
+  .theme-progress {
+    padding: 12px;
+  }
+
+  .theme-progress .theme-headline {
+    width: 100%;
+    order: 3;
+  }
+}
