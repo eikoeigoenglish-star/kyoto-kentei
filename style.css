@@ -1063,27 +1063,82 @@ body {
 }
 
 .theme-area {
-  margin-top: 40px;
-  scroll-margin-top: 16px;
+  margin: 0;
 }
 
-.theme-divider {
+/* ---- 学習モード切替（過去問トレーニング ⇔ 公開テーマ） ---- */
+.mode-switch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  grid-auto-flow: column;
+  gap: 6px;
+  margin: 0 0 22px;
+  padding: 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: calc(var(--radius) + 6px);
+  background-color: var(--surface);
+}
+
+.mode-tab {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  margin: 0 0 18px;
-  color: var(--theme-accent);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  justify-content: center;
+  gap: 2px;
+  min-height: 58px;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text-dim);
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-.theme-divider::before,
-.theme-divider::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background-color: var(--theme-accent-line);
+.mode-tab:hover {
+  color: var(--text);
+  background-color: var(--surface-3);
+}
+
+.mode-tab-main {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.mode-tab-sub {
+  color: var(--text-faint);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+
+.mode-tab-past.is-active {
+  background-color: var(--gold-dim);
+  border-color: var(--gold-line);
+  color: var(--gold-bright);
+}
+
+.mode-tab-theme.is-active {
+  background-color: var(--theme-accent-dim);
+  border-color: var(--theme-accent-line);
+  color: var(--theme-accent-bright);
+}
+
+.mode-tab.is-active .mode-tab-sub {
+  color: inherit;
+  opacity: 0.8;
+}
+
+.mode-tab:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* テーマモード指定で開いたとき、テーマ読込完了まで過去問UIを出さない */
+.mode-pending #mode-past {
+  display: none !important;
 }
 
 .theme-panel {

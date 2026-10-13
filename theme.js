@@ -6,6 +6,8 @@
 //   試験終了後は active:false にする（論理削除）。問題JSONも進捗も消さない。
 // ・テーマごとに別の LocalStorage キー（manifest の progressKey）で進捗を持つ。
 // ・出題・選択肢シャッフル・採点・結果表示は app.js の仕組みをそのまま使う。
+// ・スタート画面では「過去問トレーニング」と各公開テーマを独立した学習モードとして
+//   上部のタブで切り替える。現在モードは URL の ?mode=<テーマID> で保持する。
 // =======================================================
 
 const THEME_MANIFEST_URL = "data/themes.json";
@@ -57,10 +59,12 @@ async function initThemes() {
       }
     }
 
-    renderThemeSection();
   } catch (error) {
     // テーマが読めなくても過去問は通常どおり使える
     console.warn("公開テーマの一覧を読み込めませんでした", error);
+  } finally {
+    renderThemeSection();
+    initModeSwitch();
   }
 }
 
@@ -145,17 +149,15 @@ function finishThemeSession(themeId) {
 }
 
 // -----------------------
-// 画面（スタート画面の公開テーマ枠）
+// 画面（公開テーマモードのパネル）
 // -----------------------
 function renderThemeSection() {
   const area = document.getElementById("theme-area");
-  const navLink = document.getElementById("theme-nav");
   if (!area) return;
 
   if (themeState.themes.length === 0) {
-    area.hidden = true;
     area.innerHTML = "";
-    if (navLink) navLink.hidden = true;
+    area.hidden = true;
     return;
   }
 
@@ -166,27 +168,212 @@ function renderThemeSection() {
 
   if (!alreadyRendered) {
     area.innerHTML = "";
-
-    const divider = document.createElement("div");
-    divider.className = "theme-divider";
-    divider.setAttribute("role", "separator");
-    divider.innerHTML = "<span>公開テーマ対策（過去問とは別枠）</span>";
-    area.appendChild(divider);
-
     themeState.themes.forEach(theme => {
       area.appendChild(createThemePanel(theme));
     });
   }
 
   themeState.themes.forEach(updateThemePanel);
+  applyModeVisibility();
+}
 
-  area.hidden = false;
-  if (navLink) {
-    const first = themeState.themes[0];
-    navLink.hidden = false;
-    navLink.querySelector("a").textContent =
-      `${first.manifest.label}「${first.manifest.title}」の対策問題はこちら ↓`;
+// =======================================================
+// 学習モード切替（過去問トレーニング ⇔ 公開テーマ）
+//
+// ・モードは「過去問（past）」と、active な各テーマ（テーマID）。
+// ・選択中のモード以外の設定UI・進捗UIは hidden で完全に非表示にする。
+// ・URL の ?mode=<テーマID> で現在モードを保持する（過去問はパラメータなし）。
+//   旧リンク #theme-area や #<テーマID> で来た場合もテーマモードとして開く。
+// ・active なテーマが無ければ切替UI自体を出さない。
+// =======================================================
+const MODE_PARAM = "mode";
+const PAST_MODE = "past";
+const PAST_LEAD_TEXT = document.getElementById("app-lead")?.textContent ?? "";
+
+themeState.mode = PAST_MODE;
+
+function readRequestedMode() {
+  const params = new URLSearchParams(window.location.search);
+  const fromQuery = params.get(MODE_PARAM);
+  if (fromQuery) return fromQuery;
+
+  const hash = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+  if (hash === "theme-area") return "theme";       // 旧リンク互換：先頭のテーマへ
+  if (hash.startsWith("theme-")) return hash;
+
+  return PAST_MODE;
+}
+
+function resolveMode(requested) {
+  if (!requested || requested === PAST_MODE) return PAST_MODE;
+  if (requested === "theme") return themeState.themes[0]?.manifest.id ?? PAST_MODE;
+  return findTheme(requested) ? requested : PAST_MODE;
+}
+
+function modeUrl(mode) {
+  const url = new URL(window.location.href);
+  url.hash = "";
+  if (mode === PAST_MODE) {
+    url.searchParams.delete(MODE_PARAM);
+  } else {
+    url.searchParams.set(MODE_PARAM, mode);
   }
+  return url.pathname + url.search;
+}
+
+// テーマモード指定で開いたとき、テーマ読込完了まで過去問UIを出さない（ちらつき防止）
+if (readRequestedMode() !== PAST_MODE) {
+  document.documentElement.classList.add("mode-pending");
+}
+
+function initModeSwitch() {
+  buildModeSwitch();
+
+  const requested = readRequestedMode();
+  const mode = resolveMode(requested);
+
+  // 無効なモード（active:false のテーマなど）が指定されていたら URL から外す
+  const needsCleanUrl = requested !== mode || window.location.hash !== "";
+  setMode(mode, { history: needsCleanUrl ? "replace" : "none" });
+
+  document.documentElement.classList.remove("mode-pending");
+
+  window.addEventListener("popstate", () => {
+    setMode(resolveMode(readRequestedMode()), { history: "none" });
+  });
+}
+
+function buildModeSwitch() {
+  const nav = document.getElementById("mode-switch");
+  const link = document.getElementById("theme-nav");
+  if (!nav) return;
+
+  // 過去問タブ以外（以前に描いたテーマタブ）を作り直す
+  nav.querySelectorAll("[data-theme-tab]").forEach(tab => tab.remove());
+
+  if (themeState.themes.length === 0) {
+    nav.hidden = true;
+    if (link) link.hidden = true;
+    return;
+  }
+
+  themeState.themes.forEach(theme => {
+    const id = theme.manifest.id;
+    const tab = document.createElement("button");
+    tab.type = "button";
+    tab.className = "mode-tab mode-tab-theme";
+    tab.id = `mode-tab-${id}`;
+    tab.dataset.mode = id;
+    tab.dataset.themeTab = "";
+    tab.setAttribute("role", "tab");
+    tab.setAttribute("aria-controls", `${id}-panel`);
+    tab.innerHTML =
+      `<span class="mode-tab-main">${escapeThemeHtml(theme.manifest.label)}対策</span>` +
+      `<span class="mode-tab-sub">${escapeThemeHtml(theme.manifest.title)}・${theme.questions.length}問</span>`;
+    nav.appendChild(tab);
+
+    const panel = document.getElementById(`${id}-panel`);
+    if (panel) {
+      panel.setAttribute("role", "tabpanel");
+      panel.setAttribute("aria-labelledby", tab.id);
+    }
+  });
+
+  if (!nav.dataset.bound) {
+    nav.dataset.bound = "1";
+    nav.addEventListener("click", event => {
+      const tab = event.target.closest("[data-mode]");
+      if (!tab) return;
+      setMode(tab.dataset.mode, { history: "push" });
+    });
+    nav.addEventListener("keydown", handleModeTabKeydown);
+  }
+
+  nav.hidden = false;
+
+  // ヘッダーの案内リンクは「先頭テーマのモードへ切替」として動作させる
+  if (link) {
+    const first = themeState.themes[0];
+    const anchor = link.querySelector("a");
+    anchor.href = modeUrl(first.manifest.id);
+    anchor.textContent = `${first.manifest.label}「${first.manifest.title}」の対策はこちら →`;
+    if (!anchor.dataset.bound) {
+      anchor.dataset.bound = "1";
+      anchor.addEventListener("click", event => {
+        event.preventDefault();
+        setMode(first.manifest.id, { history: "push" });
+        document.getElementById("mode-switch")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }
+}
+
+function handleModeTabKeydown(event) {
+  const tabs = [...document.querySelectorAll("#mode-switch [role='tab']")];
+  const index = tabs.indexOf(document.activeElement);
+  if (index === -1) return;
+
+  let next = null;
+  if (event.key === "ArrowRight") next = tabs[(index + 1) % tabs.length];
+  if (event.key === "ArrowLeft") next = tabs[(index - 1 + tabs.length) % tabs.length];
+  if (event.key === "Home") next = tabs[0];
+  if (event.key === "End") next = tabs[tabs.length - 1];
+  if (!next) return;
+
+  event.preventDefault();
+  next.focus();
+  setMode(next.dataset.mode, { history: "push" });
+}
+
+function setMode(mode, { history = "push" } = {}) {
+  const resolved = resolveMode(mode);
+  const changed = resolved !== themeState.mode;
+  themeState.mode = resolved;
+
+  applyModeVisibility();
+
+  if (history === "push" && changed) {
+    window.history.pushState({ mode: resolved }, "", modeUrl(resolved));
+  } else if (history === "replace" || (history === "push" && !changed)) {
+    window.history.replaceState({ mode: resolved }, "", modeUrl(resolved));
+  }
+}
+
+// 現在モード以外の設定UI・進捗UIを完全に非表示にする
+function applyModeVisibility() {
+  const mode = resolveMode(themeState.mode);
+  const isPast = mode === PAST_MODE;
+
+  const pastPanel = document.getElementById("mode-past");
+  if (pastPanel) pastPanel.hidden = !isPast;
+
+  const area = document.getElementById("theme-area");
+  if (area) area.hidden = isPast || themeState.themes.length === 0;
+
+  themeState.themes.forEach(theme => {
+    const panel = document.getElementById(`${theme.manifest.id}-panel`);
+    if (panel) panel.hidden = theme.manifest.id !== mode;
+  });
+
+  document.querySelectorAll("#mode-switch [role='tab']").forEach(tab => {
+    const selected = tab.dataset.mode === mode;
+    tab.setAttribute("aria-selected", String(selected));
+    tab.tabIndex = selected ? 0 : -1;
+    tab.classList.toggle("is-active", selected);
+  });
+
+  const link = document.getElementById("theme-nav");
+  if (link) link.hidden = !isPast || themeState.themes.length === 0;
+
+  const lead = document.getElementById("app-lead");
+  if (lead) {
+    const theme = findTheme(mode);
+    lead.textContent = theme
+      ? `公開テーマ「${theme.manifest.title}」${theme.questions.length}問すべてをトリプルにするのが目標です。`
+      : PAST_LEAD_TEXT;
+  }
+
+  document.body.dataset.mode = isPast ? PAST_MODE : "theme";
 }
 
 function createThemePanel(theme) {
@@ -197,6 +384,7 @@ function createThemePanel(theme) {
   section.className = "panel theme-panel";
   section.id = `${id}-panel`;
   section.setAttribute("aria-labelledby", `${id}-heading`);
+  section.hidden = true;
 
   section.innerHTML = `
     <p class="theme-eyebrow">
