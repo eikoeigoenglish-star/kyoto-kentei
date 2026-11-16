@@ -1275,3 +1275,15 @@ body {
     order: 3;
   }
 }
+
+/* 回次の長押し：通常のスクロールを維持し、選択／メニュー表示を抑止。 */
+#exam-options .chip {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  touch-action: pan-y pinch-zoom;
+}
+
+#exam-options .chip.is-long-pressing {
+  border-color: var(--gold-bright);
+  box-shadow: inset 0 0 0 1px var(--gold-bright), 0 0 0 3px rgba(201, 168, 106, 0.18);
+}

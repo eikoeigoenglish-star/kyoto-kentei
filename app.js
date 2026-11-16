@@ -4,6 +4,7 @@
 const VALID_EXAMS = [12, 13, 14, 15, 16, 17, 19, 21, 23, 25, 27];
 const CHOICE_MARKERS = ["1", "2", "3", "4"];
 const STORAGE_KEY = "kk2-progress-v1";
+const EXAM_LONG_PRESS_MS = 3000;
 
 // 習得段階。streak（連続正解数）から決まる。
 // 未出題 = 記録なし / ミス = 0 / ヒット = 1 / ダブル = 2 / トリプル = 3
@@ -122,6 +123,7 @@ async function init() {
     document.getElementById("exam-toggle-btn").addEventListener("click", toggleAllExams);
     document.getElementById("range-toggle-btn").addEventListener("click", toggleAllRanges);
     document.getElementById("reset-progress-btn").addEventListener("click", resetProgress);
+    installExamLongPressReset();
     document.addEventListener("keydown", handleQuizKeydown);
   } catch (error) {
     showStartError(error.message || "問題データを読み込めませんでした。");
@@ -195,6 +197,96 @@ function resetProgress() {
   saveProgress();
   renderMastery();
   updateAvailableCounts();
+}
+
+// 指定回次の過去問だけを未出題に戻す。公開テーマの保存領域には触れない。
+function resetExamProgress(examNumber) {
+  if (!VALID_EXAMS.includes(examNumber)) return;
+  const questions = state.allQuestions.filter(question => Number(question.exam) === examNumber);
+  const answered = questions.filter(question => stageOf(question.id) !== "new").length;
+  const ok = window.confirm(
+    `第${examNumber}回の進捗を消しますか？\n${answered}問分の記録を「未出題」に戻します。\nこの操作は取り消せません。`
+  );
+  if (!ok) return;
+
+  questions.forEach(question => { delete state.progress[question.id]; });
+  saveProgress();
+  renderMastery();
+  updateAvailableCounts();
+}
+
+// 歴検の pointer events による長押しを、checkbox と隣接 label に移植。
+function installExamLongPressReset() {
+  const area = document.getElementById("exam-options");
+  if (!area) return;
+  let timer = null;
+  let pressedLabel = null;
+  let pointerId = null;
+  let startX = 0;
+  let startY = 0;
+  let suppressClickLabel = null;
+
+  const clearPress = () => {
+    if (timer !== null) window.clearTimeout(timer);
+    timer = null;
+    pressedLabel?.classList.remove("is-long-pressing");
+    pressedLabel = null;
+    pointerId = null;
+  };
+
+  area.querySelectorAll("label.chip").forEach(label => {
+    label.title = "3秒長押しで、この回次の進捗を消去";
+    label.setAttribute("aria-description", "3秒長押しで、この回次だけの進捗を消去できます");
+    label.addEventListener("pointerleave", clearPress);
+  });
+
+  area.addEventListener("pointerdown", event => {
+    clearPress();
+    if (event.button !== 0 || !event.isPrimary) return;
+    // ダイアログを開いていた時間に関係なく、成立した操作の click を抑止する。
+    // 次の独立した押下では通常の選択操作に戻す。
+    suppressClickLabel = null;
+    const label = event.target.closest("label.chip");
+    if (!label || !area.contains(label)) return;
+    const input = document.getElementById(label.htmlFor);
+    if (!input || input.disabled) return;
+    pressedLabel = label;
+    pointerId = event.pointerId;
+    startX = event.clientX;
+    startY = event.clientY;
+    label.classList.add("is-long-pressing");
+    timer = window.setTimeout(() => {
+      clearPress();
+      suppressClickLabel = label;
+      try { navigator.vibrate?.(40); } catch (_) { /* 非対応環境でも続行 */ }
+      resetExamProgress(Number(input.value));
+    }, EXAM_LONG_PRESS_MS);
+  });
+
+  area.addEventListener("pointermove", event => {
+    // タッチの暗黙的 pointer capture 中も、指の移動で中断する。
+    if (event.pointerId === pointerId &&
+        Math.hypot(event.clientX - startX, event.clientY - startY) > 10) clearPress();
+  });
+  ["pointerup", "pointercancel", "pointerleave"].forEach(type => {
+    area.addEventListener(type, clearPress);
+  });
+  window.addEventListener("scroll", clearPress, true);
+  window.addEventListener("blur", clearPress);
+
+  area.addEventListener("click", event => {
+    const label = event.target.closest("label.chip");
+    if (suppressClickLabel &&
+        (label === suppressClickLabel || event.target.id === suppressClickLabel.htmlFor)) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      suppressClickLabel = null;
+    }
+  }, true);
+  area.addEventListener("keydown", () => { suppressClickLabel = null; });
+  area.addEventListener("contextmenu", event => {
+    if (event.target.closest("label.chip")) event.preventDefault();
+  });
 }
 
 // =======================
