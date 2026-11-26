@@ -1,0 +1,139 @@
+{
+  "total_questions": 1700,
+  "past_and_theme": 1200,
+  "mock_questions": 500,
+  "unique_ids": 1700,
+  "required_field_checks": "pass",
+  "mock_choices": 2000,
+  "mock_explanations": 500,
+  "mock_url_presence_format": 500,
+  "exact_mock_stem_matches": 0,
+  "exact_matches_vs_old": 0,
+  "mock_to_mock_answer_pairs": 3,
+  "mock_to_old_answer_pairs": 33,
+  "same_round_literal_hint_candidates": 2,
+  "all_mock_literal_hint_candidates": 64,
+  "difficulty": {
+    "基本": 116,
+    "標準": 275,
+    "やや難": 91,
+    "難": 18
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "count": 100,
+      "answer_positions": {
+        "2": 25,
+        "4": 25,
+        "3": 25,
+        "1": 25
+      },
+      "difficulty": {
+        "基本": 22,
+        "標準": 61,
+        "やや難": 13,
+        "難": 4
+      },
+      "specialThemes": [
+        "寛永文化・寛永行幸",
+        "丹後・舞鶴の歴史と文化"
+      ]
+    },
+    {
+      "round": 2,
+      "count": 100,
+      "answer_positions": {
+        "4": 25,
+        "1": 25,
+        "3": 25,
+        "2": 25
+      },
+      "difficulty": {
+        "標準": 63,
+        "基本": 23,
+        "難": 2,
+        "やや難": 12
+      },
+      "specialThemes": [
+        "琵琶湖疏水と京都の近代化",
+        "京都の伝統産業"
+      ]
+    },
+    {
+      "round": 3,
+      "count": 100,
+      "answer_positions": {
+        "4": 25,
+        "2": 25,
+        "1": 25,
+        "3": 25
+      },
+      "difficulty": {
+        "標準": 52,
+        "基本": 32,
+        "やや難": 14,
+        "難": 2
+      },
+      "specialThemes": [
+        "王朝文化と摂関政治",
+        "京都の鉄道と交通史"
+      ]
+    },
+    {
+      "round": 4,
+      "count": 100,
+      "answer_positions": {
+        "4": 25,
+        "2": 25,
+        "3": 25,
+        "1": 25
+      },
+      "difficulty": {
+        "基本": 19,
+        "標準": 48,
+        "やや難": 26,
+        "難": 7
+      },
+      "specialThemes": [
+        "京都と異文化・国際交流",
+        "宇治茶と南山城"
+      ]
+    },
+    {
+      "round": 5,
+      "count": 100,
+      "answer_positions": {
+        "1": 25,
+        "3": 25,
+        "4": 25,
+        "2": 25
+      },
+      "difficulty": {
+        "標準": 51,
+        "やや難": 26,
+        "基本": 20,
+        "難": 3
+      },
+      "specialThemes": [
+        "京都の仏教宗派",
+        "岡崎の文化的景観"
+      ]
+    }
+  ],
+  "data_sha256": {
+    "mock-2026-01.json": "9de34d14a73c3b8e6f398d99ce5ebd34fa7e7b2cb4858452ff8ccf93481731ef",
+    "mock-2026-02.json": "a29edf32cb0499d76d8e0d09eb4159188917f0e0d2cf1d40d83fa430c46750ad",
+    "mock-2026-03.json": "badc2f91cb5de56aefa9d99eaf123370f8618d39b8c0f51c0ced9225dcd4d68e",
+    "mock-2026-04.json": "6cf43912953c37f4df1fecfca1fe99e7a4d6049b01991ffef275474f40d415ec",
+    "mock-2026-05.json": "92222ac405088cd4f5c41011030a4606b892b26bbac0a73f91afcff24192d81a",
+    "questions.json": "6bc77c22453633277742459416df8c683fc90534bc5d11e22d99330c529808a1",
+    "theme-2026-toyotomi.json": "a6bd8068b4136036e5f89b5dbbd941c6e54c9bbbab15fd39464c8ee690450110",
+    "themes.json": "326cbec8ae5c056ad9337770ad754335a1641fffdedc06ebf1bae92961cd26d5"
+  },
+  "limits": [
+    "典拠URLは存在・形式のみ。到達性・史実・全誤答の網羅的検証はしていない。",
+    "正答の意味的重複、間接的ヒント、解説の意味整合は自動判定していない。",
+    "難易度は各採用版の定性的推定。"
+  ]
+}

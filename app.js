@@ -77,6 +77,7 @@ function stageOf(questionId) {
 // 公開テーマ問題（__themeId を持つ）は theme.js 側の別進捗を参照する。
 // 過去問は従来どおり stageOf(question.id)。
 function stageOfQuestion(question) {
+  if (question.__mockId) return stageOfMockQuestion(question);
   if (question.__themeId && typeof stageOfThemeQuestion === "function") {
     return stageOfThemeQuestion(question);
   }
@@ -84,6 +85,7 @@ function stageOfQuestion(question) {
 }
 
 function questionMetaLabel(question) {
+  if (question.__mockId) return mockQuestionLabel(question);
   if (question.__themeId && typeof themeQuestionLabel === "function") {
     return themeQuestionLabel(question);
   }
@@ -125,6 +127,7 @@ async function init() {
     document.getElementById("reset-progress-btn").addEventListener("click", resetProgress);
     installExamLongPressReset();
     document.addEventListener("keydown", handleQuizKeydown);
+    if (typeof updateMockPanel === "function") updateMockPanel();
   } catch (error) {
     showStartError(error.message || "問題データを読み込めませんでした。");
     document.getElementById("start-btn").disabled = true;
@@ -216,8 +219,8 @@ function resetExamProgress(examNumber) {
 }
 
 // 歴検の pointer events による長押しを、checkbox と隣接 label に移植。
-function installExamLongPressReset() {
-  const area = document.getElementById("exam-options");
+function installExamLongPressReset(areaId = "exam-options", resetRound = resetExamProgress) {
+  const area = document.getElementById(areaId);
   if (!area) return;
   let timer = null;
   let pressedLabel = null;
@@ -259,7 +262,7 @@ function installExamLongPressReset() {
       clearPress();
       suppressClickLabel = label;
       try { navigator.vibrate?.(40); } catch (_) { /* 非対応環境でも続行 */ }
-      resetExamProgress(Number(input.value));
+      resetRound(Number(input.value));
     }, EXAM_LONG_PRESS_MS);
   });
 
@@ -706,6 +709,7 @@ function applyResult(questionId, isCorrect) {
 // 結果表示
 // =======================
 function showResult() {
+  if (document.getElementById("screen-quiz").hidden) return;
   showScreen("screen-result");
 
   let correctCount = 0;
@@ -721,14 +725,16 @@ function showResult() {
     }
 
     // 公開テーマ問題はテーマ専用の進捗にだけ反映し、過去問の進捗には一切加算しない
-    const change = question.__themeId && typeof applyThemeResult === "function"
+    const change = question.__mockId ? applyMockResult(question, isCorrect) : question.__themeId && typeof applyThemeResult === "function"
       ? applyThemeResult(question.__themeId, question.id, isCorrect)
       : applyResult(question.id, isCorrect);
 
     return { question, answer, isCorrect, ...change };
   });
 
-  if (state.session.kind === "theme") {
+  if (state.session.kind === "mock") {
+    finishMockSession();
+  } else if (state.session.kind === "theme") {
     if (typeof finishThemeSession === "function") {
       finishThemeSession(state.session.themeId);
     }
@@ -905,8 +911,8 @@ function buildAiConsultPrompt(question, answer) {
   const lines = [
     "京都・観光文化検定試験（京都検定）2級の次の問題を解説してください。",
     "",
-    question.__themeId ? "【出典】" : "【回次・問題番号】",
-    question.__themeId
+    (question.__mockId || question.__themeId) ? "【出典】" : "【回次・問題番号】",
+    question.__mockId ? `${questionMetaLabel(question)}（非公式オリジナル模試）` : question.__themeId
       ? `${questionMetaLabel(question)}（過去問ではない公開テーマ対策の独自問題）`
       : `第${question.exam}回 第${question.questionNumber}問`,
     "",
@@ -1048,6 +1054,7 @@ function backToStart() {
   if (typeof renderThemeSection === "function") {
     renderThemeSection();
   }
+  if (typeof updateMockPanel === "function") updateMockPanel();
   showScreen("screen-start");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }

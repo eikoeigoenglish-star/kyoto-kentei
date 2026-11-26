@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=4.4.0">
+  <link rel="stylesheet" href="style.css?v=5.0.0">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKL5WQJBSB"></script>
   <script>
@@ -33,7 +33,7 @@
       <p class="app-eyebrow">KYOTO KENTEI — GRADE 2</p>
       <h1 class="app-title">京都検定2級<span class="app-title-sub">四択トレーニング</span></h1>
       <p class="app-lead" id="app-lead">1100問すべてをトリプルにするのが目標です。</p>
-    </header>
+      <p class="map-nav theme-nav" id="theme-nav" hidden><a href="?mode=theme-2026-toyotomi">公開テーマの対策はこちら →</a></p>
     </header>
 
     <!-- 学習モード切替。active な公開テーマがあるときだけ theme.js が表示する -->
@@ -44,6 +44,8 @@
         <span class="mode-tab-sub">第12〜27回・1100問</span>
       </button>
     </nav>
+
+    <p id="mock-load-warning" class="alert" role="alert" hidden>2026年度模試の読み込みに失敗しました。再読み込みしてください。過去問・公開テーマはそのまま利用できます。</p>
 
     <!-- ===== 過去問トレーニング モード ===== -->
     <div id="mode-past" class="mode-panel" role="tabpanel" aria-labelledby="mode-tab-past">
@@ -259,6 +261,7 @@
     <!-- ===== 公開テーマ モード（期間限定・過去問とは別管理）=====
          theme.js が data/themes.json の active なテーマごとにパネルを描画する -->
     <div id="theme-area" class="theme-area" hidden></div>
+    <div id="mode-mock-2026" class="mode-panel" role="tabpanel" aria-labelledby="mode-tab-mock-2026" hidden></div>
   </main>
 
   <!-- ========================= -->
@@ -319,7 +322,8 @@
   </footer>
 </div>
 
-<script src="app.js?v=4.4.0"></script>
-<script src="theme.js?v=4.4.0"></script>
+<script src="app.js?v=5.0.0"></script>
+<script src="mock.js?v=5.0.0"></script>
+<script src="theme.js?v=5.0.0"></script>
 </body>
 </html>

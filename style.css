@@ -1287,3 +1287,27 @@ body {
   border-color: var(--gold-bright);
   box-shadow: inset 0 0 0 1px var(--gold-bright), 0 0 0 3px rgba(201, 168, 106, 0.18);
 }
+
+/* 第3モード：青磁色。既存の金茶・朱と区別する。 */
+:root { --mock-accent: #96c8b9; --mock-line: rgba(150,200,185,.5); --mock-dim: rgba(150,200,185,.13); }
+.mode-tab-mock.is-active { color: var(--mock-accent); border-color: var(--mock-line); background: var(--mock-dim); }
+.mock-panel { border-color: var(--mock-line); box-shadow: inset 4px 0 0 var(--mock-accent), var(--shadow); }
+#mode-mock-2026 .chip-group input:checked:not(:disabled) + .chip { color: var(--mock-accent); border-color: var(--mock-line); background: var(--mock-dim); }
+#mode-mock-2026 .mastery-headline { color: var(--mock-accent); }
+#mock-round-options .chip { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; touch-action: pan-y pinch-zoom; }
+#mock-round-options .chip.is-long-pressing { border-color: var(--mock-accent); box-shadow: inset 0 0 0 1px var(--mock-accent), 0 0 0 3px var(--mock-dim); }
+.mock-chip-sub { font-size: .72rem; color: inherit; opacity: .85; }
+.mock-themes { margin-top: 14px; font-size: .85rem; color: var(--text-dim); }
+.mock-themes summary { cursor: pointer; }
+.mock-theme-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.mock-theme-row button { flex-shrink: 0; }
+.mock-start { background: var(--mock-accent); border-color: var(--mock-line); color: var(--bg); }
+.mock-start:hover { background: #b3d9cc; }
+@media (max-width: 480px) {
+  .mode-tab { padding: 6px 3px; min-width: 0; }
+  .mode-tab-main { font-size: .79rem; letter-spacing: 0; overflow-wrap: anywhere; }
+  .mode-tab-sub { font-size: .65rem; overflow-wrap: anywhere; }
+  .mock-theme-row { align-items: flex-start; }
+}
+
+#mode-mock-2026 .mock-chip-sub { margin-left: 6px; }

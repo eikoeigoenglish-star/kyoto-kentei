@@ -1,0 +1,38 @@
+PASS load five v1.2 sets / 500 questions
+PASS saved mock data validation
+PASS initial mock pool
+PASS mock direct URL resolution
+PASS mode panels exclusive
+PASS round filter
+PASS range filter and unavailable count disabled
+PASS stage filter and count fallback
+PASS start selected question and shuffle choices
+PASS mock metadata label
+PASS AI consult prompt source
+PASS judge correct and incorrect
+PASS correct advances double to triple
+PASS only mock key changed
+PASS triple capped
+PASS wrong resets to miss
+PASS cancel preserves mock record
+PASS round reset only touches round 1
+PASS global mock reset isolates other modes
+PASS zero candidates disables start
+PASS past panel restores
+PASS past stage transition
+PASS past save only past key
+PASS theme result still isolated
+PASS theme save only theme key
+PASS 3-second timer installed
+PASS short press cancels timer
+PASS pointer movement cancels timer
+PASS long press calls only selected round and suppresses click
+PASS full 100-question mock round in order
+PASS shared result handler stores mock scores without altering past/theme
+模試の読み込みに失敗 Error: 第1回 HTTP 404
+    at mock.js:12:26
+    at async Promise.all (index 0)
+    at async initMocks (mock.js:10:18)
+    at async /tmp/kyotoimpl/kyoto-kentei-main/tools/test_mock.js:52:43
+PASS failed mock load disables mock mode
+TOTAL 32

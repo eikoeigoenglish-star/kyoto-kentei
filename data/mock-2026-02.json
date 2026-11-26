@@ -1,0 +1,3115 @@
+{
+  "meta": {
+    "id": "mock-2026-02",
+    "title": "2026年度模試 第2回",
+    "grade": 2,
+    "year": 2026,
+    "type": "mock",
+    "sourceType": "mock",
+    "mock": 2,
+    "questionCount": 100,
+    "status": "editor-adopted",
+    "specialThemes": [
+      "琵琶湖疏水と京都の近代化",
+      "京都の伝統産業"
+    ],
+    "version": "1.2",
+    "difficultyNote": "Claude差分評価（変更26問）と前回評価（74問）を継承。最終修正後の難度再評価なし。実測正答率なし。",
+    "reviewNote": "v1.1の差分26問は照合後全一致。v1.2の設問・選択肢変更は再独立査読なし。正答支持資料の検索記述を含む。全誤答・公式テキスト照合は未実施。"
+  },
+  "questions": [
+    {
+      "id": "mock-2026-02-001",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 1,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "歴史・史跡",
+      "subcategory": "古代・都城",
+      "difficulty": "標準",
+      "question": "離宮八幡宮の社名の由来となった、嵯峨天皇が大山崎に営んだ離宮はどれか。",
+      "choices": [
+        "淳和院",
+        "嵯峨院",
+        "冷然院",
+        "河陽離宮"
+      ],
+      "correct": "河陽離宮",
+      "explanation": "離宮八幡宮の創建伝承では、嵯峨天皇の河陽離宮に宇佐八幡神を勧請したとされる。",
+      "sourceUrls": [
+        "https://www.town.oyamazaki.kyoto.jp/annai/kikakuzaisei/kannkou/kanko/machinokankosupotto/907.html",
+        "https://www.town.oyamazaki.kyoto.jp/kanko/kankospot/2510.html"
+      ],
+      "tags": [
+        "離宮八幡宮"
+      ],
+      "difficultyTarget": "難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回の検索資料で正答を支持"
+    },
+    {
+      "id": "mock-2026-02-002",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 2,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "歴史・史跡",
+      "subcategory": "古代・都城",
+      "difficulty": "標準",
+      "question": "『延喜式』の規定では、平安京の西市に人々が集まるのは毎月何日からか。",
+      "choices": [
+        "16日",
+        "6日",
+        "11日",
+        "21日"
+      ],
+      "correct": "16日",
+      "explanation": "東市は月の前半（15日まで）、西市は16日以降に開かれる規定であった。",
+      "sourceUrls": [
+        "https://kotobank.jp/word/%E8%A5%BF%E5%B8%82-1043135",
+        "https://sitereports.nabunken.go.jp/files/attach/48/48635/129705_1_%E3%83%AA%E3%83%BC%E3%83%95%E3%83%AC%E3%83%83%E3%83%88%E4%BA%AC%E9%83%BD.pdf"
+      ],
+      "tags": [
+        "平安京",
+        "西市",
+        "延喜式"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "Claude差分資料確認を継承"
+    },
+    {
+      "id": "mock-2026-02-003",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 3,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "歴史・史跡",
+      "subcategory": "王朝",
+      "difficulty": "基本",
+      "question": "平安時代に京中の治安維持にあたった検非違使庁の長官の職名はどれか。",
+      "choices": [
+        "佐",
+        "尉",
+        "志",
+        "別当"
+      ],
+      "correct": "別当",
+      "explanation": "検非違使庁の長官は別当で、その下に佐・尉・志などが置かれた。",
+      "sourceUrls": [
+        "https://www.city.kyoto.lg.jp/kamigyo/cmsfiles/contents/0000083/83714/sisekibunnka46.pdf"
+      ],
+      "tags": [
+        "平安時代の警察"
+      ],
+      "difficultyTarget": "難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-004",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 4,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "歴史・史跡",
+      "subcategory": "中世",
+      "difficulty": "標準",
+      "question": "後白河上皇が院政の拠点とし、木曾義仲が襲撃した東山七条の院御所はどれか。",
+      "choices": [
+        "六条殿",
+        "鳥羽殿",
+        "白河殿",
+        "法住寺殿"
+      ],
+      "correct": "法住寺殿",
+      "explanation": "法住寺殿は後白河上皇の院御所。寿永2年に義仲がここを攻撃した。",
+      "sourceUrls": [
+        "https://ja.kyoto.travel/kiyomori/detail/029.html"
+      ],
+      "tags": [
+        "法住寺殿"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-005",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 5,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "歴史・史跡",
+      "subcategory": "中世",
+      "difficulty": "基本",
+      "question": "足利義満が西園寺家の山荘を譲り受け、出家後に造営した邸宅はどれか。",
+      "choices": [
+        "室町殿",
+        "東山殿",
+        "北山殿",
+        "小川殿"
+      ],
+      "correct": "北山殿",
+      "explanation": "義満は北山の山荘を造営し、没後その地に鹿苑寺が成立した。",
+      "sourceUrls": [
+        "https://www.pref.kyoto.jp/isan/kinkaku.html"
+      ],
+      "tags": [
+        "北山文化"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-006",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 6,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "歴史・史跡",
+      "subcategory": "戦国",
+      "difficulty": "基本",
+      "question": "本能寺の変の際、妙覚寺から二条御所へ移り、明智方に包囲されて自害した人物は誰か。",
+      "choices": [
+        "織田信包",
+        "織田信忠",
+        "織田信雄",
+        "織田信孝"
+      ],
+      "correct": "織田信忠",
+      "explanation": "信忠は信長の嫡男で、二条御所で自害した。信雄・信孝は信忠の弟。",
+      "sourceUrls": [
+        "https://www2.ntj.jac.go.jp/dglib/contents/learn/edc18/ehon/yomoyama/y2/b.html"
+      ],
+      "tags": [
+        "本能寺の変"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-007",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 7,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "歴史・史跡",
+      "subcategory": "近世",
+      "difficulty": "標準",
+      "question": "江戸幕府の役職で、京都所司代の指揮下に置かれ、禁裏の警衛・会計や公家の監察を担当したのはどれか。",
+      "choices": [
+        "議奏",
+        "院別当",
+        "禁裏付",
+        "武家伝奏"
+      ],
+      "correct": "禁裏付",
+      "explanation": "禁裏付は幕府側の役人で、御所の警衛・会計等に携わった。武家伝奏は朝廷側の役職である。",
+      "sourceUrls": [
+        "https://kotobank.jp/word/%E7%A6%81%E8%A3%8F%E4%BB%98-481961"
+      ],
+      "tags": [
+        "江戸幕府"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "今回の検索資料で正答を支持"
+    },
+    {
+      "id": "mock-2026-02-008",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 8,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "歴史・史跡",
+      "subcategory": "近世",
+      "difficulty": "標準",
+      "question": "京都に生まれ、藤原惺窩に学び、江戸幕府の儒官として林家の基礎を築いたのは誰か。",
+      "choices": [
+        "木下順庵",
+        "林羅山",
+        "松永尺五",
+        "伊藤仁斎"
+      ],
+      "correct": "林羅山",
+      "explanation": "林羅山は藤原惺窩に学んだ儒学者で、徳川家に仕えた。",
+      "sourceUrls": [
+        "https://www.ndl.go.jp/jikihitsu/part1/s1_1",
+        "https://japanknowledge.com/introduction/keyword.html?i=803"
+      ],
+      "tags": [
+        "江戸時代の京都"
+      ],
+      "difficultyTarget": "難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-009",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 9,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "歴史・史跡",
+      "subcategory": "幕末",
+      "difficulty": "標準",
+      "question": "薩長同盟に関わった薩摩藩家老で、京都の御花畑屋敷がその会談地の有力候補とされる人物は誰か。",
+      "choices": [
+        "小松帯刀",
+        "西郷隆盛",
+        "大久保利通",
+        "島津久光"
+      ],
+      "correct": "小松帯刀",
+      "explanation": "小松帯刀の京都屋敷は薩長同盟の会談場所とされる。",
+      "sourceUrls": [
+        "https://saigo200-150.com/places/201/"
+      ],
+      "tags": [
+        "薩長同盟"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-010",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 10,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "歴史・史跡",
+      "subcategory": "近現代",
+      "difficulty": "標準",
+      "question": "明治初年、京都府知府事に任じられ、京都府が歴代知事の初代に位置づける人物は誰か。",
+      "choices": [
+        "大森鍾一",
+        "北垣国道",
+        "長谷信篤",
+        "槇村正直"
+      ],
+      "correct": "長谷信篤",
+      "explanation": "京都府の歴代知事一覧では長谷信篤を初代、槇村正直を第2代、北垣国道を第3代としている。",
+      "sourceUrls": [
+        "https://www.pref.kyoto.jp/hisho/11100003.html"
+      ],
+      "tags": [
+        "京都府"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "Claude資料確認（旧版）"
+    },
+    {
+      "id": "mock-2026-02-011",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 11,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "神社・寺院",
+      "subcategory": "神社",
+      "difficulty": "標準",
+      "question": "上御霊神社の八所御霊のうち、奈良時代に井上内親王とともに皇位をめぐる事件に連座した皇太子は誰か。",
+      "choices": [
+        "伊予親王",
+        "他戸親王",
+        "安積親王",
+        "早良親王"
+      ],
+      "correct": "他戸親王",
+      "explanation": "他戸親王は光仁天皇と井上内親王の子。上御霊神社の祭神の一柱である。",
+      "sourceUrls": [
+        "https://www.kyototuu.jp/Jinjya/KamigoryouJinjya.html",
+        "https://www.genealogy.jp/ja/kyoto-kamigoryo-jinja-kamigyo/",
+        "https://ja.kyoto.travel/tourism/single02.php?category_id=9&tourism_id=64"
+      ],
+      "tags": [
+        "上御霊神社"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-012",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 12,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "神社・寺院",
+      "subcategory": "神社",
+      "difficulty": "難",
+      "question": "城陽市の水度神社の重要文化財の本殿は、正面に千鳥破風を備える。柱間の数と建築形式の組合せはどれか。",
+      "choices": [
+        "一間社流造",
+        "三間社流造",
+        "一間社春日造",
+        "三間社切妻造"
+      ],
+      "correct": "一間社流造",
+      "explanation": "文安5年建立の本殿は一間社流造で、正面に千鳥破風が付く。",
+      "sourceUrls": [
+        "https://kunishitei.bunka.go.jp/heritage/detail/102/1987",
+        "https://ja.wikipedia.org/wiki/%E6%B0%B4%E5%BA%A6%E7%A5%9E%E7%A4%BE"
+      ],
+      "tags": [
+        "水度神社"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "Claude資料確認（旧版）"
+    },
+    {
+      "id": "mock-2026-02-013",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 13,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "神社・寺院",
+      "subcategory": "神社",
+      "difficulty": "標準",
+      "question": "白峯神宮の境内社・地主社に祀られ、蹴鞠をはじめとする球技の守護神として信仰される神はどれか。",
+      "choices": [
+        "白雲大明神",
+        "天手力男命",
+        "猿田彦大神",
+        "精大明神"
+      ],
+      "correct": "精大明神",
+      "explanation": "白峯神宮では地主社の精大明神が球技の守護神として信仰される。",
+      "sourceUrls": [
+        "https://shiraminejingu.or.jp/guide-shrine/"
+      ],
+      "tags": [
+        "白峯神宮"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-014",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 14,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "神社・寺院",
+      "subcategory": "神社",
+      "difficulty": "標準",
+      "question": "石清水八幡宮の創建に関わった僧・行教が八幡神を勧請した地はどこか。",
+      "choices": [
+        "筥崎",
+        "宇佐",
+        "香椎",
+        "宗像"
+      ],
+      "correct": "宇佐",
+      "explanation": "行教は宇佐八幡宮の神託を受け、男山に八幡神を勧請したとされる。",
+      "sourceUrls": [
+        "https://iwashimizu.or.jp/about/index.html"
+      ],
+      "tags": [
+        "石清水八幡宮"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-015",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 15,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "神社・寺院",
+      "subcategory": "寺院",
+      "difficulty": "標準",
+      "question": "広隆寺の創建に深く関わった秦氏の人物で、聖徳太子から仏像を賜ったと伝わるのは誰か。",
+      "choices": [
+        "秦酒公",
+        "秦伊侶具",
+        "秦河勝",
+        "秦大津父"
+      ],
+      "correct": "秦河勝",
+      "explanation": "広隆寺の創建伝承では秦河勝が聖徳太子から仏像を受けたとされる。",
+      "sourceUrls": [
+        "https://jodoshuzensho.jp/daijiten/index.php/広隆寺",
+        "https://ja.kyoto.travel/tourism/single01.php?category_id=7&tourism_id=284"
+      ],
+      "tags": [
+        "広隆寺"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-016",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 16,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "神社・寺院",
+      "subcategory": "寺院",
+      "difficulty": "標準",
+      "question": "大原の三千院で、毎年5月30日に歴代天皇の御回向である御懴法講が営まれる建物はどれか。",
+      "choices": [
+        "往生極楽院",
+        "宸殿",
+        "客殿",
+        "円融蔵"
+      ],
+      "correct": "宸殿",
+      "explanation": "三千院の公式境内案内では、御懴法講は宸殿で営まれると説明されている。",
+      "sourceUrls": [
+        "https://www.sanzenin.or.jp/guide/ground"
+      ],
+      "tags": [
+        "三千院"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "資料の検索結果で支持"
+    },
+    {
+      "id": "mock-2026-02-017",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 17,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "神社・寺院",
+      "subcategory": "寺院",
+      "difficulty": "標準",
+      "question": "大覚寺の大沢池は、唐のある湖を模して造られたと伝わる。その湖はどれか。",
+      "choices": [
+        "西湖",
+        "太湖",
+        "洞庭湖",
+        "鄱陽湖"
+      ],
+      "correct": "洞庭湖",
+      "explanation": "大覚寺では大沢池を洞庭湖にちなみ庭湖とも呼ぶ。",
+      "sourceUrls": [
+        "https://www.daikakuji.or.jp/oosawanoike/"
+      ],
+      "tags": [
+        "大覚寺",
+        "大沢池"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "今回の検索資料で正答を支持"
+    },
+    {
+      "id": "mock-2026-02-018",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 18,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "神社・寺院",
+      "subcategory": "寺院",
+      "difficulty": "標準",
+      "question": "妙心寺を開くにあたり、離宮を禅寺とした上皇は誰か。",
+      "choices": [
+        "花園上皇",
+        "後宇多上皇",
+        "伏見上皇",
+        "後醍醐上皇"
+      ],
+      "correct": "花園上皇",
+      "explanation": "花園上皇が関山慧玄を迎えて開いたのが妙心寺である。",
+      "sourceUrls": [
+        "https://www.myoshinji.or.jp/about_zen/kyougi/history"
+      ],
+      "tags": [
+        "妙心寺"
+      ],
+      "difficultyTarget": "難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-019",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 19,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "神社・寺院",
+      "subcategory": "寺院",
+      "difficulty": "基本",
+      "question": "明末の僧・隠元隆琦が弟子を伴って日本に渡来したのは、次のどの年か。",
+      "choices": [
+        "慶安4年（1651）",
+        "明暦3年（1657）",
+        "承応3年（1654）",
+        "万治3年（1660）"
+      ],
+      "correct": "承応3年（1654）",
+      "explanation": "隠元は1654年に来朝した。",
+      "sourceUrls": [
+        "https://www.obakusan.or.jp/about/"
+      ],
+      "tags": [
+        "萬福寺"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "editor-updated-after-delta",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-020",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 20,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "神社・寺院",
+      "subcategory": "寺院",
+      "difficulty": "標準",
+      "question": "長岡京市の光明寺で、総門から御影堂へ向かう緩やかな石段の表参道は何と呼ばれるか。",
+      "choices": [
+        "女人坂",
+        "男坂",
+        "稚児坂",
+        "清滝坂"
+      ],
+      "correct": "女人坂",
+      "explanation": "光明寺の公式案内は表参道を女人坂と呼ぶ。薬医門を中心とするもみじ参道とは別の道である。",
+      "sourceUrls": [
+        "https://komyo-ji.or.jp/koyo"
+      ],
+      "tags": [
+        "光明寺（長岡京市）"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "今回の検索資料で正答を支持"
+    },
+    {
+      "id": "mock-2026-02-021",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 21,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "建築・庭園・美術",
+      "subcategory": "建築",
+      "difficulty": "やや難",
+      "question": "西本願寺の北能舞台では、天正9年（1581）と記された張り紙が見つかったとされる。それはどの部材の裏にあったか。",
+      "choices": [
+        "鬼瓦",
+        "斗栱",
+        "蟇股",
+        "懸魚"
+      ],
+      "correct": "懸魚",
+      "explanation": "懸魚は破風付近の装飾部材。本願寺の案内では、その裏の張り紙に1581年の記載があったとされる。銘をもって制作年が確定したとは断定しない。",
+      "sourceUrls": [
+        "https://www.hongwanji.kyoto/see/shoin.html",
+        "https://www.hongwanji.or.jp/850800houyou/news/002060.html"
+      ],
+      "tags": [
+        "西本願寺"
+      ],
+      "difficultyTarget": "難",
+      "reviewStatus": "editor-updated-after-delta",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-022",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 22,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "建築・庭園・美術",
+      "subcategory": "建築",
+      "difficulty": "基本",
+      "question": "知恩院の国宝・御影堂が寛永16年（1639）に再建された際の徳川将軍は誰か。",
+      "choices": [
+        "徳川家綱",
+        "徳川家光",
+        "徳川秀忠",
+        "徳川綱吉"
+      ],
+      "correct": "徳川家光",
+      "explanation": "御影堂の再建は家光の時代。三門の建立は秀忠の時代である。",
+      "sourceUrls": [
+        "https://www.chion-in.or.jp/highlight/building/mieido.php",
+        "https://ja.kyoto.travel/tourism/single01.php?category_id=7&tourism_id=418"
+      ],
+      "tags": [
+        "知恩院"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-023",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 23,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "建築・庭園・美術",
+      "subcategory": "建築",
+      "difficulty": "標準",
+      "question": "京都府庁旧本館は、松室重光が設計を担当した西洋建築である。竣工した年はどれか。",
+      "choices": [
+        "明治27年（1894）",
+        "明治42年（1909）",
+        "明治37年（1904）",
+        "大正3年（1914）"
+      ],
+      "correct": "明治37年（1904）",
+      "explanation": "京都府庁旧本館は1904年竣工の煉瓦造の庁舎である。",
+      "sourceUrls": [
+        "https://www.pref.kyoto.jp/qhonkan/",
+        "https://kunishitei.bunka.go.jp/heritage/detail/102/00003894"
+      ],
+      "tags": [
+        "京都府庁旧本館"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-024",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 24,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "建築・庭園・美術",
+      "subcategory": "庭園",
+      "difficulty": "標準",
+      "question": "妙心寺塔頭の春光院に伝わる南蛮寺の遺鐘とされる銅鐘には、西暦1577年の銘とある修道会の紋章がある。その修道会はどれか。",
+      "choices": [
+        "フランシスコ会",
+        "イエズス会",
+        "ドミニコ会",
+        "アウグスティノ会"
+      ],
+      "correct": "イエズス会",
+      "explanation": "春光院の銅鐘には1577年とIHSの紋章が鋳出され、南蛮寺の鐘であったと推定されている。",
+      "sourceUrls": [
+        "https://ja.kyoto.travel/tourism/single02.php?category_id=9&tourism_id=343"
+      ],
+      "tags": [
+        "春光院",
+        "南蛮寺鐘"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "今回の検索資料で正答を支持"
+    },
+    {
+      "id": "mock-2026-02-025",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 25,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "建築・庭園・美術",
+      "subcategory": "庭園",
+      "difficulty": "標準",
+      "question": "一乗寺の詩仙堂について、石川丈山が自らの住居に付けた名称はどれか。",
+      "choices": [
+        "無鄰菴",
+        "聚遠亭",
+        "聴竹居",
+        "凹凸窠"
+      ],
+      "correct": "凹凸窠",
+      "explanation": "詩仙堂の正式な名称は凹凸窠で、起伏のある地形にちなむ。",
+      "sourceUrls": [
+        "https://kyoto-shisendo.net/about/"
+      ],
+      "tags": [
+        "詩仙堂"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-026",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 26,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "建築・庭園・美術",
+      "subcategory": "庭園",
+      "difficulty": "標準",
+      "question": "東福寺本坊庭園で、苔と方形の敷石を交互に配した市松模様の庭があるのは方丈のどの側か。",
+      "choices": [
+        "西側",
+        "東側",
+        "北側",
+        "南側"
+      ],
+      "correct": "北側",
+      "explanation": "重森三玲の作庭した本坊庭園の北庭に市松模様がある。",
+      "sourceUrls": [
+        "https://tofukuji.jp/guide/honbo/"
+      ],
+      "tags": [
+        "東福寺・本坊庭園"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-027",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 27,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "建築・庭園・美術",
+      "subcategory": "絵画・書",
+      "difficulty": "標準",
+      "question": "狩野永徳筆とされる上杉本洛中洛外図屏風を上杉謙信に贈ったと伝わる戦国武将は誰か。",
+      "choices": [
+        "足利義昭",
+        "豊臣秀吉",
+        "織田信長",
+        "武田信玄"
+      ],
+      "correct": "織田信長",
+      "explanation": "上杉本は織田信長から上杉謙信に贈られたと伝わる。",
+      "sourceUrls": [
+        "https://www.denkoku-no-mori.yonezawa.yamagata.jp/rakuchyu_rakugai.htm"
+      ],
+      "tags": [
+        "狩野永徳"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-028",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 28,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "建築・庭園・美術",
+      "subcategory": "絵画・書",
+      "difficulty": "標準",
+      "question": "三蹟の一人・藤原行成の書風をその子孫が継承した流派はどれか。",
+      "choices": [
+        "法性寺流",
+        "持明院流",
+        "世尊寺流",
+        "青蓮院流"
+      ],
+      "correct": "世尊寺流",
+      "explanation": "藤原行成の子孫に伝わった書の流派が世尊寺流である。",
+      "sourceUrls": [
+        "https://www.tnm.jp/modules/r_free_page/index.php?id=1816"
+      ],
+      "tags": [
+        "藤原行成"
+      ],
+      "difficultyTarget": "難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-029",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 29,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "建築・庭園・美術",
+      "subcategory": "仏像・文化財",
+      "difficulty": "標準",
+      "question": "六波羅蜜寺に伝わる、口から六体の小仏が出る姿の鎌倉時代の僧の像を制作したとされる運慶の子は誰か。",
+      "choices": [
+        "康弁",
+        "湛慶",
+        "康運",
+        "康勝"
+      ],
+      "correct": "康勝",
+      "explanation": "この空也上人立像は康勝の制作とされる。",
+      "sourceUrls": [
+        "https://japan-heritage.bunka.go.jp/ja/culturalproperties/result/4328/"
+      ],
+      "tags": [
+        "六波羅蜜寺"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-030",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 30,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "建築・庭園・美術",
+      "subcategory": "仏像・文化財",
+      "difficulty": "やや難",
+      "question": "千本釈迦堂（大報恩寺）に伝わる六観音像を制作した鎌倉時代の仏師は誰か。",
+      "choices": [
+        "快慶",
+        "湛慶",
+        "定慶",
+        "康慶"
+      ],
+      "correct": "定慶",
+      "explanation": "六観音像は定慶の制作とされる。六体は六道に対応する観音像である。",
+      "sourceUrls": [
+        "https://cb.bunka.go.jp/ja/contents/a294f792-81b7-4d60-82ad-e7e709b9e97d"
+      ],
+      "tags": [
+        "千本釈迦堂"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-031",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 31,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "伝統文化・芸能",
+      "subcategory": "工芸",
+      "difficulty": "標準",
+      "question": "京くみひもの準備工程で、小枠に巻かれた糸をさらに枠に巻き取り、組み上げに必要な長さと本数を整える作業はどれか。",
+      "choices": [
+        "糸割り",
+        "房付け",
+        "経尺",
+        "湯のし"
+      ],
+      "correct": "経尺",
+      "explanation": "経尺は糸の長さと本数を整える工程。糸割りは必要な糸を重量によって分ける工程であり、区別される。",
+      "sourceUrls": [
+        "https://kougeihin.jp/craft/0304/",
+        "https://www.pref.kyoto.jp/sangyo-sien/index.html",
+        "https://jtco.or.jp/kougeihinkan/?act=detail&c=15&id=200&p=26"
+      ],
+      "tags": [
+        "京くみひも"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "editor-updated-after-delta",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-032",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 32,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "伝統文化・芸能",
+      "subcategory": "文学",
+      "difficulty": "基本",
+      "question": "『徒然草』の作者・兼好法師が晩年に草庵を結んだとされる、京都市右京区の丘陵はどれか。",
+      "choices": [
+        "衣笠山",
+        "小倉山",
+        "船岡山",
+        "双ヶ岡"
+      ],
+      "correct": "双ヶ岡",
+      "explanation": "京都市の史跡資料では、兼好は双ヶ丘二ノ丘の西麓に草庵を結んだとされる。墓は後に長泉寺へ移されたという伝承がある。",
+      "sourceUrls": [
+        "https://www2.city.kyoto.lg.jp/somu/rekishi/fm/ishibumi/html/uk025.html",
+        "https://ci.nii.ac.jp/ncid/BA72160924?l=ja&linkamp=button-search"
+      ],
+      "tags": [
+        "徒然草・双ヶ岡"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "editor-updated-after-delta",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-033",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 33,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "伝統文化・芸能",
+      "subcategory": "茶道",
+      "difficulty": "基本",
+      "question": "表千家の象徴となる茶室で、利休ゆかりの名を継承するものはどれか。",
+      "choices": [
+        "又隠",
+        "今日庵",
+        "官休庵",
+        "不審菴"
+      ],
+      "correct": "不審菴",
+      "explanation": "不審菴は表千家、今日庵は裏千家、官休庵は武者小路千家にゆかりの茶室である。",
+      "sourceUrls": [
+        "https://www.omotesenke.jp/fushinan/"
+      ],
+      "tags": [
+        "表千家"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-034",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 34,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "伝統文化・芸能",
+      "subcategory": "茶道・千家十職",
+      "difficulty": "標準",
+      "question": "千家十職の黒田正玄家が主として手がける茶道具はどれか。",
+      "choices": [
+        "釜",
+        "茶碗",
+        "仕覆",
+        "柄杓"
+      ],
+      "correct": "柄杓",
+      "explanation": "黒田正玄家は竹細工・柄杓師。釜師、袋師、茶碗師とは役割が異なる。",
+      "sourceUrls": [
+        "https://www.omotesenke.jp/list6/list6-3/list6-3-3/"
+      ],
+      "tags": [
+        "千家十職"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-035",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 35,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "伝統文化・芸能",
+      "subcategory": "華道・芸道",
+      "difficulty": "標準",
+      "question": "例年5月に全日本煎茶道連盟の全国煎茶道大会が催される宇治市の寺院はどれか。",
+      "choices": [
+        "興聖寺",
+        "萬福寺",
+        "恵心院",
+        "三室戸寺"
+      ],
+      "correct": "萬福寺",
+      "explanation": "全国煎茶道大会は萬福寺で行われている。",
+      "sourceUrls": [
+        "https://www.city.uji.kyoto.jp/site/murasaki/4929.html",
+        "https://www.kyoto-kankou.or.jp/event/1515"
+      ],
+      "tags": [
+        "煎茶文化"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-036",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 36,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "伝統文化・芸能",
+      "subcategory": "能",
+      "difficulty": "やや難",
+      "question": "能「嵐山」で、後シテとして現れ、子守・勝手の二神と一体であることを明かす神はどれか。",
+      "choices": [
+        "松尾明神",
+        "春日明神",
+        "蔵王権現",
+        "住吉明神"
+      ],
+      "correct": "蔵王権現",
+      "explanation": "後場では子守・勝手の神に続いて蔵王権現が現れる。三神が一体であることが語られる。",
+      "sourceUrls": [
+        "https://www.tessen.org/dictionary/plays/arashiyama/"
+      ],
+      "tags": [
+        "能「嵐山」"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "今回の検索資料で正答を支持"
+    },
+    {
+      "id": "mock-2026-02-037",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 37,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "伝統文化・芸能",
+      "subcategory": "狂言",
+      "difficulty": "標準",
+      "question": "千本ゑんま堂大念仏狂言が、壬生狂言や嵯峨大念仏狂言と区別される上演上の特色はどれか。",
+      "choices": [
+        "面を一切用いない",
+        "舞台を屋内に限定する",
+        "台詞を伴う",
+        "楽器を一切用いない"
+      ],
+      "correct": "台詞を伴う",
+      "explanation": "千本ゑんま堂大念仏狂言は台詞のある有言劇として知られる。",
+      "sourceUrls": [
+        "https://jodoshuzensho.jp/daijiten/index.php/えんま堂大念仏",
+        "https://www.kyobunka.or.jp/event/3480.php",
+        "https://ja.kyoto.travel/tourism/single02.php?category_id=9&tourism_id=51"
+      ],
+      "tags": [
+        "千本ゑんま堂大念仏狂言"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-038",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 38,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "伝統文化・芸能",
+      "subcategory": "歌舞伎",
+      "difficulty": "基本",
+      "question": "京都の四条大橋東詰に立つ出雲阿国像は、どの芸能の創始にちなむものか。",
+      "choices": [
+        "風流踊り",
+        "念仏狂言",
+        "かぶき踊り",
+        "京舞"
+      ],
+      "correct": "かぶき踊り",
+      "explanation": "出雲阿国はかぶき踊りを演じた人物として知られる。",
+      "sourceUrls": [
+        "https://www2.city.kyoto.lg.jp/somu/rekishi/fm/ishibumi/html/hi022.html",
+        "https://dantai.hitomachi-kyoto.jp/detail/2399"
+      ],
+      "tags": [
+        "歌舞伎・出雲阿国"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-039",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 39,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "伝統文化・芸能",
+      "subcategory": "花街",
+      "difficulty": "標準",
+      "question": "花街・先斗町の紋章に用いられる鳥はどれか。",
+      "choices": [
+        "鴛鴦",
+        "千鳥",
+        "燕",
+        "鶴"
+      ],
+      "correct": "千鳥",
+      "explanation": "先斗町の紋章は千鳥。花街の意匠にも用いられる。",
+      "sourceUrls": [
+        "https://www.gion.or.jp/tenkei/%E7%B4%8B%E7%AB%A0%E7%89%A9%E8%AA%9E"
+      ],
+      "tags": [
+        "先斗町"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-040",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 40,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "伝統文化・芸能",
+      "subcategory": "花街",
+      "difficulty": "標準",
+      "question": "花街・祇園東の秋の舞踊公演「祇園をどり」が行われる会場はどれか。",
+      "choices": [
+        "祇園会館",
+        "京都芸術劇場春秋座",
+        "南座",
+        "先斗町歌舞練場"
+      ],
+      "correct": "祇園会館",
+      "explanation": "祇園をどりは祇園会館で催される。",
+      "sourceUrls": [
+        "https://gionhigashi.com/gion.html"
+      ],
+      "tags": [
+        "祇園東"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-041",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 41,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "祭礼・行事",
+      "subcategory": "祭礼・年中行事",
+      "difficulty": "基本",
+      "question": "東寺の弘法市のうち、年の最初に行われる初弘法の日付はどれか。",
+      "choices": [
+        "1月15日",
+        "1月28日",
+        "1月25日",
+        "1月21日"
+      ],
+      "correct": "1月21日",
+      "explanation": "弘法大師の月命日にちなみ、毎月21日に弘法市が開かれる。",
+      "sourceUrls": [
+        "https://www.kyoto-kankou.or.jp/event/1444"
+      ],
+      "tags": [
+        "東寺"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-042",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 42,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "祭礼・行事",
+      "subcategory": "祭礼・年中行事",
+      "difficulty": "基本",
+      "question": "壬生寺の節分会で、参拝者が願い事などを記して奉納する素焼きの器はどれか。",
+      "choices": [
+        "土瓶",
+        "炮烙",
+        "瓦杯",
+        "土鈴"
+      ],
+      "correct": "炮烙",
+      "explanation": "壬生寺の節分会では炮烙を奉納する習わしがあり、狂言の演目とも関わる。",
+      "sourceUrls": [
+        "https://mail.mibudera.com/setsubune.html"
+      ],
+      "tags": [
+        "壬生寺節分会"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-043",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 43,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "祭礼・行事",
+      "subcategory": "祭礼・年中行事",
+      "difficulty": "やや難",
+      "question": "上賀茂神社の賀茂競馬で、右方の乗尻が着用する舞楽の装束はどれか。",
+      "choices": [
+        "蘭陵王",
+        "打毬",
+        "納曽利",
+        "狛鉾"
+      ],
+      "correct": "狛鉾",
+      "explanation": "賀茂競馬では左方が打毬、右方が狛鉾の装束を着用する。",
+      "sourceUrls": [
+        "https://www.kamigamojinja.jp/hitotose/kamosai/",
+        "https://tabi.jtb.or.jp/res/260152-"
+      ],
+      "tags": [
+        "上賀茂神社・競馬会神事"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "Claude資料確認（旧版）"
+    },
+    {
+      "id": "mock-2026-02-044",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 44,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "祭礼・行事",
+      "subcategory": "祭礼・年中行事",
+      "difficulty": "基本",
+      "question": "葵祭で行列の牛車などとともに進む、傘に花を飾り付けた調度を何というか。",
+      "choices": [
+        "御簾",
+        "蓋",
+        "風流傘",
+        "唐傘"
+      ],
+      "correct": "風流傘",
+      "explanation": "葵祭には花を飾った風流傘が供奉する。",
+      "sourceUrls": [
+        "https://plus.kyoto.travel/entry/aoimatsuri"
+      ],
+      "tags": [
+        "葵祭"
+      ],
+      "difficultyTarget": "難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "資料の検索結果で支持"
+    },
+    {
+      "id": "mock-2026-02-045",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 45,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "祭礼・行事",
+      "subcategory": "祭礼・年中行事",
+      "difficulty": "基本",
+      "question": "祇園祭の前祭で、長刀鉾の稚児が四条通の巡行開始に際して太刀で切るものはどれか。",
+      "choices": [
+        "幣帛",
+        "注連縄",
+        "榊",
+        "御幣"
+      ],
+      "correct": "注連縄",
+      "explanation": "注連縄切りは長刀鉾の稚児が巡行の開始を告げる儀式である。",
+      "sourceUrls": [
+        "https://www.gion.or.jp/gionmatsuri/"
+      ],
+      "tags": [
+        "祇園祭"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-046",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 46,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "祭礼・行事",
+      "subcategory": "祭礼・年中行事",
+      "difficulty": "標準",
+      "question": "祇園祭の神幸祭で、八坂神社から出た神輿が還幸祭まで留まる場所はどれか。",
+      "choices": [
+        "少将井御旅所",
+        "四条御旅所",
+        "又旅社",
+        "大政所御旅所"
+      ],
+      "correct": "四条御旅所",
+      "explanation": "現在の神幸祭の神輿は四条御旅所に渡御する。大政所・少将井は歴史上の御旅所。",
+      "sourceUrls": [
+        "https://www.gionmatsuri.or.jp/schedule/",
+        "https://www.gion.or.jp/gionmatsuri/"
+      ],
+      "tags": [
+        "八坂神社・神幸祭"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-047",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 47,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "祭礼・行事",
+      "subcategory": "祭礼・年中行事",
+      "difficulty": "標準",
+      "question": "お盆に先祖の精霊を迎える千本ゑんま堂で、撞く鐘は何と呼ばれるか。",
+      "choices": [
+        "送り鐘",
+        "時の鐘",
+        "除夜の鐘",
+        "迎え鐘"
+      ],
+      "correct": "迎え鐘",
+      "explanation": "千本ゑんま堂には精霊迎えのために撞く迎え鐘がある。",
+      "sourceUrls": [
+        "https://ja.kyoto.travel/tourism/single02.php?category_id=9&tourism_id=51",
+        "https://www.keihan.co.jp/navi/kyoto_tsu/tsu202208.html"
+      ],
+      "tags": [
+        "千本ゑんま堂"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "Claude資料確認（旧版）"
+    },
+    {
+      "id": "mock-2026-02-048",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 48,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "祭礼・行事",
+      "subcategory": "祭礼・年中行事",
+      "difficulty": "基本",
+      "question": "時代祭の行列を編成・運営する、京都の各学区などを基盤とした市民組織はどれか。",
+      "choices": [
+        "京都市観光協会",
+        "平安講社",
+        "京都古文化保存協会",
+        "祇園祭山鉾連合会"
+      ],
+      "correct": "平安講社",
+      "explanation": "時代祭は市民組織の平安講社によって支えられている。",
+      "sourceUrls": [
+        "https://www.heianjingu.com/party/program/index.html"
+      ],
+      "tags": [
+        "鞍馬の火祭"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-049",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 49,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "祭礼・行事",
+      "subcategory": "祭礼・年中行事",
+      "difficulty": "基本",
+      "question": "10月22日の鞍馬の火祭が行われる、鞍馬の鎮守社はどれか。",
+      "choices": [
+        "貴船神社",
+        "岩屋神社",
+        "大田神社",
+        "由岐神社"
+      ],
+      "correct": "由岐神社",
+      "explanation": "鞍馬の火祭は由岐神社の例祭に伴う行事である。",
+      "sourceUrls": [
+        "https://www.yukijinjya.jp/about/index.html"
+      ],
+      "tags": [
+        "時代祭"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-050",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 50,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "祭礼・行事",
+      "subcategory": "祭礼・年中行事",
+      "difficulty": "標準",
+      "question": "知恩院の除夜の鐘では、一人が親綱を持ち、残りの僧侶が子綱を引く。撞き手は合計何人か。",
+      "choices": [
+        "17人",
+        "13人",
+        "25人",
+        "21人"
+      ],
+      "correct": "17人",
+      "explanation": "知恩院の除夜の鐘は17人の僧侶が親綱・子綱を使って撞く。",
+      "sourceUrls": [
+        "https://www.chion-in.or.jp/special/joya"
+      ],
+      "tags": [
+        "知恩院"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "Claude資料確認（旧版）"
+    },
+    {
+      "id": "mock-2026-02-051",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 51,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "生活文化",
+      "subcategory": "食",
+      "difficulty": "標準",
+      "question": "京都市が賀茂なすの種子保存のため栽培を委託している地区はどれか。",
+      "choices": [
+        "上賀茂",
+        "西賀茂",
+        "鷹峯",
+        "大宮"
+      ],
+      "correct": "上賀茂",
+      "explanation": "賀茂なすは上賀茂・西賀茂周辺で栽培されてきた。京都市は種子の保存を上賀茂の農家に委託している。",
+      "sourceUrls": [
+        "https://kyotovegestyle.city.kyoto.lg.jp/yasai/389.html",
+        "https://www.city.kyoto.lg.jp/sankan/page/0000029293.html"
+      ],
+      "tags": [
+        "賀茂なす"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "Claude差分資料確認を継承"
+    },
+    {
+      "id": "mock-2026-02-052",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 52,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "生活文化",
+      "subcategory": "食",
+      "difficulty": "標準",
+      "question": "すぐき漬けの製造で、樽に漬け込んだすぐきを加温して乳酸発酵を促す工程はどれか。",
+      "choices": [
+        "室入れ",
+        "本漬け",
+        "天秤押し",
+        "下漬け"
+      ],
+      "correct": "室入れ",
+      "explanation": "室入れでは温度を管理して発酵を促し、すぐき漬け特有の酸味を生む。",
+      "sourceUrls": [
+        "https://www.maff.go.jp/j/keikaku/syokubunka/k_ryouri/search_menu/menu/sugukizuke_kyoto.html"
+      ],
+      "tags": [
+        "京漬物・すぐき"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-053",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 53,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "生活文化",
+      "subcategory": "食",
+      "difficulty": "標準",
+      "question": "貴船の川床の始まりは、川の中に床几を置いて客に涼を楽しませたこととされる。それはどの時代か。",
+      "choices": [
+        "大正時代",
+        "江戸時代後期",
+        "明治時代",
+        "昭和時代後期"
+      ],
+      "correct": "大正時代",
+      "explanation": "大正時代に川の中に床几を置く形で始まったとされ、昭和に入って料理旅館が川床で料理を提供する形が広がった。",
+      "sourceUrls": [
+        "https://tabi.jtb.or.jp/res/260166-"
+      ],
+      "tags": [
+        "貴船",
+        "川床"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "editor-updated-after-delta",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-054",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 54,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "生活文化",
+      "subcategory": "食",
+      "difficulty": "基本",
+      "question": "宇治茶の栽培で、茶樹の上に覆いを設けて日光を遮る方法が特に用いられる茶の組合せはどれか。",
+      "choices": [
+        "釜炒り茶・番茶",
+        "煎茶・番茶",
+        "焙じ茶・玄米茶",
+        "玉露・碾茶"
+      ],
+      "correct": "玉露・碾茶",
+      "explanation": "玉露と碾茶は覆下栽培が代表的な茶である。碾茶は抹茶の原料となる。",
+      "sourceUrls": [
+        "https://www.city.uji.kyoto.jp/site/uji-cha/16203.html",
+        "https://www.pref.kyoto.jp/chaken/mame_shade.html"
+      ],
+      "tags": [
+        "宇治茶"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-055",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 55,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "生活文化",
+      "subcategory": "習俗・伝説",
+      "difficulty": "基本",
+      "question": "京町家のかまどの近くに貼られることのある、愛宕神社の火伏せの護符に記される文字はどれか。",
+      "choices": [
+        "家内安全",
+        "火迺要慎",
+        "五穀豊穣",
+        "商売繁盛"
+      ],
+      "correct": "火迺要慎",
+      "explanation": "愛宕神社の護符には火迺要慎（ひのようじん）と記され、火の用心を促す。",
+      "sourceUrls": [
+        "https://kyoto-bunkaisan.city.kyoto.lg.jp/kyotoisan/nintei-theme/hinoshinkou.html"
+      ],
+      "tags": [
+        "京町家",
+        "愛宕神社"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-056",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 56,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "生活文化",
+      "subcategory": "習俗・伝説",
+      "difficulty": "標準",
+      "question": "京都で正月に飲まれる大福茶の伝承で、平安時代に疫病の流行時に茶を施したとされる僧は誰か。",
+      "choices": [
+        "良源",
+        "行基",
+        "空也",
+        "叡尊"
+      ],
+      "correct": "空也",
+      "explanation": "大福茶の由来の一つとして空也が病者に茶を施したという伝承がある。",
+      "sourceUrls": [
+        "https://ja.kyoto.travel/event/single.php?event_id=3866"
+      ],
+      "tags": [
+        "大福茶"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-057",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 57,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "生活文化",
+      "subcategory": "習俗・伝説",
+      "difficulty": "標準",
+      "question": "十三まいりで知られる嵐山の法輪寺で、虚空蔵菩薩を自ら彫って本尊としたと伝わる空海の弟子は誰か。",
+      "choices": [
+        "実恵",
+        "真済",
+        "真雅",
+        "道昌"
+      ],
+      "correct": "道昌",
+      "explanation": "道昌は空海の弟子で、法輪寺に虚空蔵菩薩を安置したと伝わる。",
+      "sourceUrls": [
+        "https://ja.kyoto.travel/tourism/single02.php?category_id=9&tourism_id=393",
+        "https://ja.kyoto.travel/tourism/single01.php?category_id=7&tourism_id=463",
+        "https://www.mlit.go.jp/tagengo-db/common/001557566.pdf"
+      ],
+      "tags": [
+        "法輪寺",
+        "十三まいり"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "Claude差分資料確認を継承"
+    },
+    {
+      "id": "mock-2026-02-058",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 58,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "生活文化",
+      "subcategory": "習俗・伝説",
+      "difficulty": "基本",
+      "question": "六道珍皇寺周辺は、平安京の葬送地へ向かう入口であったとされる。その葬送地はどれか。",
+      "choices": [
+        "鳥辺野",
+        "蓮台野",
+        "化野",
+        "紫野"
+      ],
+      "correct": "鳥辺野",
+      "explanation": "六道の辻は東山の葬送地・鳥辺野への入口にあたるとされる。",
+      "sourceUrls": [
+        "https://ja.kyoto.travel/tourism/single01.php?category_id=7&tourism_id=492"
+      ],
+      "tags": [
+        "六道珍皇寺"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-059",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 59,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "生活文化",
+      "subcategory": "京ことば",
+      "difficulty": "基本",
+      "question": "京ことばで「オコウコ」と呼ばれるものはどれか。",
+      "choices": [
+        "漬物",
+        "煮豆",
+        "干菓子",
+        "焼き麩"
+      ],
+      "correct": "漬物",
+      "explanation": "おこうこは香の物、すなわち漬物を意味する。",
+      "sourceUrls": [
+        "https://kotobank.jp/word/%E5%BE%A1%E9%A6%99%E9%A6%99-451981",
+        "https://kotobadosue.asutelu.com/kotoba/?layer=%E5%BE%A1%E6%89%80"
+      ],
+      "tags": [
+        "京ことば"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-060",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 60,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "生活文化",
+      "subcategory": "京ことば",
+      "difficulty": "標準",
+      "question": "京ことばで「こごめ」と言われた際、求められている動作はどれか。",
+      "choices": [
+        "かがむ",
+        "片づける",
+        "立ち上がる",
+        "急ぐ"
+      ],
+      "correct": "かがむ",
+      "explanation": "京都の語彙を紹介する資料には、こごめはかがむという意味で掲載されている。",
+      "sourceUrls": [
+        "https://daimonji.info/kyokotoba/index.html"
+      ],
+      "tags": [
+        "京ことば"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "資料の検索結果で支持"
+    },
+    {
+      "id": "mock-2026-02-061",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 61,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "地理・観光・時事",
+      "subcategory": "地名",
+      "difficulty": "標準",
+      "question": "嵐電の帷子ノ辻駅周辺の地名の由来に関わると伝えられる、嵯峨天皇の皇后は誰か。",
+      "choices": [
+        "藤原順子",
+        "藤原薬子",
+        "橘嘉智子",
+        "藤原明子"
+      ],
+      "correct": "橘嘉智子",
+      "explanation": "橘嘉智子は檀林皇后として知られ、帷子ノ辻には皇后に関する伝承がある。",
+      "sourceUrls": [
+        "https://www.keihan.co.jp/navi/kyoto_tsu/tsu202302.html",
+        "https://www2.city.kyoto.lg.jp/somu/rekishi/fm/ishibumi/html/uk020.html"
+      ],
+      "tags": [
+        "帷子ノ辻"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-062",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 62,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "地理・観光・時事",
+      "subcategory": "地名",
+      "difficulty": "基本",
+      "question": "京都市内の今出川通を東へ進み、白川通を越えて参道の東端に至るとある寺院はどれか。",
+      "choices": [
+        "南禅寺",
+        "慈照寺",
+        "真如堂",
+        "法然院"
+      ],
+      "correct": "慈照寺",
+      "explanation": "今出川通の東端には慈照寺（銀閣寺）がある。",
+      "sourceUrls": [
+        "https://www.kyototuu.jp/Temple/GinkakuJi.html"
+      ],
+      "tags": [
+        "今出川通"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "editor-updated-after-delta",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-063",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 63,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "地理・観光・時事",
+      "subcategory": "地名",
+      "difficulty": "標準",
+      "question": "宇治橋の上流側の張り出しで、豊臣秀吉が茶の湯の水を汲ませたと伝わる場所は何と呼ばれるか。",
+      "choices": [
+        "四の間",
+        "三の間",
+        "一の間",
+        "二の間"
+      ],
+      "correct": "三の間",
+      "explanation": "宇治橋の三の間は橋上の張り出し。茶の湯の水を汲む儀礼にゆかりがある。",
+      "sourceUrls": [
+        "https://www.city.uji.kyoto.jp/soshiki/3/7508.html"
+      ],
+      "tags": [
+        "宇治橋"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-064",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 64,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "地理・観光・時事",
+      "subcategory": "自然",
+      "difficulty": "標準",
+      "question": "京都市西京区の小塩山に陵墓が治定されている平安時代初期の天皇は誰か。",
+      "choices": [
+        "嵯峨天皇",
+        "仁明天皇",
+        "文徳天皇",
+        "淳和天皇"
+      ],
+      "correct": "淳和天皇",
+      "explanation": "淳和天皇の大原野西嶺上陵は小塩山の山頂付近にある。",
+      "sourceUrls": [
+        "https://www.kunaicho.go.jp/visit/ryobo/053.html"
+      ],
+      "tags": [
+        "京都の山・小塩山"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-065",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 65,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "地理・観光・時事",
+      "subcategory": "自然",
+      "difficulty": "標準",
+      "question": "木津川・宇治川・桂川が合流する付近で、木津川と宇治川の間に伸びる桜並木のある堤はどれか。",
+      "choices": [
+        "巨椋池干拓堤防",
+        "太閤堤",
+        "御土居",
+        "背割堤"
+      ],
+      "correct": "背割堤",
+      "explanation": "背割堤は木津川と宇治川を分ける堤で、桜並木で知られる。",
+      "sourceUrls": [
+        "https://www.kyoto-kankou.or.jp/info_search/399",
+        "https://tabi.jtb.or.jp/res/260171-"
+      ],
+      "tags": [
+        "背割堤"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-066",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 66,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "地理・観光・時事",
+      "subcategory": "交通・観光・時事",
+      "difficulty": "標準",
+      "question": "鴨長明が「石川や」と詠み始める『新古今和歌集』の歌で、固有の名を挙げて詠んだ小川はどれか。",
+      "choices": [
+        "瀬見の小川",
+        "御手洗川",
+        "奈良の小川",
+        "音羽川"
+      ],
+      "correct": "瀬見の小川",
+      "explanation": "鴨長明の歌では「せみの小河」と詠まれている。瀬見の小川は泉川との異称・流路関係も指摘されるため、歌中の名称を問う。",
+      "sourceUrls": [
+        "https://japanknowledge.com/introduction/keyword.html?i=590",
+        "https://crd.ndl.go.jp/reference/entry/reference/show?id=1000353644&page=ref_view"
+      ],
+      "tags": [
+        "糺の森"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "editor-updated-after-delta",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-067",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 67,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "地理・観光・時事",
+      "subcategory": "交通・観光・時事",
+      "difficulty": "標準",
+      "question": "石清水八幡宮への参拝に利用されるケーブルカーの山上側の駅名はどれか。",
+      "choices": [
+        "ケーブル八幡宮山上駅",
+        "ケーブル男山駅",
+        "ケーブル石清水駅",
+        "ケーブル八幡宮口駅"
+      ],
+      "correct": "ケーブル八幡宮山上駅",
+      "explanation": "京阪の石清水八幡宮参道ケーブルは八幡宮口と八幡宮山上を結ぶ。",
+      "sourceUrls": [
+        "https://www.keihan.co.jp/traffic/time-fare/iwashimizu.html"
+      ],
+      "tags": [
+        "京都府の交通・八幡市"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "Claude資料確認（旧版）"
+    },
+    {
+      "id": "mock-2026-02-068",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 68,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "地理・観光・時事",
+      "subcategory": "交通・観光・時事",
+      "difficulty": "標準",
+      "question": "2026年に創立70周年を迎えた京都市交響楽団と、リニューアル開館10周年を迎え共同記念事業を実施した文化施設はどれか。",
+      "choices": [
+        "京都コンサートホール",
+        "京都府立府民ホールアルティ",
+        "京都芸術劇場春秋座",
+        "ロームシアター京都"
+      ],
+      "correct": "ロームシアター京都",
+      "explanation": "ロームシアター京都と京都市交響楽団は、それぞれ10周年と70周年を記念して共同事業を行った。",
+      "sourceUrls": [
+        "https://ja.kyoto.travel/times/night/article/single.php?id=591",
+        "https://www.kyoto-symphony.jp/news/index.php?id=3056&start=30",
+        "https://rohmtheatrekyoto.jp/wp-content/uploads/bdd2cc010563d2889cfb704a60d23944.pdf"
+      ],
+      "tags": [
+        "京都市交響楽団・ロームシアター京都"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "Claude資料確認（旧版）"
+    },
+    {
+      "id": "mock-2026-02-069",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 69,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "地理・観光・時事",
+      "subcategory": "交通・観光・時事",
+      "difficulty": "標準",
+      "question": "2026年に開館10周年を迎えた京都鉄道博物館には、大正3年（1914）竣工の重要文化財・梅小路機関車庫がある。その主要な構造はどれか。",
+      "choices": [
+        "鉄筋コンクリート造",
+        "木造",
+        "煉瓦造",
+        "石造"
+      ],
+      "correct": "鉄筋コンクリート造",
+      "explanation": "梅小路機関車庫は大正期の鉄筋コンクリート造扇形車庫である。",
+      "sourceUrls": [
+        "https://kunishitei.bunka.go.jp/heritage/detail/102/00003895",
+        "https://www.kyotorailwaymuseum.jp/news/",
+        "https://ja.kyoto.travel/tourism/single01.php?category_id=11&tourism_id=850",
+        "https://tabi-mag.jp/ky0641/"
+      ],
+      "tags": [
+        "京都鉄道博物館"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "Claude資料確認（旧版）"
+    },
+    {
+      "id": "mock-2026-02-070",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 70,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "地理・観光・時事",
+      "subcategory": "交通・観光・時事",
+      "difficulty": "標準",
+      "question": "長岡京市の楊谷寺で、弘法大師にまつわる伝承があり眼病平癒の霊水として知られる水はどれか。",
+      "choices": [
+        "桐原水",
+        "独鈷水",
+        "醒ヶ井",
+        "染井"
+      ],
+      "correct": "独鈷水",
+      "explanation": "楊谷寺の独鈷水は眼病平癒の信仰で知られる。",
+      "sourceUrls": [
+        "https://www.yanagidani.jp/history",
+        "https://www.kyoto-kankou.or.jp/info_search/8242"
+      ],
+      "tags": [
+        "楊谷寺（柳谷観音）"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持"
+    },
+    {
+      "id": "mock-2026-02-071",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 71,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "豊臣家と京都",
+      "subcategory": "特集",
+      "difficulty": "やや難",
+      "question": "本能寺の変後、秀吉が妙顕寺の旧寺地に築いた城は、京都のどの付近にあったか。",
+      "choices": [
+        "四条堀川付近",
+        "二条西洞院付近",
+        "五条油小路付近",
+        "三条河原町付近"
+      ],
+      "correct": "二条西洞院付近",
+      "explanation": "妙顕寺は室町後期に二条西洞院に移った。秀吉は寺を移転させ、その旧地に城を築いた。所在地は厳密な城郭境界ではなく、付近を問う。",
+      "sourceUrls": [
+        "https://shikaishodo-myokenji.org/about/history/",
+        "https://ja.kyoto.travel/tourism/single02.php?category_id=9&tourism_id=83"
+      ],
+      "tags": [
+        "豊臣秀吉",
+        "妙顕寺"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "editor-updated-after-delta",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "theme": "豊臣家と京都"
+    },
+    {
+      "id": "mock-2026-02-072",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 72,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "豊臣家と京都",
+      "subcategory": "特集",
+      "difficulty": "難",
+      "question": "天正16年（1588）の聚楽第行幸で詠まれた和歌を、京都国立博物館所蔵の「聚楽行幸和歌巻」に書写した江戸時代初期の能書家がいる。その能書家は誰か。",
+      "choices": [
+        "近衛信尹",
+        "烏丸光広",
+        "松花堂昭乗",
+        "本阿弥光悦"
+      ],
+      "correct": "烏丸光広",
+      "explanation": "文化遺産オンラインに掲載される聚楽行幸和歌巻は、烏丸光広の書写による。",
+      "sourceUrls": [
+        "https://online.bunka.go.jp/heritages/detail/509934",
+        "https://www.kyohaku.go.jp/old/jp/theme/floor1_3/f1_3_koremade/syoseki_20141015.html"
+      ],
+      "tags": [
+        "聚楽第行幸",
+        "書跡"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "theme": "豊臣家と京都"
+    },
+    {
+      "id": "mock-2026-02-073",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 73,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "豊臣家と京都",
+      "subcategory": "特集",
+      "difficulty": "やや難",
+      "question": "高台寺塔頭・圓徳院の北庭は伏見城の庭園に由来する。後に小堀遠州が手を加えたとされるこの庭を設計した庭師は誰か。",
+      "choices": [
+        "賢庭",
+        "相阿弥",
+        "金森宗和",
+        "夢窓疎石"
+      ],
+      "correct": "賢庭",
+      "explanation": "京都市公式観光情報では、北庭を設計した庭師を賢庭とし、後に遠州が手を加えたと説明している。",
+      "sourceUrls": [
+        "https://ja.kyoto.travel/event/single.php?event_id=2221",
+        "https://tabi-mag.jp/ky0312"
+      ],
+      "tags": [
+        "圓徳院"
+      ],
+      "difficultyTarget": "難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回の検索資料で正答を支持",
+      "theme": "豊臣家と京都"
+    },
+    {
+      "id": "mock-2026-02-074",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 74,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "豊臣家と京都",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "秀吉の御土居の遺構で、国の史跡指定地9か所以外にも土塁が一部残る。京都市北区の公園でその一つとして知られるのはどれか。",
+      "choices": [
+        "大宮交通公園",
+        "船岡山公園",
+        "鴨川公園",
+        "宝が池公園"
+      ],
+      "correct": "大宮交通公園",
+      "explanation": "京都市は史跡指定地のほか、大宮交通公園や北野中学校にも遺構が残ると紹介している。",
+      "sourceUrls": [
+        "https://www.city.kyoto.lg.jp/bunshi/page/0000005643.html",
+        "https://sitereports.nabunken.go.jp/files/attach/48/48105/106579_1_%E3%83%AA%E3%83%BC%E3%83%95%E3%83%AC%E3%83%83%E3%83%88%E4%BA%AC%E9%83%BD.pdf"
+      ],
+      "tags": [
+        "御土居"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "Claude差分資料確認を継承",
+      "theme": "豊臣家と京都"
+    },
+    {
+      "id": "mock-2026-02-075",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 75,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "豊臣家と京都",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "秀吉が庭園整備に力を注いだ醍醐寺三宝院の表書院で、畳を上げると能舞台になる部屋はどれか。",
+      "choices": [
+        "下段の間",
+        "上段の間",
+        "中段の間",
+        "勅使の間"
+      ],
+      "correct": "下段の間",
+      "explanation": "下段の間は揚舞台の間とも呼ばれ、畳を上げて能などを演じる構造になっている。上段・中段は一段高く、鑑賞に用いられた。",
+      "sourceUrls": [
+        "https://daigoji-guide.jp/contents/content02/",
+        "https://www.daigoji.or.jp/wedding/sanboin.html"
+      ],
+      "tags": [
+        "醍醐寺三宝院"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "editor-updated-after-delta",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "theme": "豊臣家と京都"
+    },
+    {
+      "id": "mock-2026-02-076",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 76,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "豊臣家と京都",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "高台寺で、開山堂と霊屋の間の斜面に沿う屋根付きの廊下はどれか。",
+      "choices": [
+        "龍吟廊",
+        "臥龍廊",
+        "回廊",
+        "渡月廊"
+      ],
+      "correct": "臥龍廊",
+      "explanation": "臥龍廊は斜面に沿った階段状の廊下である。",
+      "sourceUrls": [
+        "https://ja.kyoto.travel/tourism/single01.php?category_id=7&tourism_id=281"
+      ],
+      "tags": [
+        "高台寺"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回の検索資料で正答を支持",
+      "theme": "豊臣家と京都"
+    },
+    {
+      "id": "mock-2026-02-077",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 77,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "豊臣家と京都",
+      "subcategory": "特集",
+      "difficulty": "やや難",
+      "question": "秀吉の聚楽第から移されたという伝承がある西本願寺の飛雲閣。その一層に後から増築された茶室の名はどれか。",
+      "choices": [
+        "八景の間",
+        "招賢殿",
+        "舟入の間",
+        "憶昔"
+      ],
+      "correct": "憶昔",
+      "explanation": "飛雲閣の一層には招賢殿、八景の間、舟入の間があり、茶室の憶昔が後に加えられた。聚楽第からの移築は伝承であり確定していない。",
+      "sourceUrls": [
+        "https://www.hongwanji.kyoto/see/hiunkaku.html",
+        "https://kunishitei.bunka.go.jp/heritage/detail/102/1815",
+        "https://www.hongwanji.kyoto/see/pdf/hiunkaku_09.pdf"
+      ],
+      "tags": [
+        "西本願寺飛雲閣"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "Claude差分資料確認を継承",
+      "theme": "豊臣家と京都"
+    },
+    {
+      "id": "mock-2026-02-078",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 78,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "豊臣家と京都",
+      "subcategory": "特集",
+      "difficulty": "基本",
+      "question": "豊臣秀頼の援助で再建された東寺金堂の本尊に伴う脇侍の組合せはどれか。",
+      "choices": [
+        "梵天・帝釈天",
+        "日光菩薩・月光菩薩",
+        "観音菩薩・勢至菩薩",
+        "文殊菩薩・普賢菩薩"
+      ],
+      "correct": "日光菩薩・月光菩薩",
+      "explanation": "東寺金堂の薬師三尊像は薬師如来を中心とし、日光・月光菩薩を伴う。",
+      "sourceUrls": [
+        "https://toji.or.jp/guide/kondo/"
+      ],
+      "tags": [
+        "東寺金堂"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回の検索資料で正答を支持",
+      "theme": "豊臣家と京都"
+    },
+    {
+      "id": "mock-2026-02-079",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 79,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "豊臣家と京都",
+      "subcategory": "特集",
+      "difficulty": "基本",
+      "question": "慶長3年（1598）、伏見城で秀吉が没した後、豊臣政権の五大老のうち伏見城を政務の拠点とした人物は誰か。",
+      "choices": [
+        "上杉景勝",
+        "前田利家",
+        "徳川家康",
+        "毛利輝元"
+      ],
+      "correct": "徳川家康",
+      "explanation": "秀吉の没後、家康は伏見城を政務の拠点とした。",
+      "sourceUrls": [
+        "https://www2.city.kyoto.lg.jp/somu/rekishi/fm/nenpyou/htmlsheet/toshi20.html"
+      ],
+      "tags": [
+        "木幡山伏見城"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回の検索資料で正答を支持",
+      "theme": "豊臣家と京都"
+    },
+    {
+      "id": "mock-2026-02-080",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 80,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "豊臣家と京都",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "秀吉が伏見の城下町整備のため改修した宇治川の水運で、大坂方面との船の往来の拠点となった港はどれか。",
+      "choices": [
+        "伏見港",
+        "木津浜",
+        "淀津",
+        "山崎津"
+      ],
+      "correct": "伏見港",
+      "explanation": "伏見港は伏見と大坂を結ぶ水運の拠点として発展した。",
+      "sourceUrls": [
+        "https://www.pref.kyoto.jp/kowanji/fushimikou.html"
+      ],
+      "tags": [
+        "豊臣秀吉"
+      ],
+      "difficultyTarget": "標準",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回の検索資料で正答を支持",
+      "theme": "豊臣家と京都"
+    },
+    {
+      "id": "mock-2026-02-081",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 81,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集①",
+      "subcategory": "特集",
+      "difficulty": "やや難",
+      "question": "明治23年（1890）4月9日に行われた第一琵琶湖疏水の竣工式の会場はどこか。",
+      "choices": [
+        "蹴上船溜",
+        "南禅寺船溜",
+        "夷川船溜",
+        "伏見船溜"
+      ],
+      "correct": "夷川船溜",
+      "explanation": "京都市上下水道局と日本遺産の解説は、この日の竣工式を夷川船溜で行ったとしている。他の通水関連行事とは区別する。",
+      "sourceUrls": [
+        "https://www.city.kyoto.lg.jp/suido/page/0000007477.html",
+        "https://biwakososui.city.kyoto.lg.jp/episode/detail/7"
+      ],
+      "tags": [
+        "琵琶湖疏水"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "editor-updated-after-delta",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "theme": "琵琶湖疏水と京都の近代化"
+    },
+    {
+      "id": "mock-2026-02-082",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 82,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集①",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "琵琶湖疏水建設を推進した京都府知事は、第何代の京都府知事であったか。",
+      "choices": [
+        "第5代",
+        "第4代",
+        "第2代",
+        "第3代"
+      ],
+      "correct": "第3代",
+      "explanation": "疏水計画を推進した北垣国道は第3代京都府知事だった。",
+      "sourceUrls": [
+        "https://www.city.kyoto.lg.jp/suido/page/0000007153.html",
+        "https://www.pref.kyoto.jp/hisho/11100003.html"
+      ],
+      "tags": [
+        "琵琶湖疏水"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回の検索資料で正答を支持",
+      "theme": "琵琶湖疏水と京都の近代化"
+    },
+    {
+      "id": "mock-2026-02-083",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 83,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集①",
+      "subcategory": "特集",
+      "difficulty": "やや難",
+      "question": "琵琶湖疏水の工事を担当した田邉朔郎が水力発電の視察に渡米したとき、同行した京都の実業家は誰か。",
+      "choices": [
+        "大倉喜八郎",
+        "高木文平",
+        "山本覚馬",
+        "田中源太郎"
+      ],
+      "correct": "高木文平",
+      "explanation": "田邉朔郎と高木文平はアメリカで水力利用を視察した。",
+      "sourceUrls": [
+        "https://www.biwakososui.city.kyoto.lg.jp/story/",
+        "https://ethw.org/Milestones:Keage_Power_Station:_The_Japan%E2%80%99s_First_Commercial_Hydroelectric_Plant,_1890-1897"
+      ],
+      "tags": [
+        "琵琶湖疏水"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "Claude資料確認（旧版）",
+      "theme": "琵琶湖疏水と京都の近代化"
+    },
+    {
+      "id": "mock-2026-02-084",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 84,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集①",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "第一琵琶湖疏水の第一トンネルの大津側入口に掲げられた扁額「気象萬千」を揮毫した人物は誰か。",
+      "choices": [
+        "松方正義",
+        "井上馨",
+        "伊藤博文",
+        "山県有朋"
+      ],
+      "correct": "伊藤博文",
+      "explanation": "第一トンネル入口の扁額は伊藤博文の揮毫。疏水の扁額には明治期の政治家によるものが多い。",
+      "sourceUrls": [
+        "https://biwakososui.city.kyoto.lg.jp/place/detail/40"
+      ],
+      "tags": [
+        "琵琶湖疏水"
+      ],
+      "difficultyTarget": "難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "資料の検索結果で支持",
+      "theme": "琵琶湖疏水と京都の近代化"
+    },
+    {
+      "id": "mock-2026-02-085",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 85,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集①",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "第二琵琶湖疏水の水路が、第一疏水と異なり全線にわたって採用した構造はどれか。",
+      "choices": [
+        "開渠",
+        "高架水路",
+        "閘門式運河",
+        "トンネル・暗渠"
+      ],
+      "correct": "トンネル・暗渠",
+      "explanation": "上水道水源としての水質を守るため、第二疏水は全線がトンネルまたは暗渠として設計された。",
+      "sourceUrls": [
+        "https://www.city.kyoto.lg.jp/suido/page/0000007495.html"
+      ],
+      "tags": [
+        "第二疏水"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "資料の検索結果で支持",
+      "theme": "琵琶湖疏水と京都の近代化"
+    },
+    {
+      "id": "mock-2026-02-086",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 86,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集①",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "琵琶湖疏水の第一・第二・第三トンネルとともに2025年に国宝指定された二つの関連施設の組合せはどれか。",
+      "choices": [
+        "インクライン・南禅寺水路閣",
+        "大津閘門・大津堰門",
+        "蹴上浄水場・旧御所水道ポンプ室",
+        "扇ダム・疏水記念館"
+      ],
+      "correct": "インクライン・南禅寺水路閣",
+      "explanation": "2025年の国宝指定は三つの隧道とインクライン、南禅寺水路閣の五施設が対象。",
+      "sourceUrls": [
+        "https://www.pref.shiga.lg.jp/sa00/24767.html",
+        "https://www.city.kyoto.lg.jp/suido/cmsfiles/contents/0000344/344878/biwaososui_seishikishitei_20250827.pdf"
+      ],
+      "tags": [
+        "琵琶湖疏水の国宝指定"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "Claude資料確認（旧版）",
+      "theme": "琵琶湖疏水と京都の近代化"
+    },
+    {
+      "id": "mock-2026-02-087",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 87,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集①",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "第一疏水のトンネル工事で、地表から垂直に穴を掘り、その下からも横方向の掘削を進めるために採用された工法はどれか。",
+      "choices": [
+        "沈埋方式",
+        "開削方式",
+        "シールド方式",
+        "竪坑方式"
+      ],
+      "correct": "竪坑方式",
+      "explanation": "竪坑を設けることで複数の地点から横方向の掘削ができ、工期の短縮に役立った。",
+      "sourceUrls": [
+        "https://biwakososui.city.kyoto.lg.jp/story/",
+        "https://www.city.kyoto.lg.jp/sogo/cmsfiles/contents/0000341/341520/siryou.pdf"
+      ],
+      "tags": [
+        "琵琶湖疏水の工法"
+      ],
+      "difficultyTarget": "基本",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "Claude資料確認（旧版）",
+      "theme": "琵琶湖疏水と京都の近代化"
+    },
+    {
+      "id": "mock-2026-02-088",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 88,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集①",
+      "subcategory": "特集",
+      "difficulty": "やや難",
+      "question": "第一琵琶湖疏水の建設工事で、大津と京都の間の精密な測量を担当した技術者は誰か。",
+      "choices": [
+        "南一郎平",
+        "島田道生",
+        "古市公威",
+        "広井勇"
+      ],
+      "correct": "島田道生",
+      "explanation": "島田道生は疏水計画の測量主任。南一郎平は計画調査にも関わった技術者。",
+      "sourceUrls": [
+        "https://biwakososui.city.kyoto.lg.jp/story/"
+      ],
+      "tags": [
+        "琵琶湖疏水の測量"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "資料の検索結果で支持",
+      "theme": "琵琶湖疏水と京都の近代化"
+    },
+    {
+      "id": "mock-2026-02-089",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 89,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集①",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "初代の蹴上発電所に設置された水車の形式はどれか。",
+      "choices": [
+        "フランシス水車",
+        "カプラン水車",
+        "ペルトン水車",
+        "クロスフロー水車"
+      ],
+      "correct": "ペルトン水車",
+      "explanation": "土木学会関西支部の資料によると、明治24年の一部完成時にはペルトン水車2台を備えた。",
+      "sourceUrls": [
+        "https://heritage.jsce-kansai.net/heritage/detail.html?id=115",
+        "https://sts.kahaku.go.jp/sts/detail.php?c=&city=&dt1=&dt2=&id=&no=901390200005&org=&p=1462&pref=&word=&y1=&y2=",
+        "https://www.iee.jp/file/foundation/data02/ishi-03/ishi-0809.pdf"
+      ],
+      "tags": [
+        "蹴上発電所"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "Claude差分資料確認を継承",
+      "theme": "琵琶湖疏水と京都の近代化"
+    },
+    {
+      "id": "mock-2026-02-090",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 90,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集①",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "明治45年（1912）、第二疏水から取水して京都市の近代水道の給水を開始した施設はどれか。",
+      "choices": [
+        "伏見浄水場",
+        "蹴上浄水場",
+        "新山科浄水場",
+        "松ケ崎浄水場"
+      ],
+      "correct": "蹴上浄水場",
+      "explanation": "蹴上浄水場は第二疏水から取水し、1912年に給水を開始した。",
+      "sourceUrls": [
+        "https://biwakososui.city.kyoto.lg.jp/story/",
+        "https://biwakososui.kyoto.travel/about/",
+        "https://www.pref.kyoto.jp/nenpyo/meiji.html"
+      ],
+      "tags": [
+        "京都の近代水道"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回の検索資料で正答を支持",
+      "theme": "琵琶湖疏水と京都の近代化"
+    },
+    {
+      "id": "mock-2026-02-091",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 91,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集②",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "手描京友禅で模様の輪郭に細く糊を置き、隣り合う色が混じらないようにする工程はどれか。",
+      "choices": [
+        "水元",
+        "糸目糊置き",
+        "蒸し",
+        "地入れ"
+      ],
+      "correct": "糸目糊置き",
+      "explanation": "糸目糊置きは輪郭を防染する工程。地入れは染めむら防止など、蒸しは染料の定着、水元は糊や余分な染料の除去に関係する。",
+      "sourceUrls": [
+        "https://senshokubunka-kyoto.jp/gijyutu/yuzenzome.html",
+        "https://kyo-yuzen.or.jp/yuzen/tools/"
+      ],
+      "tags": [
+        "京友禅"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "theme": "京都の伝統産業"
+    },
+    {
+      "id": "mock-2026-02-092",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 92,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集②",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "陶工・尾形乾山が元禄期に最初の窯を開いた京都の地はどれか。",
+      "choices": [
+        "五条坂",
+        "粟田口",
+        "鳴滝",
+        "清水坂"
+      ],
+      "correct": "鳴滝",
+      "explanation": "乾山は鳴滝で作陶を始め、のちに二条丁子屋町へ移った。",
+      "sourceUrls": [
+        "https://kunishitei.bunka.go.jp/bsys/maindetails/201/00011719"
+      ],
+      "tags": [
+        "尾形乾山"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "theme": "京都の伝統産業"
+    },
+    {
+      "id": "mock-2026-02-093",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 93,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集②",
+      "subcategory": "特集",
+      "difficulty": "基本",
+      "question": "京桶・京樽の製作で、側板を外側から締め付けるために用いる輪状の部材は何か。",
+      "choices": [
+        "目違い",
+        "相欠き",
+        "箍",
+        "雇い実"
+      ],
+      "correct": "箍",
+      "explanation": "箍は桶の側板を締める輪。その他は木工の接合に関する用語である。",
+      "sourceUrls": [
+        "https://artsandculture.google.com/story/vQVx1Vn3RVyHLg?hl=ja"
+      ],
+      "tags": [
+        "京桶・京樽"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "theme": "京都の伝統産業"
+    },
+    {
+      "id": "mock-2026-02-094",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 94,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集②",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "京象嵌で、鉄地の表面に細かな交差する溝を刻み、そこに金銀を打ち込む技法はどれか。",
+      "choices": [
+        "布目象嵌",
+        "線象嵌",
+        "高肉象嵌",
+        "平象嵌"
+      ],
+      "correct": "布目象嵌",
+      "explanation": "布目象嵌は地金に布目状の刻みを付けて金銀を定着させる技法である。",
+      "sourceUrls": [
+        "https://www.jpo.go.jp/system/trademark/gaiyo/chidan/shoukai/ichiran/5136785.html"
+      ],
+      "tags": [
+        "京象嵌"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "theme": "京都の伝統産業"
+    },
+    {
+      "id": "mock-2026-02-095",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 95,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集②",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "京漆器の下地作りでは、山科産の粉末を漆に混ぜて塗り重ねる。伝統的に使われる粉末の組合せはどれか。",
+      "choices": [
+        "朱砂・石黄",
+        "胡粉・雲母",
+        "地の粉・砥の粉",
+        "鉛白・弁柄"
+      ],
+      "correct": "地の粉・砥の粉",
+      "explanation": "京漆器の下地には山科の地の粉や砥の粉を漆と練り合わせた材料が用いられる。",
+      "sourceUrls": [
+        "https://artsandculture.google.com/story/0gUBFD8wI236LQ?hl=ja"
+      ],
+      "tags": [
+        "京漆器"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "資料の検索結果で支持",
+      "theme": "京都の伝統産業"
+    },
+    {
+      "id": "mock-2026-02-096",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 96,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集②",
+      "subcategory": "特集",
+      "difficulty": "やや難",
+      "question": "京石工芸に用いられた白川石は、京都東山北部の山麓でも採石された。白川石の採石地として知られる三つの集落の組合せはどれか。",
+      "choices": [
+        "北白川・一乗寺・修学院",
+        "北白川・岩倉・上高野",
+        "北白川・岡崎・粟田口",
+        "北白川・鹿ヶ谷・浄土寺"
+      ],
+      "correct": "北白川・一乗寺・修学院",
+      "explanation": "白川石の採石地として北白川・一乗寺・修学院の三集落が研究で挙げられている。採石の終期は資料により表現が異なるため問わない。",
+      "sourceUrls": [
+        "https://jglobal.jst.go.jp/detail?JGLOBAL_ID=201902281808375208",
+        "https://www.kougei-kyoto.jp/kougei/%E4%BA%AC%E7%9F%B3%E5%B7%A5%E8%8A%B8%E5%93%81"
+      ],
+      "tags": [
+        "京石工芸品"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "editor-updated-after-delta",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "theme": "京都の伝統産業"
+    },
+    {
+      "id": "mock-2026-02-097",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 97,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集②",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "京表具の掛軸の上端に取り付けられる半円形の木製部材は何と呼ばれるか。",
+      "choices": [
+        "風帯",
+        "軸先",
+        "一文字",
+        "八双"
+      ],
+      "correct": "八双",
+      "explanation": "八双は掛軸上端の半円形の棒で、表木・半月とも呼ばれる。",
+      "sourceUrls": [
+        "https://gekkadou.jp/howto1.html",
+        "https://gekkadou.jp/howto6.html"
+      ],
+      "tags": [
+        "京表具"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "delta-reviewed-v1.1",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "theme": "京都の伝統産業"
+    },
+    {
+      "id": "mock-2026-02-098",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 98,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集②",
+      "subcategory": "特集",
+      "difficulty": "標準",
+      "question": "京うちわの構造で、骨と柄が一体の一般的な丸亀うちわなどと区別される特色はどれか。",
+      "choices": [
+        "扇面と柄を別に作り、後で取り付ける",
+        "一本の竹を割り広げて骨と柄を作る",
+        "骨を金属で作り、柄を木で作る",
+        "骨を紙で作り、柄のみ竹を使う"
+      ],
+      "correct": "扇面と柄を別に作り、後で取り付ける",
+      "explanation": "京うちわは扇面の骨と柄を別に作って取り付ける差し柄の構造が特色である。",
+      "sourceUrls": [
+        "https://densan.kyoto/industry/kyo-uchiwa/"
+      ],
+      "tags": [
+        "京うちわ"
+      ],
+      "difficultyTarget": "難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "資料の検索結果で支持",
+      "theme": "京都の伝統産業"
+    },
+    {
+      "id": "mock-2026-02-099",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 99,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集②",
+      "subcategory": "特集",
+      "difficulty": "基本",
+      "question": "京人形の制作で、人形の肌の白い仕上げに用いられる、貝殻を原料とする顔料はどれか。",
+      "choices": [
+        "白土",
+        "鉛白",
+        "雲母",
+        "胡粉"
+      ],
+      "correct": "胡粉",
+      "explanation": "胡粉は貝殻を原料とする白色顔料で、人形の肌などに使われる。",
+      "sourceUrls": [
+        "https://www.kyo-ningyo.com/ningyoujiten/",
+        "https://ohashi-ippou.com/about"
+      ],
+      "tags": [
+        "京人形"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "independent-reviewed-original",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "theme": "京都の伝統産業"
+    },
+    {
+      "id": "mock-2026-02-100",
+      "grade": 2,
+      "year": 2026,
+      "mock": 2,
+      "questionNumber": 100,
+      "type": "choice",
+      "sourceType": "mock",
+      "category": "特集②",
+      "subcategory": "特集",
+      "difficulty": "やや難",
+      "question": "京銘竹の生産地として、京都府林務課の紹介に挙げられている地域の組合せはどれか。",
+      "choices": [
+        "西京区・向日市・長岡京市",
+        "左京区・宇治市・城陽市",
+        "北区・亀岡市・南丹市",
+        "伏見区・八幡市・京田辺市"
+      ],
+      "correct": "西京区・向日市・長岡京市",
+      "explanation": "京都府の京銘竹の紹介では、京都市西京区・向日市・長岡京市一円が生産地とされている。",
+      "sourceUrls": [
+        "https://www.pref.kyoto.jp/rinmu/14100077.html"
+      ],
+      "tags": [
+        "京銘竹"
+      ],
+      "difficultyTarget": "やや難",
+      "reviewStatus": "editor-updated-after-delta",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "theme": "京都の伝統産業"
+    }
+  ]
+}

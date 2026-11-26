@@ -63,6 +63,7 @@ async function initThemes() {
     // テーマが読めなくても過去問は通常どおり使える
     console.warn("公開テーマの一覧を読み込めませんでした", error);
   } finally {
+    await initMocks();
     renderThemeSection();
     initModeSwitch();
   }
@@ -206,6 +207,7 @@ function readRequestedMode() {
 
 function resolveMode(requested) {
   if (!requested || requested === PAST_MODE) return PAST_MODE;
+  if (requested === MOCK_MODE) return mockState.ready ? MOCK_MODE : PAST_MODE;
   if (requested === "theme") return themeState.themes[0]?.manifest.id ?? PAST_MODE;
   return findTheme(requested) ? requested : PAST_MODE;
 }
@@ -251,7 +253,7 @@ function buildModeSwitch() {
   // 過去問タブ以外（以前に描いたテーマタブ）を作り直す
   nav.querySelectorAll("[data-theme-tab]").forEach(tab => tab.remove());
 
-  if (themeState.themes.length === 0) {
+  if (themeState.themes.length === 0 && !mockState.ready) {
     nav.hidden = true;
     if (link) link.hidden = true;
     return;
@@ -279,6 +281,15 @@ function buildModeSwitch() {
     }
   });
 
+  if (mockState.ready) {
+    const tab = document.createElement("button");
+    tab.type = "button"; tab.className = "mode-tab mode-tab-mock"; tab.id = "mode-tab-mock-2026";
+    tab.dataset.mode = MOCK_MODE; tab.dataset.themeTab = ""; tab.setAttribute("role", "tab");
+    tab.setAttribute("aria-controls", "mode-mock-2026");
+    tab.innerHTML = '<span class="mode-tab-main">2026年度模試</span><span class="mode-tab-sub">第1〜5回・500問</span>';
+    nav.appendChild(tab);
+  }
+
   if (!nav.dataset.bound) {
     nav.dataset.bound = "1";
     nav.addEventListener("click", event => {
@@ -292,7 +303,7 @@ function buildModeSwitch() {
   nav.hidden = false;
 
   // ヘッダーの案内リンクは「先頭テーマのモードへ切替」として動作させる
-  if (link) {
+  if (link && themeState.themes.length) {
     const first = themeState.themes[0];
     const anchor = link.querySelector("a");
     anchor.href = modeUrl(first.manifest.id);
@@ -343,12 +354,14 @@ function setMode(mode, { history = "push" } = {}) {
 function applyModeVisibility() {
   const mode = resolveMode(themeState.mode);
   const isPast = mode === PAST_MODE;
+  const isMock = mode === MOCK_MODE;
+  document.getElementById("mode-mock-2026").hidden = !isMock;
 
   const pastPanel = document.getElementById("mode-past");
   if (pastPanel) pastPanel.hidden = !isPast;
 
   const area = document.getElementById("theme-area");
-  if (area) area.hidden = isPast || themeState.themes.length === 0;
+  if (area) area.hidden = isPast || isMock || themeState.themes.length === 0;
 
   themeState.themes.forEach(theme => {
     const panel = document.getElementById(`${theme.manifest.id}-panel`);
@@ -368,12 +381,12 @@ function applyModeVisibility() {
   const lead = document.getElementById("app-lead");
   if (lead) {
     const theme = findTheme(mode);
-    lead.textContent = theme
+    lead.textContent = isMock ? "2026年度模試500問すべてをトリプルにするのが目標です。" : theme
       ? `公開テーマ「${theme.manifest.title}」${theme.questions.length}問すべてをトリプルにするのが目標です。`
       : PAST_LEAD_TEXT;
   }
 
-  document.body.dataset.mode = isPast ? PAST_MODE : "theme";
+  document.body.dataset.mode = isPast ? PAST_MODE : isMock ? "mock" : "theme";
 }
 
 function createThemePanel(theme) {
