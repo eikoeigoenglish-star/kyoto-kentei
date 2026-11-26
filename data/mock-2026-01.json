@@ -8,14 +8,14 @@
     "sourceType": "mock",
     "mock": 1,
     "questionCount": 100,
-    "status": "editor-accepted-for-integration-with-disclosed-residual-risks",
+    "status": "editor-revised-user-feedback",
     "specialThemes": [
       "寛永文化・寛永行幸",
       "丹後・舞鶴の歴史と文化"
     ],
-    "version": "1.2",
-    "difficultyNote": "difficulty は直近Claude推定（v1.2の57は編集者暫定推定、81/91は修正前の推定を継承）。difficultyTarget は当初設計目標。実測正答率ではない。",
-    "reviewNote": "v1.1の全100問の正答キーは独立解答と一致。v1.2は57/81/91の設問または選択肢を修正したため、修正後の独立解答は未実施。"
+    "version": "1.3",
+    "difficultyNote": "v1.2の92問の難易度評価を維持。修正8問は編集者の暫定評価であり、独立再査読・実測は未実施。",
+    "reviewNote": "v1.2を基に利用者指摘の第18・20・28・49・52・91・93・98問を修正。残り92問は全項目維持。修正8問は独立再査読未実施。問題IDは維持したため既存進捗は残るが、変更前の解答履歴が変更後の知識習得を保証するものではない。"
   },
   "questions": [
     {
@@ -574,28 +574,31 @@
       "category": "神社・寺院",
       "subcategory": "寺院",
       "difficulty": "標準",
-      "question": "覚一本系の『平家物語』で、建礼門院が隠棲した寂光院を後白河法皇が訪ねる「大原御幸」はどの巻に収められているか。",
+      "question": "『平家物語』では、後白河法皇が大原の寂光院を訪ねた際、建礼門院は平家の栄華から滅亡に至る自らの体験を、どの仏教思想に重ねて語ったとされるか。",
       "choices": [
-        "巻第十一",
-        "灌頂巻",
-        "巻第十二",
-        "巻第十"
+        "末法思想",
+        "六道輪廻",
+        "諸法無我",
+        "十界互具"
       ],
-      "correct": "灌頂巻",
-      "explanation": "大原御幸は覚一本系統の『平家物語』の灌頂巻に収められている。",
+      "correct": "六道輪廻",
+      "explanation": "建礼門院は自らの波乱の生涯を六道輪廻に重ねて語った。六道とは地獄・餓鬼・畜生・修羅・人間・天の六つの世界である。寂光院での再会は、平家一門の栄華と滅亡を振り返る物語の結末に位置する。",
       "sourceUrls": [
-        "https://www.jakkoin.jp/rekishi/",
-        "https://www.koten.net/heike/gen/188/",
-        "https://kokubunken.repo.nii.ac.jp/records/2000475"
+        "https://www.archives.go.jp/exhibition/digital/heikemonogatari/contents/08.html",
+        "https://kyoto-ohara-kankouhosyoukai.net/detail/5600/"
       ],
       "tags": [
-        "寂光院"
+        "寂光院",
+        "平家物語",
+        "建礼門院",
+        "六道輪廻"
       ],
       "difficultyTarget": "標準",
       "difficultyReviewBeforeRevision": "標準",
-      "reviewStatus": "independently-reviewed-v11",
+      "reviewStatus": "v13-user-feedback-revised-not-independently-reviewed",
       "difficultyReview": "標準",
-      "difficultyReviewBasis": "Claude差分査読 v1.1"
+      "difficultyReviewBasis": "v1.3編集者暫定推定（ユーザー指摘反映後・独立再査読なし）",
+      "editorSourceCheck": "2026-11-27 正答の中心事実を掲載資料で確認。最終版の独立査読・誤答全件の網羅的確認なし。"
     },
     {
       "id": "mock-2026-01-019",
@@ -640,26 +643,29 @@
       "category": "神社・寺院",
       "subcategory": "寺院",
       "difficulty": "標準",
-      "question": "新京極にある誓願寺が総本山となっている宗派はどれか。",
+      "question": "浄土宗西山深草派の総本山はどれか。",
       "choices": [
-        "浄土宗西山深草派",
-        "浄土宗西山禅林寺派",
-        "西山浄土宗",
-        "浄土宗"
+        "誓願寺",
+        "永観堂（禅林寺）",
+        "光明寺",
+        "知恩院"
       ],
-      "correct": "浄土宗西山深草派",
-      "explanation": "誓願寺は浄土宗西山深草派の総本山である。",
+      "correct": "誓願寺",
+      "explanation": "浄土宗西山深草派の総本山は新京極の誓願寺。永観堂（禅林寺）は浄土宗西山禅林寺派、光明寺は西山浄土宗、知恩院は浄土宗の総本山である。",
       "sourceUrls": [
+        "https://www.jbf.ne.jp/member",
         "https://ja.kyoto.travel/tourism/single01.php?category_id=7&tourism_id=387"
       ],
       "tags": [
-        "誓願寺"
+        "誓願寺",
+        "浄土宗西山深草派"
       ],
       "difficultyTarget": "やや難",
       "difficultyReviewBeforeRevision": "標準",
-      "reviewStatus": "independently-reviewed-v10-unchanged",
+      "reviewStatus": "v13-user-feedback-revised-not-independently-reviewed",
       "difficultyReview": "標準",
-      "difficultyReviewBasis": "Claude初回査読（問題維持）"
+      "difficultyReviewBasis": "v1.3編集者暫定推定（ユーザー指摘反映後・独立再査読なし）",
+      "editorSourceCheck": "2026-11-27 正答の中心事実を掲載資料で確認。最終版の独立査読・誤答全件の網羅的確認なし。"
     },
     {
       "id": "mock-2026-01-021",
@@ -900,26 +906,32 @@
       "category": "建築・庭園・美術",
       "subcategory": "絵画・書",
       "difficulty": "標準",
-      "question": "高山寺に伝わる国宝「鳥獣人物戯画」のうち、実在の動物や空想上の動物を写生的に描いた巻はどれか。",
+      "question": "高山寺に伝わる国宝「鳥獣人物戯画」の絵画表現に用いられている、主要な描画技法はどれか。",
       "choices": [
-        "丁巻",
-        "乙巻",
-        "甲巻",
-        "丙巻"
+        "作り絵",
+        "白描",
+        "没骨",
+        "たらし込み"
       ],
-      "correct": "乙巻",
-      "explanation": "乙巻にはさまざまな動物が描かれる。甲巻の擬人化した動物たちとは描写が異なる。",
+      "correct": "白描",
+      "explanation": "鳥獣人物戯画は墨の線を主体とする白描の絵巻で、彩色を施さず動物や人物の動きを生き生きと表している。作り絵は顔料を塗り重ねる技法、没骨は輪郭線を用いない表現、たらし込みは墨や絵具のにじみを利用する技法である。",
       "sourceUrls": [
-        "https://kosanji.com/chojujinbutsugiga/"
+        "https://kyoto-kosanji.jp/treasure/06/",
+        "https://kosanji.com/chojujinbutsugiga/",
+        "https://www.kyohaku.go.jp/jp/exhibitions/collection/2022/07/",
+        "https://www.tnm.jp/modules/r_free_page/index.php?id=2009&lang=ja"
       ],
       "tags": [
-        "鳥獣人物戯画"
+        "鳥獣人物戯画",
+        "高山寺",
+        "白描"
       ],
       "difficultyTarget": "基本",
       "difficultyReviewBeforeRevision": "標準",
-      "reviewStatus": "independently-reviewed-v10-unchanged",
+      "reviewStatus": "v13-user-feedback-revised-not-independently-reviewed",
       "difficultyReview": "標準",
-      "difficultyReviewBasis": "Claude初回査読（問題維持）"
+      "difficultyReviewBasis": "v1.3編集者暫定推定（ユーザー指摘反映後・独立再査読なし）",
+      "editorSourceCheck": "2026-11-27 正答の中心事実を掲載資料で確認。最終版の独立査読・誤答全件の網羅的確認なし。"
     },
     {
       "id": "mock-2026-01-029",
@@ -1579,26 +1591,29 @@
       "category": "祭礼・行事",
       "subcategory": "祭礼・年中行事",
       "difficulty": "標準",
-      "question": "時代祭の行列で、元弘3年（1333）に後醍醐天皇が隠岐から京都へ還幸した際の先導の様子を表す列はどれか。",
+      "question": "時代祭の楠公上洛列は、楠木正成と後醍醐天皇に関わるどの歴史場面を題材としているか。",
       "choices": [
-        "豊公参朝列",
-        "楠公上洛列",
-        "城南流鏑馬列",
-        "室町幕府執政列"
+        "元弘の乱で後醍醐天皇が笠置山に入った場面",
+        "鎌倉幕府滅亡の頃、後醍醐天皇が隠岐から帰還して上洛する場面",
+        "建武政権崩壊期に後醍醐天皇が比叡山に逃れた場面",
+        "南朝の成立に際して後醍醐天皇が吉野に移った場面"
       ],
-      "correct": "楠公上洛列",
-      "explanation": "楠公上洛列は後醍醐天皇の還幸に伴う楠木正成らの先導を表現する。",
+      "correct": "鎌倉幕府滅亡の頃、後醍醐天皇が隠岐から帰還して上洛する場面",
+      "explanation": "平安神宮の説明によると、元弘3年（1333）、楠木正成は隠岐から帰還する後醍醐天皇を兵庫で迎え、京都まで先導した。楠公上洛列はこの場面を再現する。なお、天皇は鎌倉幕府滅亡前に隠岐を脱出しており、京都への帰還はその滅亡後である。",
       "sourceUrls": [
         "https://www.heianjingu.or.jp/ritual/jidaimatsuri/procession/"
       ],
       "tags": [
-        "時代祭"
+        "時代祭",
+        "楠公上洛列",
+        "後醍醐天皇"
       ],
       "difficultyTarget": "やや難",
       "difficultyReviewBeforeRevision": "標準",
-      "reviewStatus": "independently-reviewed-v10-unchanged",
+      "reviewStatus": "v13-user-feedback-revised-not-independently-reviewed",
       "difficultyReview": "標準",
-      "difficultyReviewBasis": "Claude初回査読（問題維持）"
+      "difficultyReviewBasis": "v1.3編集者暫定推定（ユーザー指摘反映後・独立再査読なし）",
+      "editorSourceCheck": "2026-11-27 正答の中心事実を掲載資料で確認。最終版の独立査読・誤答全件の網羅的確認なし。"
     },
     {
       "id": "mock-2026-01-050",
@@ -1675,28 +1690,31 @@
       "category": "生活文化",
       "subcategory": "食",
       "difficulty": "標準",
-      "question": "京都の夏の料理で、骨切りした鱧をさっと湯に通し、身を花のように開かせる料理はどれか。",
+      "question": "冷蔵・冷凍技術が発達する以前から、海から離れた京都で夏に鱧が珍重された理由として、流通の面から最も適切なものはどれか。",
       "choices": [
-        "鱧の焼霜造り",
-        "鱧の南蛮漬け",
-        "鱧の照り焼き",
-        "鱧の落とし"
+        "塩を振って鮮度を保ち、京都まで運ぶのに適していたため",
+        "干物に加工し、京都まで運ぶのに適していたため",
+        "酢で締めて保存し、京都まで運ぶのに適していたため",
+        "生命力が強く、生きたまま京都まで運ぶのに適していたため"
       ],
-      "correct": "鱧の落とし",
-      "explanation": "鱧の落としは骨切りした身を湯に通して開かせる料理。祇園祭の頃の京都の食文化を代表する。",
+      "correct": "生命力が強く、生きたまま京都まで運ぶのに適していたため",
+      "explanation": "鱧は生命力が強く、輸送技術が発達する以前も活魚として京都まで運ぶことができた。海から離れた京都で貴重な夏の魚として珍重され、骨切りなどの調理技術とともに祇園祭の頃の食文化に定着した。",
       "sourceUrls": [
-        "https://ja.kyoto.travel/event/major/gion/understand.php",
-        "https://rdish.reload.co.jp/dishes/hamo-no-otoshi/"
+        "https://totteoki.kyoto.travel/23419/",
+        "https://tabi.jtb.or.jp/res/260167-"
       ],
       "tags": [
         "鱧",
-        "京料理"
+        "京料理",
+        "流通",
+        "祇園祭"
       ],
       "difficultyTarget": "基本",
       "difficultyReviewBeforeRevision": "基本",
-      "reviewStatus": "independently-reviewed-v11",
+      "reviewStatus": "v13-user-feedback-revised-not-independently-reviewed",
       "difficultyReview": "標準",
-      "difficultyReviewBasis": "Claude差分査読 v1.1"
+      "difficultyReviewBasis": "v1.3編集者暫定推定（ユーザー指摘反映後・独立再査読なし）",
+      "editorSourceCheck": "2026-11-27 正答の中心事実を掲載資料で確認。最終版の独立査読・誤答全件の網羅的確認なし。"
     },
     {
       "id": "mock-2026-01-053",
@@ -2991,32 +3009,34 @@
       "sourceType": "mock",
       "category": "特集②",
       "subcategory": "特集",
-      "difficulty": "やや難",
-      "question": "2026年に京都文化博物館で金銅装双龍環頭大刀などの出土品が展示された丹後の湯舟坂2号墳は、いつ頃築造されたとされるか。",
+      "difficulty": "標準",
+      "question": "2026年に京都文化博物館で出土品が特集展示された、京丹後市の湯舟坂2号墳を代表する副葬品はどれか。",
       "choices": [
-        "6世紀前半",
-        "6世紀後半",
-        "7世紀前半",
-        "7世紀後半"
+        "三角縁神獣鏡",
+        "金銅装双龍環頭大刀",
+        "金銅製冠帽",
+        "家形埴輪"
       ],
-      "correct": "6世紀後半",
-      "explanation": "京丹後市の資料によれば、湯舟坂2号墳は6世紀後半の横穴式石室墳で、豊富な副葬品が出土している。",
+      "correct": "金銅装双龍環頭大刀",
+      "explanation": "湯舟坂2号墳は古墳時代後期の円墳で、大規模な横穴式石室をもつ。金銅装双龍環頭大刀などの豊富な副葬品が出土し、日本海沿岸の首長層の文化を考えるうえで重要な資料となっている。2026年の京都文化博物館の展示では金銀の大刀が中心となった。",
       "sourceUrls": [
         "https://www.bunpaku.or.jp/exhi_sogo_post/20260523-0726/",
-        "https://www.city.kyotango.lg.jp/top/soshiki/kyoikuiinkai/bunkazaihogo/3/1/2/3315.html",
-        "https://www.city.kyotango.lg.jp/top/soshiki/kyoikuiinkai/bunkazaihogo/3/1/1/3436.html"
+        "https://kunishitei.bunka.go.jp/bsys/maindetails/201/10012",
+        "https://www.city.kyotango.lg.jp/top/soshiki/kyoikuiinkai/bunkazaihogo/3/1/2/3315.html"
       ],
       "tags": [
         "湯舟坂2号墳",
         "古墳時代",
+        "金銅装双龍環頭大刀",
         "丹後・舞鶴の歴史と文化"
       ],
       "theme": "丹後・舞鶴の歴史と文化",
       "difficultyTarget": "やや難",
       "difficultyReviewBeforeRevision": "標準",
-      "reviewStatus": "v12-distractor-edited-not-blind-reviewed",
-      "difficultyReview": "やや難",
-      "difficultyReviewBasis": "Claude v1.1推定を暫定継承（v1.2選択肢等修正後は独立再評価なし）"
+      "reviewStatus": "v13-user-feedback-revised-not-independently-reviewed",
+      "difficultyReview": "標準",
+      "difficultyReviewBasis": "v1.3編集者暫定推定（ユーザー指摘反映後・独立再査読なし）",
+      "editorSourceCheck": "2026-11-27 正答の中心事実を掲載資料で確認。最終版の独立査読・誤答全件の網羅的確認なし。"
     },
     {
       "id": "mock-2026-01-092",
@@ -3064,30 +3084,34 @@
       "category": "特集②",
       "subcategory": "特集",
       "difficulty": "標準",
-      "question": "雪舟筆とされる国宝「天橋立図」を所蔵する博物館はどれか。",
+      "question": "丹後の天橋立や周辺の寺社を鳥瞰的に描いた国宝「天橋立図」の作者とされる室町時代の水墨画家は誰か。",
       "choices": [
-        "東京国立博物館",
-        "奈良国立博物館",
-        "九州国立博物館",
-        "京都国立博物館"
+        "如拙",
+        "周文",
+        "雪村",
+        "雪舟"
       ],
-      "correct": "京都国立博物館",
-      "explanation": "天橋立図は京都国立博物館の館蔵品（A甲228）で、丹後の景観を鳥瞰的に描いた水墨画である。",
+      "correct": "雪舟",
+      "explanation": "天橋立図は雪舟の最晩年の代表作とされる。天橋立や寺社の景観を、中国絵画の学習で培った山水画の構成法を用いて描いた作品で、当時の丹後の景観を伝える。京都国立博物館に所蔵される。如拙・周文・雪村も室町時代の代表的な水墨画家である。",
       "sourceUrls": [
         "https://knmdb.kyohaku.go.jp/16359.html",
-        "https://www.kyohaku.go.jp/jp//collection/meihin/suibokuga/item01/"
+        "https://www.kyohaku.go.jp/jp/learn/home/dictio/kaiga/187/",
+        "https://emuseum.nich.go.jp/detail?content_base_id=101224",
+        "https://knmdb.kyohaku.go.jp/343.html"
       ],
       "tags": [
         "天橋立図",
         "雪舟",
+        "水墨画",
         "丹後・舞鶴の歴史と文化"
       ],
       "theme": "丹後・舞鶴の歴史と文化",
       "difficultyTarget": "やや難",
       "difficultyReviewBeforeRevision": "基本",
-      "reviewStatus": "independently-reviewed-v11",
+      "reviewStatus": "v13-user-feedback-revised-not-independently-reviewed",
       "difficultyReview": "標準",
-      "difficultyReviewBasis": "Claude差分査読 v1.1"
+      "difficultyReviewBasis": "v1.3編集者暫定推定（ユーザー指摘反映後・独立再査読なし）",
+      "editorSourceCheck": "2026-11-27 正答の中心事実を掲載資料で確認。最終版の独立査読・誤答全件の網羅的確認なし。"
     },
     {
       "id": "mock-2026-01-094",
@@ -3239,28 +3263,32 @@
       "category": "特集②",
       "subcategory": "特集",
       "difficulty": "標準",
-      "question": "関ヶ原の戦いに先立つ田辺城の籠城戦で、朝廷が細川幽斎の身を案じた理由の一つとなった、幽斎が継承していた和歌の秘伝は何か。",
+      "question": "関ヶ原の戦いに先立つ田辺城の籠城戦では、後陽成天皇の勅命により城の包囲が解かれたとされる。細川幽斎が継承していた文化的知識に関して、朝廷が懸念したことは何か。",
       "choices": [
-        "万葉集の訓読",
-        "伊勢物語の古注釈",
-        "連歌の式目",
-        "古今伝授"
+        "朝廷の儀式や装束に関する故実の断絶",
+        "雅楽の曲譜や演奏法に関する伝承の断絶",
+        "漢詩文の解釈や作法に関する伝承の断絶",
+        "勅撰和歌集の解釈や歌道に関する秘伝の断絶"
       ],
-      "correct": "古今伝授",
-      "explanation": "幽斎は古今伝授の継承者であり、朝廷はその知識の断絶を懸念したとされる。",
+      "correct": "勅撰和歌集の解釈や歌道に関する秘伝の断絶",
+      "explanation": "細川幽斎は古今伝授の継承者だった。古今伝授は古今和歌集の解釈など歌道の奥義を師から弟子へ伝えるもので、朝廷はその断絶を危惧したとされる。戦国武将でありながら宮廷文化の伝承を担った幽斎の立場が、籠城戦の経緯に関わった。",
       "sourceUrls": [
-        "https://www.city.maizuru.kyoto.jp/kyouiku/0000010324.html"
+        "https://www.city.maizuru.kyoto.jp/kurashi/0000009007.html",
+        "https://www.city.maizuru.kyoto.jp/shisei/cmsfiles/contents/0000006/6033/202003.pdf"
       ],
       "tags": [
         "舞鶴田辺城",
+        "細川幽斎",
+        "古今伝授",
         "丹後・舞鶴の歴史と文化"
       ],
       "theme": "丹後・舞鶴の歴史と文化",
       "difficultyTarget": "難",
       "difficultyReviewBeforeRevision": "標準",
-      "reviewStatus": "independently-reviewed-v10-unchanged",
+      "reviewStatus": "v13-user-feedback-revised-not-independently-reviewed",
       "difficultyReview": "標準",
-      "difficultyReviewBasis": "Claude初回査読（問題維持）"
+      "difficultyReviewBasis": "v1.3編集者暫定推定（ユーザー指摘反映後・独立再査読なし）",
+      "editorSourceCheck": "2026-11-27 正答の中心事実を掲載資料で確認。最終版の独立査読・誤答全件の網羅的確認なし。"
     },
     {
       "id": "mock-2026-01-099",
