@@ -31,13 +31,13 @@
       "difficulty": "標準",
       "question": "離宮八幡宮の社名の由来となった、嵯峨天皇が大山崎に営んだ離宮はどれか。",
       "choices": [
-        "淳和院",
-        "嵯峨院",
-        "冷然院",
+        "大堰離宮",
+        "鳥羽離宮",
+        "水無瀬離宮",
         "河陽離宮"
       ],
       "correct": "河陽離宮",
-      "explanation": "離宮八幡宮の創建伝承では、嵯峨天皇の河陽離宮に宇佐八幡神を勧請したとされる。",
+      "explanation": "河陽離宮は嵯峨天皇、大堰離宮は桓武天皇、鳥羽離宮は白河上皇、水無瀬離宮は後鳥羽上皇にゆかりがある。",
       "sourceUrls": [
         "https://www.town.oyamazaki.kyoto.jp/annai/kikakuzaisei/kannkou/kanko/machinokankosupotto/907.html",
         "https://www.town.oyamazaki.kyoto.jp/kanko/kankospot/2510.html"
