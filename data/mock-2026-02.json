@@ -8,14 +8,14 @@
     "sourceType": "mock",
     "mock": 2,
     "questionCount": 100,
-    "status": "editor-adopted",
+    "status": "user-approved-revision",
     "specialThemes": [
       "琵琶湖疏水と京都の近代化",
       "京都の伝統産業"
     ],
-    "version": "1.2",
-    "difficultyNote": "Claude差分評価（変更26問）と前回評価（74問）を継承。最終修正後の難度再評価なし。実測正答率なし。",
-    "reviewNote": "v1.1の差分26問は照合後全一致。v1.2の設問・選択肢変更は再独立査読なし。正答支持資料の検索記述を含む。全誤答・公式テキスト照合は未実施。"
+    "version": "1.4",
+    "difficultyNote": "第19・23・47・55問はv1.2の難易度を暫定維持、第26問はv1.3提案の評価を継承。残り95問はv1.2のまま。実測・独立再査読なし。",
+    "reviewNote": "v1.2を基準とし、ユーザー承認済みの第19・23・26・47・55問のみ変更。未承認のv1.3変更は不採用。第55問の誤答文言は護符の銘文としての実在未確認。変更5問の独立再査読・公式テキスト再照合は未実施。"
   },
   "questions": [
     {
@@ -581,10 +581,10 @@
       "difficulty": "基本",
       "question": "明末の僧・隠元隆琦が弟子を伴って日本に渡来したのは、次のどの年か。",
       "choices": [
-        "慶安4年（1651）",
-        "明暦3年（1657）",
+        "天文23年（1554）",
+        "慶長9年（1604）",
         "承応3年（1654）",
-        "万治3年（1660）"
+        "宝永元年（1704）"
       ],
       "correct": "承応3年（1654）",
       "explanation": "隠元は1654年に来朝した。",
@@ -595,8 +595,9 @@
         "萬福寺"
       ],
       "difficultyTarget": "やや難",
-      "reviewStatus": "editor-updated-after-delta",
-      "evidenceStatus": "今回取得した資料が正答を支持"
+      "reviewStatus": "user-approved-v1.4-not-independently-reviewed",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "difficultyReviewBasis": "選択肢変更後の難易度は未実測。v1.2の区分を暫定維持。"
     },
     {
       "id": "mock-2026-02-020",
@@ -704,9 +705,9 @@
       "question": "京都府庁旧本館は、松室重光が設計を担当した西洋建築である。竣工した年はどれか。",
       "choices": [
         "明治27年（1894）",
-        "明治42年（1909）",
+        "明治17年（1884）",
         "明治37年（1904）",
-        "大正3年（1914）"
+        "明治7年（1874）"
       ],
       "correct": "明治37年（1904）",
       "explanation": "京都府庁旧本館は1904年竣工の煉瓦造の庁舎である。",
@@ -718,8 +719,9 @@
         "京都府庁旧本館"
       ],
       "difficultyTarget": "やや難",
-      "reviewStatus": "delta-reviewed-v1.1",
-      "evidenceStatus": "今回取得した資料が正答を支持"
+      "reviewStatus": "user-approved-v1.4-not-independently-reviewed",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "difficultyReviewBasis": "選択肢変更後の難易度は未実測。v1.2の区分を暫定維持。"
     },
     {
       "id": "mock-2026-02-024",
@@ -793,24 +795,25 @@
       "category": "建築・庭園・美術",
       "subcategory": "庭園",
       "difficulty": "標準",
-      "question": "東福寺本坊庭園で、苔と方形の敷石を交互に配した市松模様の庭があるのは方丈のどの側か。",
+      "question": "東福寺本坊庭園で、苔と方形の敷石による市松模様や北斗七星を表した石の配置など、伝統と近代的な抽象表現を融合させた作庭家は誰か。",
       "choices": [
-        "西側",
-        "東側",
-        "北側",
-        "南側"
+        "七代目小川治兵衛",
+        "中根金作",
+        "重森三玲",
+        "飯田十基"
       ],
-      "correct": "北側",
-      "explanation": "重森三玲の作庭した本坊庭園の北庭に市松模様がある。",
+      "correct": "重森三玲",
+      "explanation": "重森三玲は1939年に東福寺本坊庭園を完成させた。伝統的な禅宗庭園の造形に幾何学的な構成を取り入れ、近代庭園の新たな表現を示した。",
       "sourceUrls": [
-        "https://tofukuji.jp/guide/honbo/"
+        "https://renewal.tofukuji.jp/guide/honbo/"
       ],
       "tags": [
         "東福寺・本坊庭園"
       ],
       "difficultyTarget": "標準",
-      "reviewStatus": "independent-reviewed-original",
-      "evidenceStatus": "今回取得した資料が正答を支持"
+      "reviewStatus": "user-approved-v1.4-not-independently-reviewed",
+      "evidenceStatus": "v1.3編集確認：正答支持資料あり（既存典拠継承または検索資料）",
+      "difficultyReviewBasis": "v1.3編集者暫定評価・独立再査読なし"
     },
     {
       "id": "mock-2026-02-027",
@@ -1436,7 +1439,7 @@
       "choices": [
         "送り鐘",
         "時の鐘",
-        "除夜の鐘",
+        "喚鐘",
         "迎え鐘"
       ],
       "correct": "迎え鐘",
@@ -1449,8 +1452,9 @@
         "千本ゑんま堂"
       ],
       "difficultyTarget": "標準",
-      "reviewStatus": "independent-reviewed-original",
-      "evidenceStatus": "Claude資料確認（旧版）"
+      "reviewStatus": "user-approved-v1.4-not-independently-reviewed",
+      "evidenceStatus": "Claude資料確認（旧版）",
+      "difficultyReviewBasis": "選択肢変更後の難易度は未実測。v1.2の区分を暫定維持。"
     },
     {
       "id": "mock-2026-02-048",
@@ -1678,10 +1682,10 @@
       "difficulty": "基本",
       "question": "京町家のかまどの近くに貼られることのある、愛宕神社の火伏せの護符に記される文字はどれか。",
       "choices": [
-        "家内安全",
+        "火防鎮護",
         "火迺要慎",
-        "五穀豊穣",
-        "商売繁盛"
+        "火災消除",
+        "鎮火守護"
       ],
       "correct": "火迺要慎",
       "explanation": "愛宕神社の護符には火迺要慎（ひのようじん）と記され、火の用心を促す。",
@@ -1693,8 +1697,9 @@
         "愛宕神社"
       ],
       "difficultyTarget": "標準",
-      "reviewStatus": "delta-reviewed-v1.1",
-      "evidenceStatus": "今回取得した資料が正答を支持"
+      "reviewStatus": "user-approved-v1.4-not-independently-reviewed",
+      "evidenceStatus": "今回取得した資料が正答を支持",
+      "difficultyReviewBasis": "選択肢変更後の難易度は未実測。v1.2の区分を暫定維持。"
     },
     {
       "id": "mock-2026-02-056",
